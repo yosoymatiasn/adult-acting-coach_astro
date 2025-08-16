@@ -1,0 +1,83 @@
+/* src/styles/global.css */
+
+/* 1️⃣ Import Google Fonts and Tailwind core */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+@import 'tailwindcss';
+
+/* 2️⃣ Define custom theme variables */
+@theme {
+  --color-purple: #7f1a7f;
+  --color-purple-light: #823d82;
+  --font-sans: 'Roboto Condensed', sans-serif;
+  --drop-shadow-main: -2px -1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* 3️⃣ Base styles */
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    @apply bg-neutral-100;
+  }
+
+  .container {
+    @apply mx-auto;
+  }
+
+  p {
+    @apply text-lg md:text-2xl;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold mb-4 text-xl md:text-2xl;
+    color: var(--color-purple);
+  }
+
+  h1 {
+    @apply text-2xl md:text-4xl;
+  }
+
+  .fade-out {
+    @apply z-50;
+    background-color: black;
+  }
+
+  .sr-link {
+    @apply w-full max-w-96 px-4 md:px-8 py-4 mx-auto mt-4 text-white md:text-3xl text-center rounded-md border-double border-4 border-white transition-colors;
+    background-color: var(--color-purple);
+  }
+
+  .sr-link:hover {
+    background-color: var(--color-purple-light);
+  }
+}
+
+/* 4️⃣ Components */
+@layer components {
+  .fade-out {
+    @apply z-50;
+    background-color: black;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 text-white rounded shadow transition;
+    background-color: var(--color-purple);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-purple-light);
+  }
+}
+
+/* 5️⃣ Utilities (optional) */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .drop-shadow-main {
+    drop-shadow: var(--drop-shadow-main);
+  }
+}
