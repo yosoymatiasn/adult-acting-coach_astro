@@ -1,0 +1,20 @@
+---
+import { classes } from "../data/classes";
+import { flattenClasses, type TClassListing } from "../helpers/listingHelpers";
+import ClassCard from "./ClassCard.astro";
+
+const upcomingClasses: TClassListing[] = flattenClasses(classes);
+---
+
+{upcomingClasses.map((c) => <ClassCard classData={c} />)}
+
+<!-- <div class="flex flex-col container">
+  <div class="max-w-6xl w-full mx-auto">
+    <div
+      class={`grid md:grid-cols-2 items-start gap-y-2 md:gap-x-4 lg:gap-x-6 md:gap-y-3 lg:gap-y-6  md:auto-rows-fr`}
+    >
+      <div class="!w-full border relative rounded-md overflow-hidden shadow-md">
+      </div>
+    </div>
+  </div>
+</div> -->

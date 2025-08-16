@@ -1,0 +1,73 @@
+---
+import type { TClassListing } from "../helpers/listingHelpers";
+import { paymentURL } from "../data/classes";
+
+const { classData } = Astro.props as { classData: TClassListing };
+
+// Format date
+const dateObj = new Date(classData.upcoming.date);
+const formattedDate = dateObj.toLocaleDateString("en-US", {
+  weekday: "short",
+  month: "short",
+  day: "numeric",
+});
+const formattedTime = dateObj.toLocaleTimeString("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+});
+---
+
+<div class="w-full border relative rounded-md overflow-hidden shadow-md">
+  <div
+    class="absolute bg-black/60 rounded-bl-lg p-2 text-white top-0 right-0 z-50"
+  >
+    <p class="text-base">{classData.duration}</p>
+  </div>
+
+  <a
+    href={classData.upcoming.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="relative"
+  >
+    <div class="group overflow-hidden h-60 relative">
+      <div
+        class="transition-colors absolute inset-0 bg-black/50 group-hover:bg-black/0 pointer-events-none z-10"
+      >
+      </div>
+      <img
+        src={classData.image}
+        alt={classData.title}
+        class="transition-transform w-full h-full object-cover object-top group-hover:scale-100 scale-110"
+      />
+    </div>
+  </a>
+
+  <div class="p-2 md:px-6 md:py-4">
+    <a href={classData.upcoming.url} target="_blank" rel="noopener noreferrer">
+      <h2 class="inline-block mb-1">{classData.title}</h2>
+    </a>
+    <p class="text-base font-semibold">{formattedDate} • {formattedTime}</p>
+    <p class="text-base mt-2">{classData.description}</p>
+
+    <div class="mt-4 flex gap-2 items-center justify-center">
+      <p class="opacity-50 font-light mr-auto">${classData.price}</p>
+      <a
+        href={classData.upcoming.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="p-2 bg-red-400 text-white rounded-sm py-3 px-8 md:px-12 text-center"
+      >
+        Sign up
+      </a>
+      <a
+        href={paymentURL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="p-2 text-purple border-purple rounded-sm border py-3 px-12 text-center"
+      >
+        Pay
+      </a>
+    </div>
+  </div>
+</div>
