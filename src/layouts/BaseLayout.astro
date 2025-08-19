@@ -1,0 +1,16 @@
+---
+import "../styles/global.css";
+
+import Skeleton from "./Skeleton.astro";
+
+interface Props {
+  title?: string; // page-specific title
+  children: any; // the page content
+}
+
+const { title } = Astro.props;
+---
+
+<Skeleton title={title}>
+  <slot />
+</Skeleton>

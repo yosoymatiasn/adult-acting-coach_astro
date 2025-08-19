@@ -1,6 +1,7 @@
 ---
 import type { TClassListing } from "../helpers/listingHelpers";
 import { paymentURL } from "../data/classes";
+import Image from "astro/components/Image.astro";
 
 const { classData } = Astro.props as { classData: TClassListing };
 
@@ -35,9 +36,11 @@ const formattedTime = dateObj.toLocaleTimeString("en-US", {
         class="transition-colors absolute inset-0 bg-black/50 group-hover:bg-black/0 pointer-events-none z-10"
       >
       </div>
-      <img
+      <Image
         src={classData.image}
         alt={classData.title}
+        width="240"
+        height="400"
         class="transition-transform w-full h-full object-cover object-top group-hover:scale-100 scale-110"
       />
     </div>

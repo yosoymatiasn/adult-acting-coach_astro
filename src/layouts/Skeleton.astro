@@ -1,0 +1,33 @@
+---
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string; // page-specific title
+  children: any; // the page content
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <Header />
+
+    <main class="min-h-screen p-8">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-100 py-6 px-8 text-sm text-gray-600">
+      &copy; {new Date().getFullYear()} Sara Rogers. All rights reserved.
+    </footer>
+  </body>
+</html>

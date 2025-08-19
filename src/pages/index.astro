@@ -1,10 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import ClassList from "../components/ClassList.astro";
 import ContactForm from "../components/ContactForm.astro";
+import YoutubeEmbed from "../components/YoutubeEmbed.astro";
+import { brandingTestimonials } from "../data/testimonials";
+import Carousel from "../components/Carousel.astro";
 ---
 
-<Layout>
+<BaseLayout>
   <div
     class="relative mb-10 md:mb-20 bg-gradient-to-r p-4 from-purple/10 via-purple/80 to-purple/90"
   >
@@ -15,14 +18,27 @@ import ContactForm from "../components/ContactForm.astro";
         Sara Rogers
       </h1>
     </div>
-    <ContactForm />
   </div>
 
   <div class="max-w-6xl w-full mx-auto">
+    <YoutubeEmbed url="https://www.youtube.com/watch?v=5vBuGrKUNmM" />
     <div
       class={`grid md:grid-cols-2 items-start gap-y-2 md:gap-x-4 lg:gap-x-6 md:gap-y-3 lg:gap-y-6  md:auto-rows-fr`}
     >
       <ClassList />
     </div>
   </div>
-</Layout>
+
+  <div class="mt-20">
+    <!-- <Carousel slides={testimonialDivs} /> -->
+    <Carousel class="max-w-3xl mx-auto">
+      {
+        brandingTestimonials.map(({ youtubeId }) => (
+          <div class="min-w-full">
+            <YoutubeEmbed lazy id={youtubeId} />
+          </div>
+        ))
+      }
+    </Carousel>
+  </div>
+</BaseLayout>
