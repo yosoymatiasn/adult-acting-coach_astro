@@ -4,16 +4,17 @@ import "../styles/global.css";
 import ContentWrapper from "./ContentWrapper.astro";
 
 import Skeleton from "./Skeleton.astro";
+import type { Metadata } from "../utils/seo";
 
 interface Props {
-  title?: string; // page-specific title
-  children?: any; // the page content
+  meta?: Partial<Metadata>;
+  title: string;
 }
 
-const { title } = Astro.props;
+const { meta, title } = Astro.props;
 ---
 
-<Skeleton title={title}>
+<Skeleton meta={meta}>
   <Banner title={title} />
   <ContentWrapper>
     <slot />

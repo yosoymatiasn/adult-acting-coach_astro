@@ -30,7 +30,7 @@ export type TClass = {
   show?: TShow;
 };
 
-export const paymentURL = "https://www.paypal.com/paypalme/sararogers147";
+export const paymentURL = "https://www.paypal.com/ncp/payment/LH9NCYEN29P6G";
 
 export const classesByWeekDay: Record<string, number[]> = {
   wednesdays: [11, 10, 3, 7, 15, 17],

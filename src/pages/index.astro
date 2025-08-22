@@ -5,17 +5,24 @@ import YoutubeEmbed from "../components/YoutubeEmbed.astro";
 import logo from "../assets/images/logo.png";
 import Image from "astro/components/Image.astro";
 import Section from "../components/index/Section.astro";
+
+const meta = {
+  title: "Home | Sara Rogers Acting",
+  description:
+    "Unlock your potential with Sara Rogers, a premier acting and public speaking coach in South Florida. Join our year-round adult classes, featuring improvisation, monologues, scenes, and more.",
+  url: "https://adultactingcoach.com",
+};
 ---
 
-<HomeLayout>
+<HomeLayout meta={meta}>
   <div class="flex flex-col gap-2 items-center">
     <div
       class="relative h-72 md:h-[600px] w-full border bg-purple bg-[url('../assets/images/group.jpeg')] bg-blend-screen bg-no-repeat bg-cover flex"
     >
       <div
-        class="absolute bg-white/100 shadow-lg max-w-48 md:max-w-none rounded-3xl border-double border-purple border-8 p-10 bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
+        class="absolute bg-white/100 shadow-lg max-w-48 md:max-w-none rounded-3xl border-purple border-8 p-10 bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
       >
-        <Image loading="eager" src={logo} alt="logo" width={200} height={200} />
+        <Image loading="eager" src={logo} alt="logo" width={180} height={180} />
       </div>
     </div>
   </div>
@@ -41,8 +48,9 @@ import Section from "../components/index/Section.astro";
       </div>
     </div>
   </Section>
+
   <!-- Intro video -->
-  <Section class="px-2">
+  <Section>
     <h1>Meet Sara Rogers</h1>
     <div class="w-full md:mx-0 md:w-[700px] border-8 border-purple">
       <YoutubeEmbed id={"5vBuGrKUNmM"} />

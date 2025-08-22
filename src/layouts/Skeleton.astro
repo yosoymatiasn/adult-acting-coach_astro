@@ -1,33 +1,52 @@
 ---
+import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import MobileNav from "../components/MobileNav.astro";
 import "../styles/global.css";
+import { type Metadata, defaultMeta } from "../utils/seo";
 
-interface Props {
-  title?: string; // page-specific title
-  children: any; // the page content
-}
+const meta: Metadata = {
+  ...defaultMeta,
+  ...Astro.props.meta,
+};
 
-const { title } = Astro.props;
+const { title, description, url } = Astro.props.meta;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Basic Meta -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#6B21A8" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={url} />
+
+    <!-- Title & Description -->
+    <title>{meta.title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} /><meta
+      property="og:description"
+      content={description}
+    /><meta property="og:type" content="website" /><meta
+      property="og:url"
+      content={url}
+    /><meta property="og:image" content={meta.image} /><script
+      src="https://www.paypal.com/sdk/js?client-id=BAApLsSJkKf5wYIsQhzU0897RzCSX494vsKEUtPeyrkQaJSMVifKDb16s-sJKRv-k9RGbq5UOBBSdqFQJY&components=hosted-buttons&enable-funding=venmo&currency=USD"
+    ></script></head
+  >
+
   <body class="bg-gray-50 text-gray-900">
-    <Header />
+    <!-- <Header /> -->
+    <MobileNav />
 
     <main class="min-h-screen">
       <slot />
     </main>
 
-    <footer class="bg-gray-100 py-6 px-8 text-sm text-gray-600">
-      &copy; {new Date().getFullYear()} Sara Rogers. All rights reserved.
-    </footer>
+    <Footer />
   </body>
 </html>

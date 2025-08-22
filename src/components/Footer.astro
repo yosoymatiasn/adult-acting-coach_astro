@@ -1,0 +1,31 @@
+---
+import Image from "astro/components/Image.astro";
+import instagramIcon from "../assets/icons/instagram.png";
+import facebookIcon from "../assets/icons/facebook.png";
+import meetupIcon from "../assets/icons/meetup.png";
+---
+
+<footer class="mt-20 py-14 border-t border-purple/40">
+    <div class="container flex justify-center items-center py-10">
+        <div class="flex gap-2">
+            <a
+                href="https://www.instagram.com/sararogersacting/?hl=en"
+                target="_blank"
+            >
+                <Image src={instagramIcon} alt="" width={50} height={50} />
+            </a>
+            <a href="https://www.facebook.com/sara.rogers.568" target="_blank">
+                <Image src={facebookIcon} alt="" width={50} height={50} />
+            </a>
+            <a
+                href="https://www.meetup.com/South-Florida-Actors/"
+                target="_blank"
+            >
+                <Image src={meetupIcon} alt="" width={50} height={50} />
+            </a>
+        </div>
+    </div>
+    <p class="text-base text-center">
+        &copy; {new Date().getFullYear()} Sara Rogers. All rights reserved.
+    </p>
+</footer>
