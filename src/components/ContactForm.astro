@@ -79,6 +79,7 @@
     const formData = new FormData(form);
     const data = new URLSearchParams();
 
+    data.append("form-name", "contact");
     for (const [key, value] of formData.entries()) {
       if (typeof value === "string") {
         data.append(key, value);
