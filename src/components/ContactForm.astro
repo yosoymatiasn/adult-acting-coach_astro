@@ -69,44 +69,34 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contact-form") as HTMLFormElement;
-    const successMessage = document.getElementById("success-message");
+  const handleSubmit = (e: SubmitEvent) => {
+    e.preventDefault();
+    const successMessage = document.getElementById(
+      "success-message",
+    ) as HTMLElement;
+    const form = e.target as HTMLFormElement;
 
-    if (!form) return;
+    const formData = new FormData(form);
+    const data = new URLSearchParams();
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-      const data = new URLSearchParams();
-
-      for (const [key, value] of formData.entries()) {
-        if (typeof value === "string") {
-          data.append(key, value);
-        }
+    for (const [key, value] of formData.entries()) {
+      if (typeof value === "string") {
+        formData.append(key, value);
       }
+    }
 
-      try {
-        const response = await fetch("/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: data.toString(),
-        });
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: data.toString(),
+    })
+      .then(() => {
+        form.style.display = "none";
+        successMessage.style.display = "block";
+        console.log("Form successfully submitted");
+      })
+      .catch((error) => alert(error));
+  };
 
-        if (response.ok) {
-          form.style.display = "none";
-          successMessage!.style.display = "block";
-        } else {
-          console.error("Form submission failed:", response.statusText);
-          alert("Something went wrong. Please try again.");
-        }
-      } catch (err) {
-        console.error("Submission error:", err);
-        alert("Network error. Please try again later.");
-      }
-    });
-  });
+  document.querySelector("form")?.addEventListener("submit", handleSubmit);
 </script>
