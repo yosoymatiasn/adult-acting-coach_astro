@@ -1,49 +1,63 @@
 ---
-
+let showSuccessMessage = false;
 ---
 
 <form
   data-netlify="true"
   method="POST"
   name="contact"
-  class="max-w-lg mx-auto p-8 bg-gray-100 rounded-xl shadow-md flex flex-col gap-4"
+  class="rounded-lg max-w-2xl w-full shadow-xl flex flex-col px-8 py-8 bg-white"
 >
-  <div class="flex flex-col">
-    <label for="name" class="font-semibold mb-1">Name</label>
-    <input
-      type="text"
-      id="name"
-      name="name"
-      placeholder="Your Name"
-      class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
+  {
+    showSuccessMessage ? (
+      <p class="p-4 text-center mx-auto text-purple font-bold">
+        Message sent. Sara will be in touch shortly!
+      </p>
+    ) : (
+      <>
+        <h1 class="text-center">Send a message</h1>
 
-  <div class="flex flex-col">
-    <label for="email" class="font-semibold mb-1">Email</label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      placeholder="you@example.com"
-      class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-  </div>
+        <label for="fullname" class="text-gray-500 font-light mt-8">
+          Full name <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="fullname"
+          class="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-purple font-light text-gray-500"
+        />
 
-  <div class="flex flex-col">
-    <label for="message" class="font-semibold mb-1">Message</label>
-    <textarea
-      id="message"
-      name="message"
-      placeholder="Your message..."
-      class="p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y min-h-[120px]"
-    ></textarea>
-  </div>
+        <label for="email" class="text-gray-500 font-light mt-4">
+          E-mail <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="email"
+          name="email"
+          class="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-purple font-light text-gray-500"
+        />
 
-  <button
-    type="submit"
-    class="bg-blue-500 text-white font-semibold rounded-lg p-3 hover:bg-blue-600 transition"
-  >
-    Send Message
-  </button>
+        <label for="phone" class="text-gray-500 font-light mt-4">
+          Phone (Optional)
+        </label>
+        <input
+          type="tel"
+          name="phone"
+          class="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-purple font-light text-gray-500"
+        />
+
+        <label for="message" class="text-gray-500 font-light mt-4">
+          Message <span class="text-red-500">*</span>
+        </label>
+        <textarea
+          name="message"
+          class="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-purple font-light text-gray-500"
+        />
+
+        <div class="flex flex-row items-center justify-start mt-4">
+          <button type="submit" class="sr-link max-w-none w-auto py-2 text-2xl">
+            Send
+          </button>
+        </div>
+      </>
+    )
+  }
 </form>

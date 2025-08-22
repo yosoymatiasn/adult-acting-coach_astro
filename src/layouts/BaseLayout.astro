@@ -1,16 +1,21 @@
 ---
+import Banner from "../components/Banner.astro";
 import "../styles/global.css";
+import ContentWrapper from "./ContentWrapper.astro";
 
 import Skeleton from "./Skeleton.astro";
 
 interface Props {
   title?: string; // page-specific title
-  children: any; // the page content
+  children?: any; // the page content
 }
 
 const { title } = Astro.props;
 ---
 
 <Skeleton title={title}>
-  <slot />
+  <Banner title={title} />
+  <ContentWrapper>
+    <slot />
+  </ContentWrapper>
 </Skeleton>

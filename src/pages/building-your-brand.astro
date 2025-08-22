@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import { brandingTestimonials } from "../data/testimonials";
+import Carousel from "../components/Carousel.astro";
+import YoutubeEmbed from "../components/YoutubeEmbed.astro";
+---
+
+<BaseLayout title="Building Your Brand">
+    <Carousel class="max-w-3xl mx-auto">
+        <YoutubeEmbed
+            lazy
+            id={brandingTestimonials[brandingTestimonials.length - 1].youtubeId}
+        />
+
+        {
+            brandingTestimonials.map(({ youtubeId }) => (
+                <YoutubeEmbed lazy id={youtubeId} />
+            ))
+        }
+
+        <YoutubeEmbed lazy id={brandingTestimonials[0].youtubeId} />
+    </Carousel>
+</BaseLayout>

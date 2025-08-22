@@ -1,0 +1,19 @@
+---
+interface Props {
+    title?: string; // page-specific title
+}
+
+const { title } = Astro.props;
+---
+
+<div
+    class="relative mb-10 md:mb-20 bg-gradient-to-r p-4 from-purple/10 via-purple/80 to-purple/90"
+>
+    <div
+        class="py-8 md:pt-48 md:pb-20 container relative flex items-center justify-center"
+    >
+        <h1 class="text-3xl md:text-5xl text-white m-0 z-10 relative">
+            {title}
+        </h1>
+    </div>
+</div>

@@ -1,44 +1,181 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ClassList from "../components/ClassList.astro";
+import HomeLayout from "../layouts/HomeLayout.astro";
 import ContactForm from "../components/ContactForm.astro";
 import YoutubeEmbed from "../components/YoutubeEmbed.astro";
-import { brandingTestimonials } from "../data/testimonials";
-import Carousel from "../components/Carousel.astro";
+import logo from "../assets/images/logo.png";
+import Image from "astro/components/Image.astro";
+import Section from "../components/index/Section.astro";
 ---
 
-<BaseLayout>
-  <div
-    class="relative mb-10 md:mb-20 bg-gradient-to-r p-4 from-purple/10 via-purple/80 to-purple/90"
-  >
+<HomeLayout>
+  <div class="flex flex-col gap-2 items-center">
     <div
-      class="py-8 md:pt-48 md:pb-20 container relative flex items-center justify-center"
+      class="relative h-72 md:h-[600px] w-full border bg-purple bg-[url('../assets/images/group.jpeg')] bg-blend-screen bg-no-repeat bg-cover flex"
     >
-      <h1 class="text-3xl md:text-5xl text-white m-0 z-10 relative">
-        Sara Rogers
-      </h1>
+      <div
+        class="absolute bg-white/100 shadow-lg max-w-48 md:max-w-none rounded-3xl border-double border-purple border-8 p-10 bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
+      >
+        <Image src={logo} alt="logo" width={200} height={200} />
+      </div>
     </div>
   </div>
 
-  <div class="max-w-6xl w-full mx-auto">
+  <!-- Hero text -->
+  <Section>
+    <div class="flex gap-4 mt-16 md:mt-24 px-4 md:px-0">
+      <div
+        class="mt-8 w-full max-w-4xl [&>p]:text-2xl md:[&>p]:text-3xl text-center font-thin tracking-wide flex flex-col gap-4"
+      >
+        <p>
+          With many years of personal experience in the business and after
+          studying Stanislavsky, Uta Hagen, Stella Adler, Sanford Meisner and
+          Viola Spolins acting and improvisation methods it is my honor to share
+          my expertise and experience including all these many methods with my
+          students.
+        </p>
+        <p>
+          Using my vast experience and studies I find what works for each
+          individual student, getting the actor that is lurking within, out into
+          the open.
+        </p>
+      </div>
+    </div>
+  </Section>
+  <!-- Intro video -->
+  <Section class="px-2">
+    <h1>Meet Sara Rogers</h1>
+    <div class="w-full md:mx-0 md:w-[700px] border-8 border-purple">
+      <YoutubeEmbed id={"5vBuGrKUNmM"} />
+    </div>
+    <a href={"/about"} class="sr-link"> Learn more </a>
+  </Section>
+
+  <!-- About classes -->
+  <Section>
+    <h1>About the classes</h1>
+    <div class="max-w-4xl flex flex-col gap-4 text-center">
+      <p>
+        The method in which you learn is the method that is taught in class.
+        Each individual learns at a different pace and is taught in a way that
+        makes the technique clear for them,all in a safe and judgement free
+        environment. You get to risk and create your work as you grow.
+      </p>
+      <p>
+        Once you step into class you will quickly realize we are collaborators
+        working together for the common good of the group and sometimes for the
+        performance. Whether it is in scenes, camera work, improvisation or
+        learning monologues, we as artists learn to support each other, because
+        a team effort is always stronger than an individuals&apos;.
+      </p>
+      <p class="font-bold">You are not alone in your quest.</p>
+      <a href="/classes" class="sr-link"> View class schedule </a>
+    </div>
+  </Section>
+
+  <!-- Branding -->
+  <Section>
+    <div
+      class="bg-purple text-white border-double border-8 border-white text-center rounded-lg p-8"
+    >
+      <h1 class="text-white">Building Your Brand</h1>
+      <div class="max-w-4xl flex flex-col gap-4 text-center">
+        <p>
+          Sara&apos;s <span class="font-bold">one-on-one</span> course, Building
+          Your Brand, is a private, personalized, intense course that will help you
+          to set goals and design an action plan tailored specifically to you. It
+          is designed for both the beginner and seasoned performer.
+        </p>
+        <p>This is a wonderful investment for you on your journey.</p>
+
+        <a href="/building-your-brand" class="sr-link"> Learn more </a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Public speaking -->
+  <Section>
+    <div
+      class="bg-gray-100 p-8 rounded-lg shadow-lg shadow-purple/10 border-purple/10 border text-center"
+    >
+      <h1 class="text-purple text-3xl font-bold mb-4">Public Speaking</h1>
+      <div class="max-w-4xl flex flex-col gap-4 text-center">
+        <p class="text-gray-700">
+          Enhance your communication skills with our{" "}
+          <span class="font-bold">
+            4-week corporate public speaking program.
+          </span>{" "}
+          Gain confidence, improve presentation skills, and speak with impact in
+          any professional setting.
+        </p>
+        <p class="mt-2 text-gray-600">
+          Perfect for professionals, executives, and customer-facing employees
+          who want to master public speaking.
+        </p>
+        <a href="/public-speaking" class="sr-link"> Learn more </a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Privates and more -->
+  <Section>
+    <div
+      class="max-w-4xl flex flex-col gap-4 text-center [&>p]:text-2xl md:[&>p]:text-3xl"
+    >
+      <p>
+        In addition to classes, Sara provides private coaching and offers{" "}
+        <a href={"/self-tapes"} class="underline text-purple">
+          professional self-taping services.
+        </a>
+      </p>
+      <p>
+        Feel free to reach out for more information on rates and to schedule
+        your sessions.
+      </p>
+    </div>
+  </Section>
+
+  <!-- Testimonial carousel -->
+  <!-- <Section className="mt-20 py-10 bg-purple/10 border-y border-purple/20">
+    <div className="max-w-3xl w-full">
+      <Carousel />{" "}
+    </div>
+  </Section> -->
+
+  <!-- Meetup -->
+  <Section>
+    <h1>Join the community</h1>
+    <div class="max-w-4xl flex flex-col gap-4 text-center">
+      <p>
+        If you would like to be reminded of upcoming classes and events, join
+        Sara&apos;s community on Meetup.com. She also sends out occasional
+        audition opportunities when they come her way.
+      </p>
+      <p>
+        This is a great way to stay connected. Keep an eye out for{" "}
+        <a href={"/showcases"} class="text-purple underline">
+          student showcases
+        </a>
+        , guest classes, and more!
+      </p>
+
+      <a
+        href="https://www.meetup.com/South-Florida-Actors/"
+        target="_blank"
+        class="sr-link"
+      >
+        South Florida Actors
+      </a>
+    </div>
+  </Section>
+
+  <!-- Contact -->
+  <Section>
+    <!-- <div class="max-w-2xl"> -->
+    <ContactForm />
+    <!-- </div> -->
+  </Section>
+</HomeLayout>
+
+<!-- <div class="max-w-6xl w-full mx-auto">
     <YoutubeEmbed url="https://www.youtube.com/watch?v=5vBuGrKUNmM" />
-    <div
-      class={`grid md:grid-cols-2 items-start gap-y-2 md:gap-x-4 lg:gap-x-6 md:gap-y-3 lg:gap-y-6  md:auto-rows-fr`}
-    >
-      <ClassList />
-    </div>
-  </div>
-
-  <div class="mt-20">
-    <!-- <Carousel slides={testimonialDivs} /> -->
-    <Carousel class="max-w-3xl mx-auto">
-      {
-        brandingTestimonials.map(({ youtubeId }) => (
-          <div class="min-w-full">
-            <YoutubeEmbed lazy id={youtubeId} />
-          </div>
-        ))
-      }
-    </Carousel>
-  </div>
-</BaseLayout>
+  </div> -->

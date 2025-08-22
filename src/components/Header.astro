@@ -1,6 +1,7 @@
 ---
 import { navLinks, type NavLink } from "../data/nav";
 import Image from "astro/components/Image.astro";
+import logo from "../assets/images/logo.png";
 ---
 
 <header class="fixed md:absolute py-6 top-0 w-full z-50">
@@ -13,7 +14,7 @@ import Image from "astro/components/Image.astro";
         <li>
           <Image
             loading="eager"
-            src="/assets/images/logo.png"
+            src={logo}
             alt="logo"
             width="50"
             height="50"
