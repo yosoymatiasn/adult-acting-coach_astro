@@ -1,6 +1,7 @@
 ---
-import { classes } from "../data/classes";
-import { flattenClasses, type TClassListing } from "../helpers/listingHelpers";
+import { classes, type TClassListing } from "../data/classes";
+import { flattenClasses } from "../helpers/listingHelpers";
+
 import ClassCard from "./ClassCard.astro";
 
 const upcomingClasses: TClassListing[] = flattenClasses(classes);

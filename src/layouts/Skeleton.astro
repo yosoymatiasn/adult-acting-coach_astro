@@ -28,16 +28,12 @@ const { title, description, url } = Astro.props.meta;
     <!-- Title & Description -->
     <title>{meta.title}</title>
     <meta name="description" content={description} />
-    <meta property="og:title" content={title} /><meta
-      property="og:description"
-      content={description}
-    /><meta property="og:type" content="website" /><meta
-      property="og:url"
-      content={url}
-    /><meta property="og:image" content={meta.image} /><script
-      src="https://www.paypal.com/sdk/js?client-id=BAApLsSJkKf5wYIsQhzU0897RzCSX494vsKEUtPeyrkQaJSMVifKDb16s-sJKRv-k9RGbq5UOBBSdqFQJY&components=hosted-buttons&enable-funding=venmo&currency=USD"
-    ></script></head
-  >
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={meta.image} />
+  </head>
 
   <body class="bg-gray-50 text-gray-900">
     <!-- <Header /> -->

@@ -1,5 +1,5 @@
 ---
-import type { TClassListing } from "../helpers/listingHelpers";
+import type { TClassListing } from "../data/classes";
 import { paymentURL } from "../data/classes";
 import Image from "astro/components/Image.astro";
 
@@ -18,7 +18,10 @@ const formattedTime = dateObj.toLocaleTimeString("en-US", {
 });
 ---
 
-<div class="w-full border relative rounded-md overflow-hidden shadow-md">
+<div
+  data-class-card
+  class="w-full border relative rounded-md overflow-hidden shadow-md"
+>
   <div
     class="absolute bg-black/60 rounded-bl-lg p-2 text-white top-0 right-0 z-40"
   >
@@ -37,6 +40,7 @@ const formattedTime = dateObj.toLocaleTimeString("en-US", {
       >
       </div>
       <Image
+        data-class-image
         src={classData.image}
         alt={classData.title}
         width="240"
@@ -74,3 +78,25 @@ const formattedTime = dateObj.toLocaleTimeString("en-US", {
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll("[data-class-card]");
+
+    cards.forEach((card) => {
+      const image = card.querySelector("[data-class-image]");
+      const links = card.querySelectorAll("a");
+
+      links.forEach((link) => {
+        link.addEventListener("mouseenter", () => {
+          image?.classList.add("scale-100");
+          image?.classList.remove("scale-110");
+        });
+        link.addEventListener("mouseleave", () => {
+          image?.classList.add("scale-110");
+          image?.classList.remove("scale-100");
+        });
+      });
+    });
+  });
+</script>

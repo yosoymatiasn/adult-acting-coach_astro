@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ShowList from "../components/ShowList.astro";
+import type { Metadata } from "../utils/seo";
+
+const meta: Metadata = {
+    title: "Showcases | Sara Rogers Acting",
+    description:
+        "Attend a show curated by Sara and her students. Support actors in the South Florida community as they work on their craft.",
+    url: "https://adultactingcoach.com/showcases",
+};
+---
+
+<BaseLayout meta={meta} title="Showcases">
+    <div
+        class={`grid md:grid-cols-2 items-start gap-y-2 md:gap-x-4 lg:gap-x-6 md:gap-y-3 lg:gap-y-6  md:auto-rows-fr`}
+    >
+        <ShowList />
+    </div>
+</BaseLayout>

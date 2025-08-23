@@ -3,6 +3,7 @@ import Image from "astro/components/Image.astro";
 import YoutubeEmbed from "../components/YoutubeEmbed.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Sara from "../assets/images/sara.png";
+import type { Metadata } from "../utils/seo";
 
 const externalLinks = [
     {
@@ -12,8 +13,8 @@ const externalLinks = [
     },
 ];
 
-const meta = {
-    title: "About Sara Rogers",
+const meta: Metadata = {
+    title: "About | Sara Rogers Acting",
     description:
         "Learn more about Sara Rogers, your dedicated acting coach. With a passion for bringing out the best in performers, Sara is your guide to excellence in acting and public speaking.",
     url: "https://adultactingcoach.com/about",
@@ -21,8 +22,8 @@ const meta = {
 ---
 
 <BaseLayout meta={meta} title="About">
-    <div class="container px-4 mx-auto flex flex-col">
-        <div class="max-w-4xl mx-auto font-light [&>p]:text-center [&>p]:my-4">
+    <section class="container max-w-4xl px-4 mx-auto flex flex-col">
+        <article class="font-light [&>p]:text-centr [&>p]:my-8">
             <Image
                 src={Sara}
                 alt="Sara Rogers"
@@ -30,7 +31,6 @@ const meta = {
                 width="200"
                 height="200"
             />
-
             <p>
                 Ms. Rogers is a beacon of creativity and experience in the South
                 Florida film and stage industry, boasting over 40 years of
@@ -98,15 +98,38 @@ const meta = {
                 safe, secure, and dynamic learning environments for all her
                 students.
             </p>
+        </article>
 
-            <div
-                class="p-4 mt-14 text-white flex flex-col justify-center items-center gap-4"
-            >
-                <h2 class="m-0">Interview on "Spotlight of the Arts"</h2>
-                <div class="w-full">
-                    <YoutubeEmbed id="gdB8MKam9Kg" />
-                </div>
+        <section class="mt-14 text-center">
+            <h2 class="">Interview on "Spotlight of the Arts"</h2>
+            <div class="w-full">
+                <YoutubeEmbed id="gdB8MKam9Kg" />
             </div>
-        </div>
-    </div>
+            <p class="mt-2 text-sm text-gray-600">
+                Watch Sara Rogers discuss her coaching journey and philosophy in
+                this featured interview.
+            </p>
+        </section>
+
+        <section class="mt-10">
+            <h3 class="text-lg font-semibold mb-2">Featured Articles</h3>
+            <ul class="list-disc list-inside text-sm">
+                {
+                    externalLinks.map((link) => (
+                        <li>
+                            <a
+                                href={link.url}
+                                class="text-purple-700 underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {link.title}
+                            </a>
+                            — {link.description}
+                        </li>
+                    ))
+                }
+            </ul>
+        </section>
+    </section>
 </BaseLayout>

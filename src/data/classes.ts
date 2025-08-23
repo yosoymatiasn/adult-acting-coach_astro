@@ -11,6 +11,13 @@ export type TShow = {
   upcoming: TUpcomingEntry[];
 };
 
+export type TShowListing = {
+  title: string;
+  image: string;
+  description: string;
+  upcoming: TUpcomingEntry;
+};
+
 export enum ClassType {
   Workshop = "workshop",
   Class = "class",
@@ -28,6 +35,18 @@ export type TClass = {
   duration: string;
   upcoming: TUpcomingEntry[];
   show?: TShow;
+};
+
+export type TClassListing = {
+  classId: number;
+  title: string;
+  slug: string;
+  description: string;
+  image: string;
+  price: number;
+  type: string;
+  duration: string;
+  upcoming: TUpcomingEntry;
 };
 
 export const paymentURL = "https://www.paypal.com/ncp/payment/LH9NCYEN29P6G";
@@ -119,7 +138,7 @@ export const classes: TClass[] = [
       upcoming: [
         {
           url: "https://www.meetup.com/south-florida-actors/events/304167003/",
-          date: "2025-12-1T19:00:00",
+          date: "2025-12-01T19:00:00",
         },
       ],
     },

@@ -1,0 +1,10 @@
+---
+import { classes, type TShow, type TShowListing } from "../data/classes";
+import { flattenShows } from "../helpers/listingHelpers";
+
+import ShowCard from "./ShowCard.astro";
+
+const upcomingShows: TShowListing[] = flattenShows(classes);
+---
+
+{upcomingShows.map((s) => <ShowCard showData={s} />)}

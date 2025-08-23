@@ -1,25 +1,15 @@
-import type { TClass, TUpcomingEntry } from '../data/classes';
+import { classesWithShowcases, type TClass, type TClassListing, type TShowListing } from '../data/classes';
 
-export type TClassListing = {
-  classId: number;
-  title: string;
-  slug: string;
-  description: string;
-  image: string;
-  price: number;
-  type: string;
-  duration: string;
-  upcoming: TUpcomingEntry;
-};
+
 
 /**
  * Flattens all upcoming class entries into a single array
  * sorted chronologically by date.
  */
-export const flattenClasses = (classes: TClass[]) => {
+export const flattenClasses = (classes: TClass[]): TClassListing[] => {
   const now = new Date();
 
-  // Flatten all upcoming entries
+  // Flatten all upcoming classes
   const flattened: TClassListing[] = classes.flatMap((classItem) =>
     classItem.upcoming.map((upcoming) => ({
       classId: classItem.classId,
@@ -47,3 +37,32 @@ export const flattenClasses = (classes: TClass[]) => {
 
   return futureClasses;
 };
+
+export const flattenShows = (classes: TClass[]): TShowListing[] => {
+  const now = new Date();
+
+  // Flatten all upcoming shows
+  const flattened: TShowListing[] = classes
+    .filter(({ classId }) => classesWithShowcases.includes(classId))
+    .flatMap((classItem) =>
+      classItem.show!.upcoming.map((show) => ({
+        title: classItem.show!.title,
+        image: classItem.show!.image,
+        description: classItem.show!.description,
+        upcoming: show
+      }))
+    );
+
+  // Filter out past dates
+  const futureShows = flattened.filter(
+    (item) => new Date(item.upcoming.date) > now
+  );
+
+  // Sort by date ascending
+  futureShows.sort(
+    (a, b) =>
+      new Date(a.upcoming.date).getTime() - new Date(b.upcoming.date).getTime()
+  );
+
+  return futureShows;
+}
