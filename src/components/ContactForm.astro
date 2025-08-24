@@ -1,3 +1,4 @@
+<!-- Contact Form -->
 <form
   data-netlify="true"
   name="contact"
@@ -10,14 +11,14 @@
 
   <p class="hidden">
     <label>
-      Don’t fill this out if you’re human: <input
-        name="bot-field"
-        type="text"
-      />
+      Don’t fill this out if you’re human:
+      <input name="bot-field" type="text" />
     </label>
   </p>
 
-  <h1 class="text-center">Send a message</h1>
+  <h1 class="text-center text-2xl font-semibold text-gray-700">
+    Send a message
+  </h1>
 
   <label for="fullname" class="text-gray-500 font-light mt-8">
     Full name <span class="text-red-500">*</span>
@@ -64,16 +65,21 @@
   </div>
 </form>
 
-<div id="success-message" style="display: none;">
-  <p>Thanks for reaching out! We'll get back to you soon.</p>
+<!-- Success Message -->
+<div
+  id="success-message"
+  class="hidden mt-8 max-w-2xl w-full rounded-lg bg-gradient-to-r from-green-100 to-green-50 px-6 py-4 text-green-800 shadow-lg text-center"
+>
+  <p class="text-base font-semibold tracking-wide">
+    ✅ Thanks for reaching out! We'll get back to you soon.
+  </p>
 </div>
 
+<!-- Form Submission Script -->
 <script>
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
-    const successMessage = document.getElementById(
-      "success-message",
-    ) as HTMLElement;
+    const successMessage = document.getElementById("success-message");
     const form = e.target as HTMLFormElement;
 
     const formData = new FormData(form);
@@ -95,7 +101,16 @@
     })
       .then(() => {
         form.style.display = "none";
-        successMessage.style.display = "block";
+        successMessage!.classList.remove("hidden");
+        successMessage!.classList.add("opacity-0");
+        setTimeout(() => {
+          successMessage!.classList.remove("opacity-0");
+          successMessage!.classList.add(
+            "opacity-100",
+            "transition-opacity",
+            "duration-500",
+          );
+        }, 10);
         console.log("Form successfully submitted");
       })
       .catch((error) => alert(error));
