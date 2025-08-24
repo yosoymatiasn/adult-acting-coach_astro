@@ -1,7 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import MobileNav from "../components/MobileNav.astro";
 import "../styles/global.css";
 import { type Metadata, defaultMeta } from "../utils/seo";
 
@@ -37,7 +36,7 @@ const { title, description, url } = Astro.props.meta;
 
   <body class="bg-gray-50 text-gray-900">
     <!-- <Header /> -->
-    <MobileNav />
+    <Header />
 
     <main class="min-h-screen">
       <slot />
