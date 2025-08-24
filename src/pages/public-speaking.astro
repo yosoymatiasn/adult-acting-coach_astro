@@ -1,0 +1,107 @@
+---
+import YoutubeEmbed from "../components/YoutubeEmbed.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { Metadata } from "../utils/seo";
+
+const meta: Metadata = {
+    title: "Public Speaking | Sara Rogers",
+    description:
+        "Empower yourself or your team with professional public speaking training. Overcome anxiety, engage audiences, and improve communication skills in 4 weeks.",
+    url: "https://adultactingcoach.com/public-speaking",
+};
+---
+
+<BaseLayout meta={meta} title="Public speaking">
+    <div
+        class="max-w-4xl mx-auto flex flex-col container text-center px-4 md:px-0"
+    >
+        <h1>
+            Empower your team with confidence & clarity: A 4-week corporate
+            public speaking program
+        </h1>
+
+        <div class="flex flex-col gap-4 font-light">
+            <p>
+                Strong communication is essential in today’s business world. Our
+                4-week Public Speaking Training Program helps professionals
+                develop confidence, clarity, and impact in their
+                presentations—whether leading meetings, pitching ideas, or
+                engaging with clients.
+            </p>
+
+            <h2 class="mb-2">How It Works</h2>
+            <p>
+                ✅ We come to you! Our expert-led training takes place at your
+                business location for maximum convenience. ✅ 3-hour sessions,
+                once a week for four weeks, ensuring practical application and
+                lasting improvement. ✅ Alternate space available if needed.
+            </p>
+
+            <h2 class="mb-2">What Your Team Will Learn</h2>
+            <p>
+                Over four weeks, you’ll develop essential public speaking
+                skills:
+            </p>
+            <p class="leading-10 font-normal">
+                Overcoming public speaking anxiety • Structuring presentations
+                for maximum impact • Engaging and persuading an audience •
+                Speaking with confidence and authenticity • Memorization
+                Techniques for scripted material • Handling Q&A sessions and
+                impromptu speaking situations
+            </p>
+
+            <h2 class="mb-2">Proven Success with Past Clients</h2>
+            <p>
+                Organizations such as Make-A-Wish Foundation have found our
+                4-week program extremely valuable across all departments. This
+                training has helped professionals at every level improve their
+                communication skills, whether engaging with donors, speaking at
+                events, or leading internal meetings.
+            </p>
+
+            <h2 class="mb-2">Who Is This For?</h2>
+            <p>
+                Ideal for sales teams, executives, customer-facing employees,
+                and professionals who want to refine their speaking skills in a
+                hands-on, supportive environment.
+            </p>
+
+            <h2 class="mb-2">Customized for Your Company</h2>
+            <p>
+                Every business has unique needs, and our training adapts to your
+                industry, ensuring practical, real-world application.
+            </p>
+
+            <div class="relative w-8/12 mx-auto mt-8">
+                <h2 class="text-center mb-0 border-4 border-b-0 border-purple">
+                    Testimonials
+                </h2>
+                <div class="border-4 border-purple">
+                    <YoutubeEmbed id="0fKFOy3rNnQ" />
+                </div>
+            </div>
+
+            <div
+                class="p-10 my-14 rounded-md border text-white flex flex-col gap-4 bg-purple/80"
+            >
+                <h2 class="text-center text-3xl m-0 font-semibold text-white">
+                    Booking & Pricing
+                </h2>
+                <p>
+                    <span class="font-bold">Pricing:</span> Contact us for rates.
+                    Additional travel fees apply beyond 10 miles.
+                </p>
+                <p>
+                    <span class="font-bold"
+                        >Private one-on-one training available:</span
+                    > Upon request.
+                </p>
+                <p>
+                    To schedule your training or for additional information,
+                    please
+                    <a href="/contact" class="underline">contact us</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</BaseLayout>
