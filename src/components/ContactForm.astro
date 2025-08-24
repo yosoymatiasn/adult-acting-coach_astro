@@ -79,8 +79,8 @@
 <script>
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
-    const successMessage = document.getElementById("success-message");
     const form = e.target as HTMLFormElement;
+    const successMessage = document.getElementById("success-message");
 
     const formData = new FormData(form);
     const data = new URLSearchParams();
