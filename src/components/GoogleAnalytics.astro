@@ -1,0 +1,16 @@
+---
+const GA_ID = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID
+---
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RT57N46M2P"
+></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || []
+  function gtag() {
+    dataLayer.push(arguments)
+  }
+  gtag('js', new Date())
+
+  gtag('config', 'G-RT57N46M2P')
+</script>

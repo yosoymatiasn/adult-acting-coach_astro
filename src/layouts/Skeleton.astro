@@ -4,14 +4,12 @@ import Header from '../components/Header.astro'
 import '../styles/global.css'
 import { type Metadata, defaultMeta } from '../utils/seo'
 
-const GA_ID = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID
-
 const meta: Metadata = {
   ...defaultMeta,
   ...Astro.props.meta,
 }
 
-const { title, description, url } = Astro.props.meta
+const { title, description, url } = meta
 ---
 
 <!doctype html>
@@ -34,27 +32,6 @@ const { title, description, url } = Astro.props.meta
     <meta property="og:type" content="website" />
     <meta property="og:url" content={url} />
     <meta property="og:image" content={meta.image} />
-
-    <!-- Google tag (gtag.js) -->
-    {
-      GA_ID && (
-        <>
-          <script
-            type="text/partytown"
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          />
-          <script type="text/partytown">
-            {`window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_ID}', {
-                page_path: window.location.pathname,
-              });`}
-          </script>
-        </>
-      )
-    }
   </head>
 
   <body class="bg-gray-50 text-gray-900">
