@@ -1,24 +1,24 @@
 ---
 interface Props {
-  id?: string; // YouTube video ID
-  url?: string; // Optional full URL
-  title?: string; // Optional title for accessibility
-  lazy?: boolean; // Optional lazy loading
+  id?: string // YouTube video ID
+  url?: string // Optional full URL
+  title?: string // Optional title for accessibility
+  lazy?: boolean // Optional lazy loading
 }
 
-const { id, url, lazy, title = "YouTube video" } = Astro.props;
+const { id, url, lazy, title = 'YouTube video' } = Astro.props
 
 // Extract video ID if URL is provided
-let videoId = id;
+let videoId = id
 if (!videoId && url) {
-  const match = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/);
-  videoId = match ? match[1] : "";
+  const match = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/)
+  videoId = match ? match[1] : ''
 }
 ---
 
 <div class="aspect-video min-w-full">
   <iframe
-    loading={lazy ? "lazy" : undefined}
+    loading={lazy ? 'lazy' : undefined}
     width="100%"
     height="100%"
     src={`https://www.youtube-nocookie.com/embed/${videoId}?controls=0&rel=0&modestbranding=1&showinfo=0

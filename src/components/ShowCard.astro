@@ -1,20 +1,20 @@
 ---
-import type { TShowListing } from "../data/classes";
-import Image from "astro/components/Image.astro";
+import type { TShowListing } from '../data/classes'
+import Image from 'astro/components/Image.astro'
 
-const { showData } = Astro.props as { showData: TShowListing };
+const { showData } = Astro.props as { showData: TShowListing }
 
 // Format date
-const dateObj = new Date(showData.upcoming.date);
-const formattedDate = dateObj.toLocaleDateString("en-US", {
-  weekday: "short",
-  month: "short",
-  day: "numeric",
-});
-const formattedTime = dateObj.toLocaleTimeString("en-US", {
-  hour: "2-digit",
-  minute: "2-digit",
-});
+const dateObj = new Date(showData.upcoming.date)
+const formattedDate = dateObj.toLocaleDateString('en-US', {
+  weekday: 'short',
+  month: 'short',
+  day: 'numeric',
+})
+const formattedTime = dateObj.toLocaleTimeString('en-US', {
+  hour: '2-digit',
+  minute: '2-digit',
+})
 ---
 
 <div class="border relative rounded-md overflow-hidden shadow-md">

@@ -1,18 +1,18 @@
 ---
-import HomeLayout from "../layouts/HomeLayout.astro";
-import ContactForm from "../components/ContactForm.astro";
-import YoutubeEmbed from "../components/YoutubeEmbed.astro";
-import logo from "../assets/images/logo.png";
-import Image from "astro/components/Image.astro";
-import Section from "../components/Home/Section.astro";
-import type { Metadata } from "../utils/seo";
+import HomeLayout from '../layouts/HomeLayout.astro'
+import ContactForm from '../components/ContactForm.astro'
+import YoutubeEmbed from '../components/YoutubeEmbed.astro'
+import logo from '../assets/images/logo.png'
+import Image from 'astro/components/Image.astro'
+import Section from '../components/Home/Section.astro'
+import type { Metadata } from '../utils/seo'
 
 const meta: Metadata = {
-  title: "Sara Rogers Acting",
+  title: 'Sara Rogers Acting',
   description:
-    "Unlock your potential with Sara Rogers, a premier acting and public speaking coach in South Florida. Join our year-round adult classes, featuring improvisation, monologues, scenes, and more.",
-  url: "https://adultactingcoach.com",
-};
+    'Unlock your potential with Sara Rogers, a premier acting and public speaking coach in South Florida. Join our year-round adult classes, featuring improvisation, monologues, scenes, and more.',
+  url: 'https://adultactingcoach.com',
+}
 ---
 
 <HomeLayout meta={meta}>
@@ -54,9 +54,9 @@ const meta: Metadata = {
   <Section>
     <h1>Meet Sara Rogers</h1>
     <div class="w-full md:mx-0 md:w-[700px] border-8 border-purple">
-      <YoutubeEmbed id={"5vBuGrKUNmM"} />
+      <YoutubeEmbed id={'5vBuGrKUNmM'} />
     </div>
-    <a href={"/about"} class="sr-link"> Learn more </a>
+    <a href={'/about'} class="sr-link"> Learn more </a>
   </Section>
 
   <!-- About classes -->
@@ -109,10 +109,10 @@ const meta: Metadata = {
       <h1 class="text-purple text-3xl font-bold mb-4">Public Speaking</h1>
       <div class="max-w-4xl flex flex-col gap-4 text-center">
         <p class="text-gray-700">
-          Enhance your communication skills with our{" "}
+          Enhance your communication skills with our{' '}
           <span class="font-bold">
             4-week corporate public speaking program.
-          </span>{" "}
+          </span>{' '}
           Gain confidence, improve presentation skills, and speak with impact in
           any professional setting.
         </p>
@@ -131,8 +131,8 @@ const meta: Metadata = {
       class="max-w-4xl flex flex-col gap-4 text-center [&>p]:text-2xl md:[&>p]:text-3xl"
     >
       <p>
-        In addition to classes, Sara provides private coaching and offers{" "}
-        <a href={"/self-tapes"} class="underline text-purple">
+        In addition to classes, Sara provides private coaching and offers{' '}
+        <a href={'/self-tapes'} class="underline text-purple">
           professional self-taping services.
         </a>
       </p>
@@ -160,8 +160,8 @@ const meta: Metadata = {
         audition opportunities when they come her way.
       </p>
       <p>
-        This is a great way to stay connected. Keep an eye out for{" "}
-        <a href={"/showcases"} class="text-purple underline">
+        This is a great way to stay connected. Keep an eye out for{' '}
+        <a href={'/showcases'} class="text-purple underline">
           student showcases
         </a>
         , guest classes, and more!

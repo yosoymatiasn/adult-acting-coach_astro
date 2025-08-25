@@ -1,10 +1,10 @@
 ---
-import { classes, type TClassListing } from "../data/classes";
-import { flattenClasses } from "../helpers/listingHelpers";
+import { classes, type TClassListing } from '../data/classes'
+import { flattenClasses } from '../helpers/listingHelpers'
 
-import ClassCard from "./ClassCard.astro";
+import ClassCard from './ClassCard.astro'
 
-const upcomingClasses: TClassListing[] = flattenClasses(classes);
+const upcomingClasses: TClassListing[] = flattenClasses(classes)
 ---
 
 {upcomingClasses.map((c) => <ClassCard classData={c} />)}

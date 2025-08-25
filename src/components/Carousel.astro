@@ -1,14 +1,14 @@
 ---
 interface Props {
   /** Optional custom CSS classes for the wrapper */
-  class?: string;
+  class?: string
 }
 
-const { class: className } = Astro.props;
+const { class: className } = Astro.props
 ---
 
 <div
-  class={`border-4 border-purple relative w-2xl overflow-hidden ${className ?? ""}`}
+  class={`border-4 border-purple relative w-2xl overflow-hidden ${className ?? ''}`}
 >
   <div
     id="carousel-track"
@@ -35,41 +35,41 @@ const { class: className } = Astro.props;
 </div>
 
 <script>
-  let currentIndex = 1;
-  const track = document.getElementById("carousel-track");
-  const slides = track?.children ?? [];
-  const totalSlides = slides.length;
+  let currentIndex = 1
+  const track = document.getElementById('carousel-track')
+  const slides = track?.children ?? []
+  const totalSlides = slides.length
 
-  updateSlide(false);
+  updateSlide(false)
 
   function updateSlide(animated = true) {
     if (track) {
-      track.style.transition = animated ? "transform 0.5s ease-in-out" : "none";
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      track.style.transition = animated ? 'transform 0.5s ease-in-out' : 'none'
+      track.style.transform = `translateX(-${currentIndex * 100}%)`
     }
   }
 
-  document.getElementById("nextBtn")?.addEventListener("click", () => {
-    currentIndex++;
-    updateSlide();
+  document.getElementById('nextBtn')?.addEventListener('click', () => {
+    currentIndex++
+    updateSlide()
 
     if (currentIndex === totalSlides - 1) {
       setTimeout(() => {
-        currentIndex = 1;
-        updateSlide(false);
-      }, 500); // match transition duration
+        currentIndex = 1
+        updateSlide(false)
+      }, 500) // match transition duration
     }
-  });
+  })
 
-  document.getElementById("prevBtn")?.addEventListener("click", () => {
-    currentIndex--;
-    updateSlide();
+  document.getElementById('prevBtn')?.addEventListener('click', () => {
+    currentIndex--
+    updateSlide()
 
     if (currentIndex === 0) {
       setTimeout(() => {
-        currentIndex = totalSlides - 2;
-        updateSlide(false);
-      }, 500);
+        currentIndex = totalSlides - 2
+        updateSlide(false)
+      }, 500)
     }
-  });
+  })
 </script>

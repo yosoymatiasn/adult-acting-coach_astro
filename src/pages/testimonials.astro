@@ -1,46 +1,44 @@
 ---
-import { testimonials } from "../data/testimonials";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import type { Metadata } from "../utils/seo";
-import { testimonialImages } from "../utils/testimonialImageImport";
-import Image from "astro/components/Image.astro";
+import { testimonials } from '../data/testimonials'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import type { Metadata } from '../utils/seo'
+import { testimonialImages } from '../utils/testimonialImageImport'
+import Image from 'astro/components/Image.astro'
 
 const meta: Metadata = {
-    title: "Testimonials| Sara Rogers",
-    description:
-        "Read testimonials from those whose lives have been transformed by Sara's coaching. Join a community of satisfied performers who found their voice through Sara Rogers.",
-    url: "https://adultactingcoach.com/testimonials",
-};
+  title: 'Testimonials| Sara Rogers',
+  description:
+    "Read testimonials from those whose lives have been transformed by Sara's coaching. Join a community of satisfied performers who found their voice through Sara Rogers.",
+  url: 'https://adultactingcoach.com/testimonials',
+}
 ---
 
 <BaseLayout meta={meta} title="Testimonials">
-    <div class="flex flex-col container px-4 md:px-0">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex flex-col gap-8 md:gap-14 lg:gap-20">
-                {
-                    testimonials.map(({ name, text, imgSrc }) => (
-                        <div class="flex flex-col md:flex-row gap-4 md:gap-10 justify-center items-center">
-                            <Image
-                                src={
-                                    testimonialImages[
-                                        imgSrc as keyof typeof testimonialImages
-                                    ]
-                                }
-                                width="200"
-                                height="200"
-                                alt=""
-                                class="border-2 border-purple rounded-md h-auto w-1/2 max-w-40 md:w-full"
-                            />
-                            <div class="text-center">
-                                <p>{text}</p>
-                                <p class="italic mt-2 md:mt-4 text-purple">
-                                    {name!.split(" ")[0]}
-                                </p>
-                            </div>
-                        </div>
-                    ))
+  <div class="flex flex-col container px-4 md:px-0">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-col gap-8 md:gap-14 lg:gap-20">
+        {
+          testimonials.map(({ name, text, imgSrc }) => (
+            <div class="flex flex-col md:flex-row gap-4 md:gap-10 justify-center items-center">
+              <Image
+                src={
+                  testimonialImages[imgSrc as keyof typeof testimonialImages]
                 }
+                width="200"
+                height="200"
+                alt=""
+                class="border-2 border-purple rounded-md h-auto w-1/2 max-w-40 md:w-full"
+              />
+              <div class="text-center">
+                <p>{text}</p>
+                <p class="italic mt-2 md:mt-4 text-purple">
+                  {name!.split(' ')[0]}
+                </p>
+              </div>
             </div>
-        </div>
+          ))
+        }
+      </div>
     </div>
+  </div>
 </BaseLayout>

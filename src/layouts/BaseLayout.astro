@@ -1,17 +1,17 @@
 ---
-import Banner from "../components/Banner.astro";
-import "../styles/global.css";
-import ContentWrapper from "./ContentWrapper.astro";
+import Banner from '../components/Banner.astro'
+import '../styles/global.css'
+import ContentWrapper from './ContentWrapper.astro'
 
-import Skeleton from "./Skeleton.astro";
-import type { Metadata } from "../utils/seo";
+import Skeleton from './Skeleton.astro'
+import type { Metadata } from '../utils/seo'
 
 interface Props {
-  meta?: Partial<Metadata>;
-  title: string;
+  meta?: Partial<Metadata>
+  title: string
 }
 
-const { meta, title } = Astro.props;
+const { meta, title } = Astro.props
 ---
 
 <Skeleton meta={meta}>

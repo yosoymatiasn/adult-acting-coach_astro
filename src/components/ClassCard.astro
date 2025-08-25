@@ -1,21 +1,21 @@
 ---
-import type { TClassListing } from "../data/classes";
-import { paymentURL } from "../data/classes";
-import Image from "astro/components/Image.astro";
+import type { TClassListing } from '../data/classes'
+import { paymentURL } from '../data/classes'
+import Image from 'astro/components/Image.astro'
 
-const { classData } = Astro.props as { classData: TClassListing };
+const { classData } = Astro.props as { classData: TClassListing }
 
 // Format date
-const dateObj = new Date(classData.upcoming.date);
-const formattedDate = dateObj.toLocaleDateString("en-US", {
-  weekday: "short",
-  month: "short",
-  day: "numeric",
-});
-const formattedTime = dateObj.toLocaleTimeString("en-US", {
-  hour: "2-digit",
-  minute: "2-digit",
-});
+const dateObj = new Date(classData.upcoming.date)
+const formattedDate = dateObj.toLocaleDateString('en-US', {
+  weekday: 'short',
+  month: 'short',
+  day: 'numeric',
+})
+const formattedTime = dateObj.toLocaleTimeString('en-US', {
+  hour: '2-digit',
+  minute: '2-digit',
+})
 ---
 
 <div
@@ -80,23 +80,23 @@ const formattedTime = dateObj.toLocaleTimeString("en-US", {
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll("[data-class-card]");
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('[data-class-card]')
 
     cards.forEach((card) => {
-      const image = card.querySelector("[data-class-image]");
-      const links = card.querySelectorAll("a");
+      const image = card.querySelector('[data-class-image]')
+      const links = card.querySelectorAll('a')
 
       links.forEach((link) => {
-        link.addEventListener("mouseenter", () => {
-          image?.classList.add("scale-100");
-          image?.classList.remove("scale-110");
-        });
-        link.addEventListener("mouseleave", () => {
-          image?.classList.add("scale-110");
-          image?.classList.remove("scale-100");
-        });
-      });
-    });
-  });
+        link.addEventListener('mouseenter', () => {
+          image?.classList.add('scale-100')
+          image?.classList.remove('scale-110')
+        })
+        link.addEventListener('mouseleave', () => {
+          image?.classList.add('scale-110')
+          image?.classList.remove('scale-100')
+        })
+      })
+    })
+  })
 </script>

@@ -1,132 +1,122 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro'
 
-import { brandingTestimonials } from "../data/testimonials";
-import Carousel from "../components/Carousel.astro";
-import YoutubeEmbed from "../components/YoutubeEmbed.astro";
-import type { Metadata } from "../utils/seo";
+import { brandingTestimonials } from '../data/testimonials'
+import Carousel from '../components/Carousel.astro'
+import YoutubeEmbed from '../components/YoutubeEmbed.astro'
+import type { Metadata } from '../utils/seo'
 
 const meta: Metadata = {
-    title: "Branding bootcamp | Sara Rogers Acting",
-    description:
-        "Read testimonials from those whose lives have been transformed by Sara's coaching. Join a community of satisfied performers who found their voice through Sara Rogers.",
-    url: "https://adultactingcoach.com/building-your-brand",
-};
+  title: 'Branding bootcamp | Sara Rogers Acting',
+  description:
+    "Read testimonials from those whose lives have been transformed by Sara's coaching. Join a community of satisfied performers who found their voice through Sara Rogers.",
+  url: 'https://adultactingcoach.com/building-your-brand',
+}
 ---
 
 <BaseLayout meta={meta} title="Building your brand">
-    <div
-        class="max-w-4xl mx-auto flex flex-col container text-center px-4 md:px-0"
-    >
-        <h1>
-            Build your brand: An 8-week private session for actors, performers
-            and models. <br />
-            Your brand, your story – let’s create it together!
-        </h1>
+  <div
+    class="max-w-4xl mx-auto flex flex-col container text-center px-4 md:px-0"
+  >
+    <h1>
+      Build your brand: An 8-week private session for actors, performers and
+      models. <br />
+      Your brand, your story – let’s create it together!
+    </h1>
 
-        <div class="flex flex-col gap-4 font-light">
-            <p>
-                Starting on a date you and Sara Rogers choose, this 8-week
-                personalized course will give you the tools to master the
-                business side of acting and modeling, enhancing your unique
-                brand. Join Sara Rogers – a nationally recognized, award-winning
-                acting coach – for one-on-one guidance designed to help you
-                reach your goals and set you up for long-term success in a
-                highly competitive industry.
-            </p>
+    <div class="flex flex-col gap-4 font-light">
+      <p>
+        Starting on a date you and Sara Rogers choose, this 8-week personalized
+        course will give you the tools to master the business side of acting and
+        modeling, enhancing your unique brand. Join Sara Rogers – a nationally
+        recognized, award-winning acting coach – for one-on-one guidance
+        designed to help you reach your goals and set you up for long-term
+        success in a highly competitive industry.
+      </p>
 
-            <h2 class="mb-2">Why choose this course?</h2>
-            <p>
-                This course is for performers who want more than just a brush-up
-                on skills – it’s a deep dive into who you are as an artist and
-                how to confidently present that to the world. Whether you’re
-                just starting or a seasoned professional, this course will help
-                you:
-            </p>
-            <p class="leading-10 font-normal">
-                Define and present your brand • Set meaningful, achievable goals
-                • Develop a step-by-step action plan tailored to your career
-            </p>
+      <h2 class="mb-2">Why choose this course?</h2>
+      <p>
+        This course is for performers who want more than just a brush-up on
+        skills – it’s a deep dive into who you are as an artist and how to
+        confidently present that to the world. Whether you’re just starting or a
+        seasoned professional, this course will help you:
+      </p>
+      <p class="leading-10 font-normal">
+        Define and present your brand • Set meaningful, achievable goals •
+        Develop a step-by-step action plan tailored to your career
+      </p>
 
-            <h2 class="mb-2">What you'll learn:</h2>
-            <p>
-                Over eight weeks, you'll cover essential topics every performer
-                needs to succeed:
-            </p>
-            <p class="leading-10 font-normal">
-                Discovering your main type • Understanding and embracing your
-                unique attributes • Writing an impressive resume • Showcasing
-                your skills with impact • On-Camera skills • Self-taping scenes
-                and monologues • Effective Memorization Techniques • Mastering
-                headshots - guidance on photographers, styles, and services •
-                Social media strategy: leveraging platforms to promote yourself
-                • Navigating agents & casting directors: tips for making
-                connections • On a set and agent etiquette • Union vs.
-                non-union: what's right for you? • Connecting with industry
-                websites
-            </p>
+      <h2 class="mb-2">What you'll learn:</h2>
+      <p>
+        Over eight weeks, you'll cover essential topics every performer needs to
+        succeed:
+      </p>
+      <p class="leading-10 font-normal">
+        Discovering your main type • Understanding and embracing your unique
+        attributes • Writing an impressive resume • Showcasing your skills with
+        impact • On-Camera skills • Self-taping scenes and monologues •
+        Effective Memorization Techniques • Mastering headshots - guidance on
+        photographers, styles, and services • Social media strategy: leveraging
+        platforms to promote yourself • Navigating agents & casting directors:
+        tips for making connections • On a set and agent etiquette • Union vs.
+        non-union: what's right for you? • Connecting with industry websites
+      </p>
 
-            <h2 class="mb-2">Adapting to today's industry</h2>
-            <p>
-                The entertainment industry has evolved, especially with
-                self-taping and online auditions becoming standard. This course
-                teaches you to navigate these modern practices, ensuring you’re
-                ready to tackle every opportunity confidently.
-            </p>
+      <h2 class="mb-2">Adapting to today's industry</h2>
+      <p>
+        The entertainment industry has evolved, especially with self-taping and
+        online auditions becoming standard. This course teaches you to navigate
+        these modern practices, ensuring you’re ready to tackle every
+        opportunity confidently.
+      </p>
 
-            <div class="w-8/12 mx-auto mt-8">
-                <h2 class="text-center mb-0 border-4 border-b-0 border-purple">
-                    Words from students
-                </h2>
-                <Carousel class="max-w-3xl w-full mx-auto">
-                    <YoutubeEmbed
-                        lazy
-                        id={brandingTestimonials[
-                            brandingTestimonials.length - 1
-                        ].youtubeId}
-                    />
+      <div class="w-8/12 mx-auto mt-8">
+        <h2 class="text-center mb-0 border-4 border-b-0 border-purple">
+          Words from students
+        </h2>
+        <Carousel class="max-w-3xl w-full mx-auto">
+          <YoutubeEmbed
+            lazy
+            id={brandingTestimonials[brandingTestimonials.length - 1].youtubeId}
+          />
 
-                    {
-                        brandingTestimonials.map(({ youtubeId }) => (
-                            <YoutubeEmbed lazy id={youtubeId} />
-                        ))
-                    }
+          {
+            brandingTestimonials.map(({ youtubeId }) => (
+              <YoutubeEmbed lazy id={youtubeId} />
+            ))
+          }
 
-                    <YoutubeEmbed lazy id={brandingTestimonials[0].youtubeId} />
-                </Carousel>
-            </div>
+          <YoutubeEmbed lazy id={brandingTestimonials[0].youtubeId} />
+        </Carousel>
+      </div>
 
-            <div
-                class="p-10 my-14 rounded-md border text-white flex flex-col gap-4 bg-purple/80"
-            >
-                <h2 class="text-center text-3xl m-0 font-semibold text-white">
-                    Fees and scheduling
-                </h2>
-                <p>
-                    <span class="font-bold">Investment:</span> $1200 for the full
-                    8-week course, payable upfront. Flexible Scheduling: Customize
-                    the timing based on Sara's and your availability (up to two sessions
-                    per week). Missed sessions must be rescheduled within the 8-week
-                    period.
-                </p>
-                <p>
-                    <span class="font-bold">Discount opportunity:</span> Participate
-                    in our Step One Saturday Workshop and get $100 off! This reduces
-                    your course to 7 weeks, with your first week covered in the 3-hour
-                    workshop.
-                </p>
-                <p>
-                    Payment methods include cash, check, PayPal, and credit
-                    card. In the PayPal Notes, please put in your full name,
-                    date we begin, and your contact information (email and
-                    phone).
-                </p>
-                <p>
-                    To schedule your private session or for additional
-                    information, please
-                    <a href="/contact" class="underline">contact us</a>.
-                </p>
-            </div>
-        </div>
+      <div
+        class="p-10 my-14 rounded-md border text-white flex flex-col gap-4 bg-purple/80"
+      >
+        <h2 class="text-center text-3xl m-0 font-semibold text-white">
+          Fees and scheduling
+        </h2>
+        <p>
+          <span class="font-bold">Investment:</span> $1200 for the full 8-week course,
+          payable upfront. Flexible Scheduling: Customize the timing based on Sara's
+          and your availability (up to two sessions per week). Missed sessions must
+          be rescheduled within the 8-week period.
+        </p>
+        <p>
+          <span class="font-bold">Discount opportunity:</span> Participate in our
+          Step One Saturday Workshop and get $100 off! This reduces your course to
+          7 weeks, with your first week covered in the 3-hour workshop.
+        </p>
+        <p>
+          Payment methods include cash, check, PayPal, and credit card. In the
+          PayPal Notes, please put in your full name, date we begin, and your
+          contact information (email and phone).
+        </p>
+        <p>
+          To schedule your private session or for additional information, please
+          <a href="/contact" class="underline">contact us</a>.
+        </p>
+      </div>
     </div>
+  </div>
 </BaseLayout>
