@@ -2,20 +2,13 @@
 import type { TClassListing } from "../data/classes";
 import { paymentURL } from "../data/classes";
 import Image from "astro/components/Image.astro";
+import { getFormattedDate } from "../helpers/listingHelpers";
 
 const { classData } = Astro.props as { classData: TClassListing };
 
-// Format date
-const dateObj = new Date(classData.upcoming.date);
-const formattedDate = dateObj.toLocaleDateString("en-US", {
-  weekday: "short",
-  month: "short",
-  day: "numeric",
-});
-const formattedTime = dateObj.toLocaleTimeString("en-US", {
-  hour: "2-digit",
-  minute: "2-digit",
-});
+const [formattedDate, formattedTime] = getFormattedDate(
+  classData.upcoming.date,
+);
 ---
 
 <div
@@ -32,7 +25,7 @@ const formattedTime = dateObj.toLocaleTimeString("en-US", {
     href={classData.upcoming.url}
     target="_blank"
     rel="noopener noreferrer"
-    class="relative"
+    class="class-link relative"
   >
     <div class="group overflow-hidden h-60 relative">
       <div
@@ -51,7 +44,12 @@ const formattedTime = dateObj.toLocaleTimeString("en-US", {
   </a>
 
   <div class="p-2 md:px-6 md:py-4">
-    <a href={classData.upcoming.url} target="_blank" rel="noopener noreferrer">
+    <a
+      href={classData.upcoming.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="class-link"
+    >
       <h2 class="inline-block mb-1">{classData.title}</h2>
     </a>
     <p class="text-base font-semibold">{formattedDate} • {formattedTime}</p>
@@ -59,43 +57,51 @@ const formattedTime = dateObj.toLocaleTimeString("en-US", {
 
     <div class="mt-4 flex gap-2 items-center justify-center">
       <p class="opacity-50 font-light mr-auto">${classData.price}</p>
-      <a
+      <!-- <a
         href={classData.upcoming.url}
         target="_blank"
         rel="noopener noreferrer"
         class="p-2 bg-red-400 text-white rounded-sm py-3 px-8 md:px-12 text-center"
+        onclick={`window.dispatchEvent(new CustomEvent('open-class-modal', { title: ${classData.title} }))`}
       >
         Sign up
-      </a>
+      </a> -->
       <a
         href={paymentURL}
         target="_blank"
         rel="noopener noreferrer"
-        class="p-2 text-purple border-purple rounded-sm border py-3 px-12 text-center"
+        class="class-link inline-block bg-red-400 hover:bg-purple text-white font-semibold rounded-md py-3 px-12 text-center shadow-md transition-colors duration-200"
       >
-        Pay
+        Sign up
+      </a>
+
+      <a
+        href={classData.upcoming.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block text-sm border border-purple text-purple hover:underline rounded-md py-2 px-6 text-center transition-all duration-200"
+      >
+        More details
       </a>
     </div>
   </div>
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll("[data-class-card]");
+  const cards = document.querySelectorAll("[data-class-card]");
 
-    cards.forEach((card) => {
-      const image = card.querySelector("[data-class-image]");
-      const links = card.querySelectorAll("a");
+  cards.forEach((card) => {
+    const image = card.querySelector("[data-class-image]");
+    const links = card.querySelectorAll(".class-link");
 
-      links.forEach((link) => {
-        link.addEventListener("mouseenter", () => {
-          image?.classList.add("scale-100");
-          image?.classList.remove("scale-110");
-        });
-        link.addEventListener("mouseleave", () => {
-          image?.classList.add("scale-110");
-          image?.classList.remove("scale-100");
-        });
+    links.forEach((link) => {
+      link.addEventListener("mouseenter", () => {
+        image?.classList.add("scale-100");
+        image?.classList.remove("scale-110");
+      });
+      link.addEventListener("mouseleave", () => {
+        image?.classList.add("scale-110");
+        image?.classList.remove("scale-100");
       });
     });
   });

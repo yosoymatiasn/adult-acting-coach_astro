@@ -1,0 +1,85 @@
+<dialog
+  id="myModal"
+  aria-labelledby="modal-title"
+  class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-gray-300/75"
+>
+  <div
+    tabindex="0"
+    class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0"
+  >
+    <div
+      class="relative transform overflow-hidden rounded-lg bg-purple text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all sm:my-8 sm:w-full sm:max-w-lg"
+    >
+      <div class="bg-gray-200 px-6 py-6 sm:p-8">
+        <h2
+          id="modal-title"
+          class="text-lg font-semibold text-gray-900 mb-4 text-center"
+        >
+        </h2>
+
+        <p class="text-sm text-gray-700 mb-6 text-center">
+          For more details (location, dates, etc), or to reserve your spot:
+        </p>
+
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <!-- More Info Link -->
+          <a
+            href="https://example.com/class-details"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block px-5 py-3 text-center bg-white hover:bg-gray-100 text-gray-800 rounded-lg shadow transition w-full sm:w-auto"
+          >
+            📘 More Info
+          </a>
+
+          <!-- PayPal Link -->
+          <a
+            href="https://www.paypal.com/paypalme/yourlink"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block px-5 py-3 text-center bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow transition w-full sm:w-auto"
+          >
+            💳 Pay with PayPal
+          </a>
+        </div>
+      </div>
+
+      <div class="px-6 py-4 sm:flex sm:flex-row-reverse">
+        <button
+          id="close-btn"
+          class="inline-flex w-full sm:w-auto justify-center rounded-md bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-white/20 transition cursor-pointer"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  import { paymentURL, type TClassListing } from "../data/classes";
+  import { getFormattedDate } from "../helpers/listingHelpers";
+
+  const modal = document.getElementById("myModal") as HTMLDialogElement;
+  const closeBtn = document.getElementById("close-btn") as HTMLElement;
+  const links = modal.querySelectorAll("a");
+  const title = document.getElementById("modal-title") as HTMLElement;
+
+  window.addEventListener("open-class-modal", (e: Event) => {
+    const customEvent = e as CustomEvent;
+    const classData = customEvent.detail as TClassListing;
+    const date = getFormattedDate(classData.upcoming.date)[0];
+    if (modal) {
+      ((title.innerText = classData.title), date);
+      links[0].href = classData.upcoming.url;
+      links[1].href = paymentURL;
+      modal.showModal();
+    }
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.close();
+  });
+</script>
