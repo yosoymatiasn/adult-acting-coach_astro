@@ -70,7 +70,16 @@ export const classes: TClass[] = [
     description:
       "Master the art of auditioning for all media - TV, film, commercials, episodic, and streaming - with a specialized course that focuses on camera techniques. Learn how to navigate the evolving landscape of digital and traditional media with confidence and skill.",
     slug: "audition-for-camera",
-    upcoming: [],
+    upcoming: [
+      {
+        date: "2026-01-05T18:30",
+        url: "https://www.meetup.com/south-florida-actors/events/310750126/?eventOrigin=group_events_list",
+      },
+      {
+        date: "2026-06-22T18:30",
+        url: "https://www.meetup.com/south-florida-actors/events/310750503/?eventOrigin=group_events_list",
+      },
+    ],
     price: 300,
   },
   {
@@ -84,7 +93,12 @@ export const classes: TClass[] = [
       'Master the essentials in our 3-hour "Basic Camera Techniques" workshop, tailored for actors looking to enhance their on-screen presence and adapt their performances for the camera. Gain practical skills in framing, eye lines, and working with the camera to deliver more impactful and visually engaging performances in film and television.',
     slug: "basic-camera-techniques",
     price: 75,
-    upcoming: [],
+    upcoming: [
+      {
+        date: "2026-04-04T12:00",
+        url: "https://www.meetup.com/south-florida-actors/events/310665349/?eventOrigin=group_events_list",
+      },
+    ],
   },
   {
     classId: 3,
@@ -110,7 +124,12 @@ export const classes: TClass[] = [
       'Sharpen your audition skills with our 3-hour "Cold Reading Workshop," where you\'ll learn to quickly analyze and perform scripts. This dynamic and practical session focuses on improving your ability to make strong, immediate choices under pressure.',
     slug: "cold-reading",
     price: 75,
-    upcoming: [],
+    upcoming: [
+      {
+        date: "2026-02-21T12:00",
+        url: "https://www.meetup.com/south-florida-actors/events/310665067/?eventOrigin=group_events_list",
+      },
+    ],
   },
   {
     classId: 5,
@@ -127,6 +146,14 @@ export const classes: TClass[] = [
       {
         url: "https://www.meetup.com/south-florida-actors/events/303853890/",
         date: "2025-10-20T18:30:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310768735/?eventOrigin=group_events_list",
+        date: "2026-05-04T18:30:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310768790/?eventOrigin=group_events_list",
+        date: "2026-10-19T18:30:00",
       },
     ],
     show: {
@@ -163,6 +190,18 @@ export const classes: TClass[] = [
         url: "https://www.meetup.com/south-florida-actors/events/303867621/",
         date: "2025-10-04T12:00",
       },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/303867621/?eventOrigin=group_events_list",
+        date: "2026-02-07T12:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310618183/?eventOrigin=group_events_list",
+        date: "2026-08-08T12:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310618219/?eventOrigin=group_events_list",
+        date: "2026-10-03T12:00",
+      },
     ],
   },
   {
@@ -194,6 +233,14 @@ export const classes: TClass[] = [
         url: "https://www.meetup.com/south-florida-actors/events/303852234/",
         date: "2025-08-11T18:30:00",
       },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310753199/?eventOrigin=group_events_list",
+        date: "2026-03-02T18:30:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310753318/?eventOrigin=group_events_list",
+        date: "2026-08-10T18:30:00",
+      },
     ],
     show: {
       title: "Bare Bones Performance",
@@ -220,7 +267,16 @@ export const classes: TClass[] = [
       "Choosing the Perfect Monologue - a 3-hour workshop focused on selecting monologues that resonate with your unique strengths and style. Learn how to pick compelling pieces that showcase your talents, suit your character type, and make a lasting impression in auditions and performances.",
     slug: "picking-your-monologue",
     price: 75,
-    upcoming: [],
+    upcoming: [
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310665383/?eventOrigin=group_events_list",
+        date: "2026-05-02T12:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310665395/?eventOrigin=group_events_list",
+        date: "2026-06-11T12:00",
+      },
+    ],
   },
   {
     classId: 10,
@@ -291,6 +347,30 @@ export const classes: TClass[] = [
         url: "https://www.meetup.com/south-florida-actors/events/304065060/",
         date: "2025-11-15T12:00:00",
       },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310616862/?eventOrigin=group_events_list",
+        date: "2026-01-10T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310616902/?eventOrigin=group_events_list",
+        date: "2026-03-21T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310616917/?eventOrigin=group_events_list",
+        date: "2026-05-16T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310616940/?eventOrigin=group_events_list",
+        date: "2026-07-18T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310616975/?eventOrigin=group_events_list",
+        date: "2026-09-19T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310616991/?eventOrigin=group_events_list",
+        date: "2026-11-14T12:00:00",
+      },
     ],
   },
   {
@@ -317,7 +397,12 @@ export const classes: TClass[] = [
       'Join our 6-week "Silver stage improvisation for the 55+ crowd," designed to unlock your creative potential and sharpen your spontaneous reaction skills in a supportive, dynamic environment. Culminating in a live performance, this course offers a unique opportunity to showcase your improvisational talents, building confidence and collaborative skills.',
     slug: "silver-stage-improv",
     price: 225,
-    upcoming: [],
+    upcoming: [
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310666041/?eventOrigin=group_events_list",
+        date: "2026-06-06T12:00",
+      },
+    ],
   },
   {
     classId: 16,
@@ -334,6 +419,10 @@ export const classes: TClass[] = [
       {
         url: "https://www.meetup.com/south-florida-actors/events/304128551/",
         date: "2025-10-18T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310630985/?eventOrigin=group_events_list",
+        date: "2026-10-17T12:00:00",
       },
     ],
   },
@@ -365,6 +454,49 @@ export const classes: TClass[] = [
       {
         url: "https://www.meetup.com/south-florida-actors/events/304165259/",
         date: "2025-08-16T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310649969/?eventOrigin=group_events_list",
+        date: "2026-03-07T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310651195/?eventOrigin=group_events_list",
+        date: "2026-05-30T12:00:00",
+      },
+    ],
+  },
+
+  {
+    classId: 19,
+    title: "Public speaking workshop",
+    type: ClassType.Class,
+    duration: "3 hour workshop",
+    image:
+      "https://secure.meetupstatic.com/photos/event/d/d/6/f/highres_480416687.webp",
+    description:
+      "Speak with confidence—without the butterflies taking over. In this upbeat, supportive workshop, you’ll learn the essentials of public speaking and practice in a safe, secure environment where everyone roots for each other. You Perform on Camera with Playback. Perfect for beginners or anyone who wants a quick, practical refresher.",
+    slug: "public-speaking",
+    price: 300,
+    upcoming: [
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310659930/?eventOrigin=group_events_list",
+        date: "2026-01-24T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310660007/?eventOrigin=group_events_list",
+        date: "2026-04-25T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310660026/?eventOrigin=group_events_list",
+        date: "2026-06-20T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310660697/?eventOrigin=group_events_list",
+        date: "2026-08-29T12:00:00",
+      },
+      {
+        url: "https://www.meetup.com/south-florida-actors/events/310660066/?eventOrigin=group_events_list",
+        date: "2026-11-28T12:00:00",
       },
     ],
   },
