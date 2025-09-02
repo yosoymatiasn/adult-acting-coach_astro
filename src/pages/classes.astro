@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import ClassList from '../components/ClassList.astro'
 import type { Metadata } from '../utils/seo'
+import Modal from '../components/Modal.astro'
 
 const meta: Metadata = {
   title: 'Classes | Sara Rogers Acting',
@@ -15,6 +16,12 @@ const meta: Metadata = {
   <div
     class={`grid md:grid-cols-2 items-start gap-y-2 md:gap-x-4 lg:gap-x-6 md:gap-y-3 lg:gap-y-6  md:auto-rows-fr`}
   >
+    <ClassList />
+  </div>
+  <div
+    class={`grid md:grid-cols-2 items-start gap-y-2 md:gap-x-4 lg:gap-x-6 md:gap-y-3 lg:gap-y-6  md:auto-rows-fr`}
+  >
+    <Modal>Hello</Modal>
     <ClassList />
   </div>
 </BaseLayout>

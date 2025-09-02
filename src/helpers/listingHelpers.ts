@@ -5,6 +5,21 @@ import {
   type TShowListing,
 } from '../data/classes'
 
+export const getFormattedDate = (dateString: string): string[] => {
+  // Format date
+  const dateObj = new Date(dateString)
+  const formattedDate = dateObj.toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+  })
+  const formattedTime = dateObj.toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+  return [formattedDate, formattedTime]
+}
+
 /**
  * Flattens all upcoming class entries into a single array
  * sorted chronologically by date.
@@ -55,12 +70,10 @@ export const flattenShows = (classes: TClass[]): TShowListing[] => {
         upcoming: show,
       }))
     )
-
   // Filter out past dates
   const futureShows = flattened.filter(
     (item) => new Date(item.upcoming.date) > now
   )
-
   // Sort by date ascending
   futureShows.sort(
     (a, b) =>
