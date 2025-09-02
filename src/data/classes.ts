@@ -54,7 +54,7 @@ export const paymentURL = 'https://www.paypal.com/ncp/payment/LH9NCYEN29P6G'
 export const classesByWeekDay: Record<string, number[]> = {
   wednesdays: [11, 10, 3, 7, 15, 17],
   mondays: [1, 5, 8],
-  workshops: [2, 4, 6, 9, 12, 13, 14, 16, 18],
+  workshops: [2, 4, 6, 9, 12, 13, 14, 16, 18, 19],
 }
 
 export const classesWithShowcases = [8, 5]
