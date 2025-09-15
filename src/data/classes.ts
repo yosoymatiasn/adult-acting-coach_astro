@@ -308,10 +308,10 @@ export const classes: TClass[] = [
     slug: 'self-taping-class',
     price: 300,
     upcoming: [
-      {
-        url: 'https://www.meetup.com/south-florida-actors/events/298753585/',
-        date: '2025-10-09T18:30:00',
-      },
+      // {
+      //   url: 'https://www.meetup.com/south-florida-actors/events/298753585/',
+      //   date: '2025-10-09T18:30:00',
+      // },
     ],
   },
   {
