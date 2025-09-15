@@ -62,11 +62,11 @@ export const classesWithShowcases = [8, 5]
 export const classes: TClass[] = [
   {
     classId: 1,
-    title: 'How to audition for camera',
+    title: 'Auditioning for camera',
     type: ClassType.Class,
     duration: '6 weeks',
     image:
-      'https://secure.meetupstatic.com/photos/event/d/d/7/0/highres_480416688.webp',
+      'https://secure.meetupstatic.com/photos/event/9/a/f/0/highres_523899664.webp?w=384',
     description:
       'Master the art of auditioning for all media - TV, film, commercials, episodic, and streaming - with a specialized course that focuses on camera techniques. Learn how to navigate the evolving landscape of digital and traditional media with confidence and skill.',
     slug: 'audition-for-camera',
@@ -88,7 +88,7 @@ export const classes: TClass[] = [
     type: ClassType.Workshop,
     duration: '3 hour workshop',
     image:
-      'https://secure.meetupstatic.com/photos/event/4/7/a/9/highres_474678345.webp',
+      'https://secure.meetupstatic.com/photos/event/d/f/8/6/highres_527937222.webp?w=384',
     description:
       'Master the essentials in our 3-hour "Basic Camera Techniques" workshop, tailored for actors looking to enhance their on-screen presence and adapt their performances for the camera. Gain practical skills in framing, eye lines, and working with the camera to deliver more impactful and visually engaging performances in film and television.',
     slug: 'basic-camera-techniques',
@@ -119,7 +119,7 @@ export const classes: TClass[] = [
     type: ClassType.Workshop,
     duration: '3 hour workshop',
     image:
-      'https://secure.meetupstatic.com/photos/event/d/d/7/2/highres_480416690.webp',
+      'https://secure.meetupstatic.com/photos/event/b/0/c/6/highres_494625254.webp?w=384',
     description:
       'Sharpen your audition skills with our 3-hour "Cold Reading Workshop," where you\'ll learn to quickly analyze and perform scripts. This dynamic and practical session focuses on improving your ability to make strong, immediate choices under pressure.',
     slug: 'cold-reading',
@@ -136,7 +136,7 @@ export const classes: TClass[] = [
     title: 'Improvisation',
     type: ClassType.Class,
     image:
-      'https://secure.meetupstatic.com/photos/event/d/6/c/e/highres_493974990.webp',
+      'https://secure.meetupstatic.com/photos/event/8/d/5/6/highres_515556182.webp?w=384',
     duration: '6 weeks',
     description:
       'Join our 6-week "Improvisation Class with Performance," designed to unlock your creative potential and sharpen your spontaneous reaction skills in a supportive, dynamic environment. Culminating in a live performance, this course offers a unique opportunity to showcase your improvisational talents, building confidence and collaborative skills.',
@@ -172,10 +172,10 @@ export const classes: TClass[] = [
   },
   {
     classId: 6,
-    title: 'A taste of improv',
+    title: 'A taste of improv workshop',
     type: ClassType.Workshop,
     image:
-      'https://secure.meetupstatic.com/photos/event/6/c/d/d/highres_509727869.webp',
+      'https://secure.meetupstatic.com/photos/event/9/2/0/highres_518762336.webp?w=384',
     duration: '3 hour workshop',
     description:
       'Explore the exciting world of improvisation in this 3-hour workshop, designed to unleash creativity, enhance spontaneity, and develop quick thinking skills. Perfect for beginners and seasoned performers, as well as public speakers. ',
@@ -219,11 +219,11 @@ export const classes: TClass[] = [
   },
   {
     classId: 8,
-    title: 'Monologue and scene study',
+    title: 'Monologues and scenes',
     type: ClassType.Class,
     duration: '8 weeks',
     image:
-      'https://secure.meetupstatic.com/photos/event/2/4/2/f/highres_494049263.webp',
+      'https://secure.meetupstatic.com/photos/event/8/a/a/9/highres_515555497.webp?w=384',
     description:
       'Embark on an 8-week journey of intensive "Monologue & Scene Study with Performance," where you\'ll delve deep into character exploration and scene dynamics to refine your acting skills. This comprehensive course culminates in a performance showcase, offering you the opportunity to present your polished monologues and scenes, honed through expert guidance and collaborative learning.',
     slug: 'monologues-and-scenes',
@@ -262,7 +262,7 @@ export const classes: TClass[] = [
     type: ClassType.Workshop,
     duration: '3 hour workshop',
     image:
-      'https://secure.meetupstatic.com/photos/event/4/1/3/4/highres_501916692.webp',
+      'https://secure.meetupstatic.com/photos/event/d/a/5/b/highres_494575899.webp?w=384',
     description:
       'Choosing the Perfect Monologue - a 3-hour workshop focused on selecting monologues that resonate with your unique strengths and style. Learn how to pick compelling pieces that showcase your talents, suit your character type, and make a lasting impression in auditions and performances.',
     slug: 'picking-your-monologue',
@@ -332,7 +332,7 @@ export const classes: TClass[] = [
     title: 'Step One: The business end',
     type: ClassType.Workshop,
     image:
-      'https://secure.meetupstatic.com/photos/event/9/c/8/8/event_516040072.webp?w=2048',
+      'https://secure.meetupstatic.com/photos/event/6/9/2/a/highres_524126922.webp?w=384',
     duration: '3 hour workshop',
     description:
       'Dive into the "Business End of the Acting/Modeling Business" a comprehensive 3 hour session designed to unveil the intricacies of the industry, from knowing what to do to, where to go and who to see effectively.. Gain essential insights and tools to navigate the business side of acting/modeling, setting the stage for a successful and informed career.',
@@ -444,7 +444,7 @@ export const classes: TClass[] = [
     title: 'Memorization techniques',
     type: ClassType.Workshop,
     image:
-      'https://secure.meetupstatic.com/photos/event/8/a/3/c/600_524255388.webp',
+      'https://secure.meetupstatic.com/photos/event/8/a/3/c/highres_524255388.webp?w=384',
     duration: '3 hour workshop',
     description:
       'This dynamic 3-hour workshop is designed to help actors, public speakers, and anyone who needs to memorize text efficiently and confidently. Whether it is a script, speech, or presentation, this session will equip you with powerful techniques to enhance your memory skills and bring your text to life.',
@@ -472,7 +472,7 @@ export const classes: TClass[] = [
     type: ClassType.Class,
     duration: '3 hour workshop',
     image:
-      'https://secure.meetupstatic.com/photos/event/d/d/6/f/highres_480416687.webp',
+      'https://secure.meetupstatic.com/photos/event/6/f/1/1/highres_529768433.webp?w=384',
     description:
       'Speak with confidence—without the butterflies taking over. In this upbeat, supportive workshop, you’ll learn the essentials of public speaking and practice in a safe, secure environment where everyone roots for each other. You Perform on Camera with Playback. Perfect for beginners or anyone who wants a quick, practical refresher.',
     slug: 'public-speaking',
