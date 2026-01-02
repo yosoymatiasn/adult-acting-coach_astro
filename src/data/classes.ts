@@ -476,7 +476,7 @@ export const classes: TClass[] = [
     description:
       'Speak with confidence—without the butterflies taking over. In this upbeat, supportive workshop, you’ll learn the essentials of public speaking and practice in a safe, secure environment where everyone roots for each other. You Perform on Camera with Playback. Perfect for beginners or anyone who wants a quick, practical refresher.',
     slug: 'public-speaking',
-    price: 300,
+    price: 75,
     upcoming: [
       {
         url: 'https://www.meetup.com/south-florida-actors/events/310659930/?eventOrigin=group_events_list',
