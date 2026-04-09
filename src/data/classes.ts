@@ -195,6 +195,10 @@ export const classes: TClass[] = [
         date: '2026-02-07T12:00',
       },
       {
+        url: 'https://www.meetup.com/south-florida-actors/events/310666041/?eventOrigin=group_events_list',
+        date: '2026-06-06T12:00',
+      },
+      {
         url: 'https://www.meetup.com/south-florida-actors/events/310618183/?eventOrigin=group_events_list',
         date: '2026-08-08T12:00',
       },
@@ -397,12 +401,7 @@ export const classes: TClass[] = [
       'Join our 6-week "Silver stage improvisation for the 55+ crowd," designed to unlock your creative potential and sharpen your spontaneous reaction skills in a supportive, dynamic environment. Culminating in a live performance, this course offers a unique opportunity to showcase your improvisational talents, building confidence and collaborative skills.',
     slug: 'silver-stage-improv',
     price: 225,
-    upcoming: [
-      {
-        url: 'https://www.meetup.com/south-florida-actors/events/310666041/?eventOrigin=group_events_list',
-        date: '2026-06-06T12:00',
-      },
-    ],
+    upcoming: [],
   },
   {
     classId: 16,
