@@ -112,56 +112,100 @@ const meta: Metadata = {
       <p class="text-sm font-semibold uppercase tracking-wide text-purple">
         Awards & Recognition
       </p>
-      <h2 class="mt-2">A celebrated voice in South Florida arts education</h2>
-      <div class="mx-auto mt-6 max-w-3xl space-y-4 text-gray-700">
-        <p>
-          Sara Rogers has been honored with a Lifetime Achievement Award from
-          ArtServe in Fort Lauderdale, recognizing her decades of service,
-          mentorship, and creative leadership in the performing arts community.
-        </p>
-        <p>
-          Her work as an acting coach, public speaking coach, performer, and
-          mentor has also earned additional coaching and achievement awards,
-          reflecting the impact she has had on generations of actors, speakers,
-          and creative professionals.
-        </p>
-        <p class="font-semibold text-gray-900">
-          Example copy for now: replace this section with final award names,
-          dates, photos, or official language when ready.
-        </p>
+
+      <h2 class="mt-2">Recognized for a lifetime of artistic impact</h2>
+
+      <div class="mx-auto mt-6 max-w-3xl text-gray-700">
+        <div class="rounded-lg border border-gray-200 bg-gray-50 p-6">
+          <p
+            class="text-sm font-semibold uppercase tracking-wide text-gray-500"
+          >
+            April 17, 2026
+          </p>
+
+          <h3 class="mt-2 text-xl font-semibold text-gray-900">
+            ArtServe Impact Awards
+          </h3>
+
+          <p class="mt-1 font-medium text-purple">
+            Lifetime Achievement Honoree
+          </p>
+
+          <p class="mt-4">
+            Sara Rogers was honored as a <strong
+              >Lifetime Achievement Honoree</strong
+            >
+
+            at the 2026 ArtServe Impact Awards Gala in recognition of more than
+            four decades of dedication to South Florida's performing arts
+            community. Her career as an acting coach, performer, mentor, and
+            educator has helped generations of actors develop confidence,
+            technique, and lasting careers both on and off the stage.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="mt-14 text-center">
-      <h2 class="">Interview on "Spotlight of the Arts"</h2>
-      <div class="w-full">
-        <YoutubeEmbed id="gdB8MKam9Kg" />
+    <section
+      class="mt-14 rounded-lg border border-gray-200 bg-white p-8 shadow-lg shadow-purple/10"
+    >
+      <div class="text-center">
+        <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+          Media & Press
+        </p>
+        <h2 class="mt-2">Interviews & features</h2>
+        <p class="mx-auto mt-3 max-w-2xl text-sm text-gray-600">
+          Hear Sara discuss her coaching journey, artistic philosophy, and work
+          with actors in South Florida
+        </p>
       </div>
-      <p class="mt-2 text-sm text-gray-600">
-        Watch Sara Rogers discuss her coaching journey and philosophy in this
-        featured interview.
-      </p>
-    </section>
 
-    <section class="mt-10">
-      <h3 class="text-lg font-semibold mb-2">Featured Articles</h3>
-      <ul class="list-disc list-inside text-sm">
-        {
-          externalLinks.map((link) => (
-            <li>
+      <div
+        class="mt-8 overflow-hidden rounded-lg border border-gray-200 bg-gray-50"
+      >
+        <div class="border-b border-gray-200 bg-white px-5 py-4">
+          <p
+            class="text-xs font-semibold uppercase tracking-wide text-gray-500"
+          >
+            Featured Interview
+          </p>
+          <h3 class="mt-1 text-xl font-semibold text-gray-900">
+            Spotlight of the Arts
+          </h3>
+        </div>
+
+        <div class="p-4">
+          <YoutubeEmbed id="gdB8MKam9Kg" />
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <h3 class="text-lg font-semibold text-gray-900">Featured Articles</h3>
+
+        <div class="mt-4 grid gap-4">
+          {
+            externalLinks.map((link) => (
               <a
                 href={link.url}
-                class="text-purple-700 underline"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="block rounded-lg border border-gray-200 bg-gray-50 p-5 transition hover:border-purple hover:bg-purple/5"
               >
-                {link.title}
+                <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                  Article
+                </p>
+                <h4 class="mt-1 text-lg font-semibold text-gray-900">
+                  {link.title}
+                </h4>
+                <p class="mt-2 text-sm text-gray-600">{link.description}</p>
+                <p class="mt-3 text-sm font-semibold text-purple">
+                  Read article →
+                </p>
               </a>
-              — {link.description}
-            </li>
-          ))
-        }
-      </ul>
+            ))
+          }
+        </div>
+      </div>
     </section>
   </section>
 </BaseLayout>

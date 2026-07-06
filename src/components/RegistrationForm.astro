@@ -210,6 +210,26 @@
             </p>
             <p id="success-session" class="mt-1"></p>
 
+            <div class="mt-4 rounded-md border border-blue-200 bg-blue-50 p-4">
+              <p class="text-sm font-medium text-gray-900">
+                Have a Meetup account?
+              </p>
+              <p class="mt-1 text-sm text-gray-700">
+                RSVP on Meetup to receive reminders and updates and join our
+                South Florida Actors community.
+              </p>
+
+              <a
+                id="success-meetup-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 inline-flex items-center text-sm font-semibold text-purple hover:underline"
+              >
+                RSVP on Meetup →
+              </a>
+            </div>
+
             <div class="mt-4 space-y-2 border-t border-purple/20 pt-4">
               <p>
                 <span id="success-email"></span>
@@ -283,6 +303,9 @@
     'success-session'
   ) as HTMLElement
   const successEmail = document.getElementById('success-email') as HTMLElement
+  const successMeetupLink = document.getElementById(
+    'success-meetup-link'
+  ) as HTMLAnchorElement
   // const successPaymentMethod = document.getElementById(
   //   'success-payment-method'
   // ) as HTMLElement
@@ -419,6 +442,7 @@
         classSummary.classList.add('hidden')
         successClass.textContent = activeClassData!.title
         successSession.textContent = session.sessionText
+        successMeetupLink.href = activeClassData!.url
         successEmail.textContent = ` ${studentEmail}`
         // successPaymentMethod.textContent = ` ${paymentMethod}`
         // successPaymentInstructions.textContent =
