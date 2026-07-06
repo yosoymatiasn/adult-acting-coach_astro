@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import type { Metadata } from '../utils/seo'
 import { testimonialImages } from '../utils/testimonialImageImport'
 import Image from 'astro/components/Image.astro'
+import PageIntro from '../components/PageIntro.astro'
 
 const meta: Metadata = {
   title: 'Testimonials| Sara Rogers',
@@ -15,8 +16,13 @@ const meta: Metadata = {
 
 <BaseLayout meta={meta} title="Testimonials">
   <div class="flex flex-col">
+    <PageIntro
+      eyebrow="Student experiences"
+      title="Testimonials"
+      description="Actors, speakers, and performers share how Sara's coaching helped them build confidence, sharpen their craft, and feel supported in the work."
+    />
     <div class="max-w-4xl mx-auto">
-      <div class="flex flex-col gap-8 md:gap-14 lg:gap-20">
+      <div class="mt-12 flex flex-col gap-8 md:gap-14 lg:gap-20">
         {
           testimonials.map(({ name, text, imgSrc }) => (
             <div class="flex flex-col md:flex-row gap-4 md:gap-10 justify-center items-center">

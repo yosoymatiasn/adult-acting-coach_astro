@@ -1,0 +1,31 @@
+---
+interface Props {
+  eyebrow?: string
+  title: string
+  description?: string
+  align?: 'left' | 'center'
+}
+
+const { eyebrow, title, description, align = 'center' } = Astro.props
+const alignment =
+  align === 'left'
+    ? 'items-start text-left'
+    : 'items-center text-center mx-auto'
+---
+
+<section class={`flex max-w-4xl flex-col pt-28 md:pt-36 ${alignment}`}>
+  {eyebrow && (
+    <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+      {eyebrow}
+    </p>
+  )}
+  <h1 class="mt-2">{title}</h1>
+  {
+    description && (
+      <p class="mt-4 max-w-3xl text-gray-700">
+        {description}
+      </p>
+    )
+  }
+  <slot />
+</section>

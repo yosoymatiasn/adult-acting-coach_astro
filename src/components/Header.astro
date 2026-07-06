@@ -6,34 +6,45 @@ import logo from '../assets/images/logo.png'
 ---
 
 <header
-  class="fixed top-0 w-full z-50 bg-gradient-to-b from-purple/90 to-transparent py-4"
+  class="fixed top-0 z-50 w-full bg-transparent py-4"
 >
-  <div class="container mx-auto flex justify-center items-center px-4">
+  <div class="container mx-auto flex items-center justify-between px-4">
+    <a href="/" class="flex items-center rounded-full md:hidden">
+      <Image
+        src={logo}
+        alt="Logo"
+        width="56"
+        height="56"
+        class="h-12 w-12 rounded-full bg-white object-contain p-1 ring-1 ring-purple/15"
+        loading="eager"
+      />
+    </a>
+
     <!-- Desktop Nav -->
     <nav
-      class="hidden md:flex items-center gap-6 backdrop-blur-md text-white rounded-full shadow-lg px-6 py-3 border border-white/20"
+      class="mx-auto hidden items-center gap-4 rounded-full border border-purple/10 bg-white/95 px-5 py-3 text-purple shadow-lg shadow-purple/10 backdrop-blur-md md:flex"
     >
       <!-- Logo -->
       <a
         href="/"
-        class="flex items-center gap-2 hover:opacity-80 transition-opacity rounded-full overflow-hidden"
+        class="flex shrink-0 items-center gap-2 rounded-full transition-opacity hover:opacity-80"
       >
         <Image
           src={logo}
           alt="Logo"
           width="80"
           height="80"
-          class="bg-white p-2"
+          class="h-14 w-14 rounded-full bg-white object-contain p-1 ring-1 ring-purple/15 lg:h-16 lg:w-16"
           loading="eager"
         />
       </a>
-      <ul class="flex gap-4 flex-wrap items-center">
+      <ul class="flex flex-wrap items-center gap-2 lg:gap-3">
         {
           navLinks.map((link: NavLink) => (
             <li>
               <a
                 href={link.href}
-                class="text-xl font-semibold capitalize px-3 py-1 rounded hover:bg-white/10 transition-colors"
+                class="rounded px-2 py-1 text-base font-semibold transition-colors hover:bg-purple/10 lg:px-3 lg:text-lg"
               >
                 {link.label}
               </a>
@@ -46,20 +57,20 @@ import logo from '../assets/images/logo.png'
     <!-- Hamburger Button -->
     <button
       id="hamburger"
-      class="md:hidden flex relative ml-auto mr-2 flex-col gap-1 w-10 z-50 cursor-pointer"
+      class="relative z-50 ml-auto flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-md border border-purple/20 bg-white text-purple shadow-sm md:hidden"
       aria-label="Toggle menu"
     >
       <span
         id="bar1"
-        class="w-full h-2 bg-purple rounded-sm border-white/50 border border-double transition-all"
+        class="h-0.5 w-6 rounded-sm bg-purple transition-all"
       ></span>
       <span
         id="bar2"
-        class="w-full h-2 bg-purple rounded-sm border-white/50 border border-double transition-all"
+        class="h-0.5 w-6 rounded-sm bg-purple transition-all"
       ></span>
       <span
         id="bar3"
-        class="w-full h-2 bg-purple rounded-sm border-white/50 border border-double transition-all"
+        class="h-0.5 w-6 rounded-sm bg-purple transition-all"
       ></span>
     </button>
   </div>
@@ -67,18 +78,20 @@ import logo from '../assets/images/logo.png'
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden absolute top-full left-0 w-full bg-gradient-to-b from-purple via-purple/90 to-purple/80 backdrop-blur-md border-t border-white/20 shadow-2xl flex flex-col items-center gap-3 py-6 px-6 text-white animate-slide-down z-100"
+    class="absolute left-0 top-full z-50 hidden w-full border-t border-purple/10 bg-white px-4 py-5 text-purple shadow-xl md:hidden"
   >
-    {
-      navLinks.map((link: NavLink) => (
-        <a
-          href={link.href}
-          class="w-full text-center text-[1.1rem] font-semibold tracking-wide uppercase px-4 py-3 rounded-lg bg-white/5 hover:bg-white/15 hover:scale-[1.01] transition-all duration-200 ease-out shadow-sm"
-        >
-          {link.label}
-        </a>
-      ))
-    }
+    <div class="mx-auto flex max-w-md flex-col gap-2">
+      {
+        navLinks.map((link: NavLink) => (
+          <a
+            href={link.href}
+            class="w-full rounded-md px-4 py-3 text-center text-lg font-semibold transition-colors hover:bg-purple/10"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
   </div>
 
   <!-- Toggle Script -->
@@ -99,12 +112,12 @@ import logo from '../assets/images/logo.png'
         menu?.classList.toggle('hidden')
 
         bar1?.classList.toggle('rotate-45')
-        bar1?.classList.toggle('translate-y-3')
+        bar1?.classList.toggle('translate-y-2')
 
         bar2?.classList.toggle('opacity-0')
 
         bar3?.classList.toggle('-rotate-45')
-        bar3?.classList.toggle('-translate-y-3')
+        bar3?.classList.toggle('-translate-y-2')
       })
 
       // Reset on desktop resize
@@ -114,9 +127,9 @@ import logo from '../assets/images/logo.png'
           isOpen = false
           menu?.classList.add('hidden')
 
-          bar1?.classList.remove('rotate-45', 'translate-y-3')
+          bar1?.classList.remove('rotate-45', 'translate-y-2')
           bar2?.classList.remove('opacity-0')
-          bar3?.classList.remove('-rotate-45', '-translate-y-3')
+          bar3?.classList.remove('-rotate-45', '-translate-y-2')
         }
       })
     })

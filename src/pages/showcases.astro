@@ -4,6 +4,7 @@ export const prerender = false
 import BaseLayout from '../layouts/BaseLayout.astro'
 import ShowList from '../components/ShowList.astro'
 import type { Metadata } from '../utils/seo'
+import PageIntro from '../components/PageIntro.astro'
 
 const meta: Metadata = {
   title: 'Showcases | Sara Rogers Acting',
@@ -14,8 +15,13 @@ const meta: Metadata = {
 ---
 
 <BaseLayout meta={meta} title="Showcases">
+  <PageIntro
+    eyebrow="Student performances"
+    title="Showcases"
+    description="Support Sara's students as they bring their work to the stage. Upcoming showcase events and RSVP links will appear here."
+  />
   <div
-    class="grid md:grid-cols-2 items-start gap-y-2 md:gap-x-4 lg:gap-x-6 md:gap-y-3 lg:gap-y-6 md:auto-rows-fr"
+    class="mt-12 grid md:grid-cols-2 items-start gap-y-2 md:gap-x-4 lg:gap-x-6 md:gap-y-3 lg:gap-y-6 md:auto-rows-fr"
   >
     <ShowList />
   </div>

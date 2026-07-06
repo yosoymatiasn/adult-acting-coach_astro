@@ -2,9 +2,9 @@
 import HomeLayout from '../layouts/HomeLayout.astro'
 import ContactForm from '../components/ContactForm.astro'
 import YoutubeEmbed from '../components/YoutubeEmbed.astro'
-import logo from '../assets/images/logo.png'
-import Image from 'astro/components/Image.astro'
 import Section from '../components/Home/Section.astro'
+import Image from 'astro/components/Image.astro'
+import logo from '../assets/images/logo.png'
 import type { Metadata } from '../utils/seo'
 
 const meta: Metadata = {
@@ -47,6 +47,24 @@ const meta: Metadata = {
           the open.
         </p>
       </div>
+    </div>
+  </Section>
+
+  <!-- Recognition -->
+  <Section>
+    <div
+      class="w-full max-w-4xl rounded-lg border border-purple/20 bg-white px-6 py-8 text-center shadow-lg shadow-purple/10"
+    >
+      <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+        Award-winning coach
+      </p>
+      <h1 class="mt-2 text-purple">Recognized by ArtServe</h1>
+      <p class="mx-auto max-w-3xl text-gray-700">
+        Sara Rogers has been honored with a Lifetime Achievement Award from Fort
+        Lauderdale&apos;s ArtServe, along with other coaching and achievement
+        awards celebrating her work in South Florida&apos;s acting community.
+      </p>
+      <a href="/about" class="sr-link inline-block w-auto"> About Sara </a>
     </div>
   </Section>
 

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import type { Metadata } from '../utils/seo'
+import PageIntro from '../components/PageIntro.astro'
 
 const meta: Metadata = {
   title: 'Self-taping | Sara Rogers',
@@ -12,8 +13,13 @@ const meta: Metadata = {
 
 <BaseLayout meta={meta} title="Self taping and submissions">
   <div class="flex flex-col">
+    <PageIntro
+      eyebrow="Audition support"
+      title="Self-Taping and Submissions"
+      description="Book a stress-free self-tape session with Sara as your reader and coach, so you can send in a confident, polished audition."
+    />
     <div class="max-w-4xl mx-auto">
-      <div class="flex flex-col gap-4 font-light [&>p]:text-center">
+      <div class="mt-12 flex flex-col gap-4 font-light [&>p]:text-center">
         <p>
           Self-Taping and Submissions have become the norm not the exception in
           today’s world. Film and TV casting are turning to self-taping more and

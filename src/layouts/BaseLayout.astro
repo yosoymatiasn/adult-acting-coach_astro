@@ -1,5 +1,4 @@
 ---
-import Banner from '../components/Banner.astro'
 import '../styles/global.css'
 import ContentWrapper from './ContentWrapper.astro'
 
@@ -11,11 +10,10 @@ interface Props {
   title: string
 }
 
-const { meta, title } = Astro.props
+const { meta } = Astro.props
 ---
 
 <Skeleton meta={meta}>
-  <Banner title={title} />
   <ContentWrapper>
     <slot />
   </ContentWrapper>

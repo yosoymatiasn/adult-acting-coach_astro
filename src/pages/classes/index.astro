@@ -1,0 +1,29 @@
+---
+export const prerender = false
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import ClassList from '../../components/ClassList.astro'
+import type { Metadata } from '../../utils/seo'
+import RegistrationForm from '../../components/RegistrationForm.astro'
+import PageIntro from '../../components/PageIntro.astro'
+
+const meta: Metadata = {
+  title: 'Classes | Sara Rogers Acting',
+  description:
+    "Explore a world of possibilities with Sara's adult acting classes. From improvisation to monologues and scenes, our year-round classes offer a transformative journey into the art of acting.",
+  url: 'https://adultactingcoach.com/classes',
+}
+---
+
+<BaseLayout meta={meta} title="Classes">
+  <RegistrationForm />
+  <PageIntro
+    title="Classes"
+    description="Explore upcoming adult acting classes and workshops with Sara Rogers. Choose the session that fits your goals, then register directly from the listing."
+  />
+  <div
+    class="mt-12 grid md:grid-cols-2 items-start gap-y-2 md:gap-x-4 lg:gap-x-6 md:gap-y-3 lg:gap-y-6 md:auto-rows-fr"
+  >
+    <ClassList />
+  </div>
+</BaseLayout>

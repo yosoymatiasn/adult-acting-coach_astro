@@ -1,10 +1,26 @@
 ---
-import { classes, type TShow, type TShowListing } from '../data/classes'
-import { flattenShows } from '../helpers/listingHelpers'
-
+import { showcaseListings } from '../data/showcases'
 import ShowCard from './ShowCard.astro'
-
-const upcomingShows: TShowListing[] = flattenShows(classes)
 ---
 
-{upcomingShows.map((s) => <ShowCard showData={s} />)}
+{
+  showcaseListings.length > 0 ? (
+    showcaseListings.map((s) => <ShowCard showData={s} />)
+  ) : (
+    <div class="md:col-span-2 rounded-md border border-gray-200 bg-white p-8 text-center shadow-sm">
+      <h2 class="text-2xl">No upcoming showcases are currently scheduled.</h2>
+      <p class="mt-2 text-gray-700">
+        Check back soon or join the community on Meetup for future showcase
+        announcements.
+      </p>
+      <a
+        href="https://www.meetup.com/South-Florida-Actors/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="sr-link inline-block w-auto"
+      >
+        View Meetup
+      </a>
+    </div>
+  )
+}
