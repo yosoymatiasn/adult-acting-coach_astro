@@ -28,37 +28,37 @@
 
         <input type="hidden" name="classTitle" id="form-class-title" />
         <input type="hidden" name="sessionDetails" id="form-session-details" />
+        <input type="hidden" name="sessionDate" id="form-session-date" />
+        <input type="hidden" name="sessionEndDate" id="form-session-end-date" />
         <input type="hidden" name="classPrice" id="form-class-price" />
         <input type="hidden" name="paymentNote" id="form-payment-note" />
 
         <div class="px-6 py-6 sm:p-8">
           <div
             id="class-summary"
-            class="mt-6 rounded-lg border border-gray-200 bg-gray-50 p-4"
+            class="rounded-lg border border-gray-200 bg-gray-50 p-4"
           >
             <p
               class="text-xs font-semibold uppercase tracking-wide text-gray-500"
             >
-              You're registering for
+              Registering for
             </p>
 
-            <div class="mt-3 space-y-2 text-sm">
-              <div class="flex justify-between gap-4">
-                <span class="text-gray-500">Class</span>
-                <span id="summary-title" class="font-semibold text-right"
-                ></span>
-              </div>
+            <h2
+              id="modal-title"
+              class="mt-2 text-2xl font-semibold text-gray-900"
+            >
+              <span id="summary-title"></span>
+            </h2>
 
-              <div class="flex justify-between gap-4">
-                <span class="text-gray-500">Session</span>
-                <span id="summary-date" class="font-semibold text-right"></span>
-              </div>
+            <div class="mt-3 flex flex-col gap-1 text-sm text-gray-700">
+              <p id="summary-date" class="font-medium"></p>
 
-              <div class="flex justify-between gap-4">
-                <span class="text-gray-500">Price</span>
-                <span id="summary-price" class="font-semibold text-right"
-                ></span>
-              </div>
+              <p>
+                Price: <span
+                  id="summary-price"
+                  class="font-semibold text-gray-900"></span>
+              </p>
             </div>
           </div>
 
@@ -233,8 +233,11 @@
 
             <div class="mt-4 space-y-2 border-t border-purple/20 pt-4">
               <p>
-                <span id="success-email"></span>
+                We sent the registration details to <span
+                  id="success-email"
+                  class="font-semibold"></span>.
               </p>
+              <p id="success-payment-instructions"></p>
             </div>
 
             <p class="mt-4 text-sm font-medium text-gray-900">
@@ -311,18 +314,21 @@
   const successMeetupLink = document.getElementById(
     'success-meetup-link'
   ) as HTMLAnchorElement
-  // const successPaymentMethod = document.getElementById(
-  //   'success-payment-method'
-  // ) as HTMLElement
-  // const successPaymentInstructions = document.getElementById(
-  //   'success-payment-instructions'
-  // ) as HTMLElement
+  const successPaymentInstructions = document.getElementById(
+    'success-payment-instructions'
+  ) as HTMLElement
 
   const classTitleInput = document.getElementById(
     'form-class-title'
   ) as HTMLInputElement
   const sessionDetailsInput = document.getElementById(
     'form-session-details'
+  ) as HTMLInputElement
+  const sessionDateInput = document.getElementById(
+    'form-session-date'
+  ) as HTMLInputElement
+  const sessionEndDateInput = document.getElementById(
+    'form-session-end-date'
   ) as HTMLInputElement
   const classPriceInput = document.getElementById(
     'form-class-price'
@@ -343,6 +349,7 @@
   const paypalLink = document.getElementById('paypal-link') as HTMLAnchorElement
 
   let activeClassData: TClassListing | null = null
+  const submitButtonDefaultText = submitRegistrationBtn.textContent || ''
 
   const getSessionDisplay = (classData: TClassListing) => {
     const formatted = formatDate(classData.date)
@@ -378,6 +385,8 @@
 
     classTitleInput.value = classData.title
     sessionDetailsInput.value = session.sessionText
+    sessionDateInput.value = classData.date
+    sessionEndDateInput.value = classData.endDate || ''
     classPriceInput.value = `$${classData.price}`
     paymentNoteInput.value = ''
 
@@ -391,6 +400,8 @@
     registrationNote.classList.remove('hidden')
     modalFooter.classList.remove('hidden')
     submitRegistrationBtn.classList.remove('hidden')
+    submitRegistrationBtn.disabled = false
+    submitRegistrationBtn.textContent = submitButtonDefaultText
 
     form
       .querySelectorAll<HTMLInputElement>('input[name="paymentMethod"]')
@@ -414,11 +425,13 @@
     const formData = new FormData(form)
     const paymentMethod = String(formData.get('paymentMethod'))
     const studentEmail = String(formData.get('studentEmail'))
+    const zelleMemo = zelleMemoPreview.textContent || ''
+    const paypalMemo = paypalMemoPreview.textContent || ''
 
     paymentNoteInput.value =
       paymentMethod === 'Zelle'
-        ? 'Student plans to pay with Zelle.'
-        : 'Student plans to pay with PayPal.'
+        ? `Student plans to pay with Zelle. Memo: ${zelleMemo}`
+        : `Student plans to pay with PayPal. Memo: ${paypalMemo}`
 
     const data = new URLSearchParams()
     data.append('form-name', 'registration')
@@ -428,6 +441,11 @@
         data.append(key, value)
       }
     }
+
+    submitRegistrationBtn.disabled = true
+    submitRegistrationBtn.textContent = 'Submitting...'
+    status.classList.add('hidden')
+    status.textContent = ''
 
     fetch('/', {
       method: 'POST',
@@ -446,12 +464,11 @@
         successClass.textContent = activeClassData!.title
         successSession.textContent = session.sessionText
         successMeetupLink.href = activeClassData!.url
-        successEmail.textContent = ` ${studentEmail}`
-        // successPaymentMethod.textContent = ` ${paymentMethod}`
-        // successPaymentInstructions.textContent =
-        //   paymentMethod === 'Zelle'
-        //     ? 'Please complete payment.'
-        //     : 'Please complete payment.'
+        successEmail.textContent = studentEmail
+        successPaymentInstructions.textContent =
+          paymentMethod === 'Zelle'
+            ? `To confirm your spot, send payment by Zelle to sararogers147@gmail.com and include this memo: ${zelleMemo}`
+            : `To confirm your spot, open PayPal and include this memo: ${paypalMemo}`
 
         if (paymentMethod === 'Zelle') {
           paypalOption.classList.add('hidden')
@@ -465,6 +482,8 @@
         registrationNote.classList.add('hidden')
         modalFooter.classList.remove('hidden')
         submitRegistrationBtn.classList.add('hidden')
+        submitRegistrationBtn.disabled = false
+        submitRegistrationBtn.textContent = submitButtonDefaultText
         status.classList.add('hidden')
         successPanel.classList.remove('hidden')
 
@@ -477,6 +496,8 @@
       .catch((error) => {
         status.textContent = 'Something went wrong. Please try again.'
         status.className = 'mt-4 text-sm text-center text-red-700'
+        submitRegistrationBtn.disabled = false
+        submitRegistrationBtn.textContent = submitButtonDefaultText
         console.error(error)
       })
   })
