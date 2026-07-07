@@ -4,6 +4,7 @@
   class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-gray-300/75"
 >
   <div
+    data-modal-backdrop
     tabindex="0"
     class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0"
   >
@@ -28,9 +29,6 @@
 
         <input type="hidden" name="classTitle" id="form-class-title" />
         <input type="hidden" name="sessionDetails" id="form-session-details" />
-        <input type="hidden" name="sessionDate" id="form-session-date" />
-        <input type="hidden" name="sessionEndDate" id="form-session-end-date" />
-        <input type="hidden" name="classPrice" id="form-class-price" />
         <input type="hidden" name="paymentNote" id="form-payment-note" />
 
         <div class="px-6 py-6 sm:p-8">
@@ -127,7 +125,7 @@
               >
                 <input
                   type="radio"
-                  name="paymentMethod"
+                  name="registrationPaymentMethod"
                   value="Zelle"
                   checked
                   class="mt-1"
@@ -153,7 +151,7 @@
               >
                 <input
                   type="radio"
-                  name="paymentMethod"
+                  name="registrationPaymentMethod"
                   value="PayPal / Card"
                   class="mt-1"
                 />
@@ -198,26 +196,58 @@
 
           <div
             id="success-panel"
-            class="mt-6 hidden rounded-lg border border-purple/20 bg-purple/5 p-5 text-sm text-gray-700"
+            class="mt-6 hidden rounded-lg border border-purple/20 bg-purple/5 p-4 text-sm text-gray-700"
           >
-            <h3 class="text-base font-semibold text-gray-900">
+            <h3 class="text-lg font-semibold text-gray-900">
               Registration received
             </h3>
 
             <p
               id="success-class"
-              class="mt-3 text-base font-medium text-gray-900"
+              class="mt-3 text-base font-semibold text-gray-900"
             >
             </p>
-            <p id="success-session" class="mt-1"></p>
+            <p id="success-session" class="mt-1 text-base"></p>
 
-            <div class="mt-4 rounded-md border border-blue-200 bg-blue-50 p-4">
+            <div class="mt-4 border-t border-purple/20 pt-4">
+              <p class="text-sm font-semibold text-gray-900">Next steps</p>
+              <ol class="mt-3 space-y-3 text-sm text-gray-700">
+                <li>
+                  <span class="font-semibold text-gray-900">1.</span>
+                  Your registration details were submitted.
+                </li>
+                <li>
+                  <span class="font-semibold text-gray-900">2.</span>
+                  <span id="success-payment-instructions"></span>
+                  <span
+                    id="success-payment-memo"
+                    class="mt-1 block font-semibold text-gray-900"></span>
+                  <a
+                    id="success-paypal-link"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-2 hidden font-semibold text-purple hover:underline"
+                  >
+                    Open PayPal payment →
+                  </a>
+                </li>
+                <li>
+                  <span class="font-semibold text-gray-900">3.</span>
+                  You'll receive a confirmation email once payment has been received.
+                  If you don't receive confirmation within 24 hours, please contact
+                  us.
+                </li>
+              </ol>
+            </div>
+
+            <div class="mt-4 rounded-md border border-blue-200 bg-blue-50 p-3">
               <p class="text-sm font-medium text-gray-900">
-                Have a Meetup account?
+                Do you have a Meetup account?
               </p>
               <p class="mt-1 text-sm text-gray-700">
-                RSVP on Meetup to receive reminders and updates and join our
-                South Florida Actors community.
+                RSVP on Meetup and join the South Florida Actors community. This
+                is optional, but we appreciate seeing our community grow!
               </p>
 
               <a
@@ -230,21 +260,6 @@
                 RSVP on Meetup →
               </a>
             </div>
-
-            <div class="mt-4 space-y-2 border-t border-purple/20 pt-4">
-              <p>
-                We sent the registration details to <span
-                  id="success-email"
-                  class="font-semibold"></span>.
-              </p>
-              <p id="success-payment-instructions"></p>
-            </div>
-
-            <p class="mt-4 text-sm font-medium text-gray-900">
-              You'll receive a confirmation email upon receipt of payment. If
-              you don't receive a confirmation email within 24 hours, please
-              contact us.
-            </p>
           </div>
         </div>
 
@@ -284,6 +299,9 @@
   const modal = document.getElementById(
     'classRegistrationModal'
   ) as HTMLDialogElement
+  const modalBackdrop = document.querySelector(
+    '[data-modal-backdrop]'
+  ) as HTMLElement
 
   const closeBtn = document.getElementById('close-btn') as HTMLButtonElement
   const submitRegistrationBtn = document.getElementById(
@@ -310,28 +328,24 @@
   const successSession = document.getElementById(
     'success-session'
   ) as HTMLElement
-  const successEmail = document.getElementById('success-email') as HTMLElement
   const successMeetupLink = document.getElementById(
     'success-meetup-link'
   ) as HTMLAnchorElement
   const successPaymentInstructions = document.getElementById(
     'success-payment-instructions'
   ) as HTMLElement
+  const successPaymentMemo = document.getElementById(
+    'success-payment-memo'
+  ) as HTMLElement
+  const successPaypalLink = document.getElementById(
+    'success-paypal-link'
+  ) as HTMLAnchorElement
 
   const classTitleInput = document.getElementById(
     'form-class-title'
   ) as HTMLInputElement
   const sessionDetailsInput = document.getElementById(
     'form-session-details'
-  ) as HTMLInputElement
-  const sessionDateInput = document.getElementById(
-    'form-session-date'
-  ) as HTMLInputElement
-  const sessionEndDateInput = document.getElementById(
-    'form-session-end-date'
-  ) as HTMLInputElement
-  const classPriceInput = document.getElementById(
-    'form-class-price'
   ) as HTMLInputElement
   const paymentNoteInput = document.getElementById(
     'form-payment-note'
@@ -349,6 +363,7 @@
   const paypalLink = document.getElementById('paypal-link') as HTMLAnchorElement
 
   let activeClassData: TClassListing | null = null
+  let hasSubmittedSuccessfully = false
   const submitButtonDefaultText = submitRegistrationBtn.textContent || ''
 
   const getSessionDisplay = (classData: TClassListing) => {
@@ -367,10 +382,24 @@
     }
   }
 
+  const getPaymentMemo = (classData: TClassListing, studentName: string) => {
+    const session = getSessionDisplay(classData)
+    return `${classData.title} - ${session.displayDate} - ${studentName}`
+  }
+
+  const lockBodyScroll = () => {
+    document.body.classList.add('overflow-hidden')
+  }
+
+  const unlockBodyScroll = () => {
+    document.body.classList.remove('overflow-hidden')
+  }
+
   window.addEventListener('open-class-modal', (e: Event) => {
     const customEvent = e as CustomEvent<TClassListing>
     const classData = customEvent.detail
     activeClassData = classData
+    hasSubmittedSuccessfully = false
 
     const session = getSessionDisplay(classData)
 
@@ -385,15 +414,13 @@
 
     classTitleInput.value = classData.title
     sessionDetailsInput.value = session.sessionText
-    sessionDateInput.value = classData.date
-    sessionEndDateInput.value = classData.endDate || ''
-    classPriceInput.value = `$${classData.price}`
     paymentNoteInput.value = ''
 
     classSummary.classList.remove('hidden')
     status.classList.add('hidden')
     status.textContent = ''
     successPanel.classList.add('hidden')
+    successPaypalLink.classList.add('hidden')
     studentFields.classList.remove('hidden')
     paymentSection.classList.remove('hidden')
     paymentSectionHeading.classList.remove('hidden')
@@ -404,7 +431,9 @@
     submitRegistrationBtn.textContent = submitButtonDefaultText
 
     form
-      .querySelectorAll<HTMLInputElement>('input[name="paymentMethod"]')
+      .querySelectorAll<HTMLInputElement>(
+        'input[name="registrationPaymentMethod"]'
+      )
       .forEach((input) => {
         input.disabled = false
       })
@@ -412,31 +441,50 @@
     zelleOption.classList.remove('hidden')
     paypalOption.classList.remove('hidden')
     modal.showModal()
+    lockBodyScroll()
   })
 
   closeBtn.addEventListener('click', () => {
     modal.close()
   })
 
+  modal.addEventListener('close', () => {
+    unlockBodyScroll()
+  })
+
+  modalBackdrop.addEventListener('click', (e) => {
+    if (
+      e.target === modalBackdrop &&
+      !submitRegistrationBtn.disabled &&
+      !hasSubmittedSuccessfully
+    ) {
+      modal.close()
+    }
+  })
+
   form.addEventListener('submit', (e) => {
     e.preventDefault()
     if (!activeClassData) return
 
+    const paymentMethod = String(
+      form.querySelector<HTMLInputElement>(
+        'input[name="registrationPaymentMethod"]:checked'
+      )?.value || 'Zelle'
+    )
     const formData = new FormData(form)
-    const paymentMethod = String(formData.get('paymentMethod'))
-    const studentEmail = String(formData.get('studentEmail'))
-    const zelleMemo = zelleMemoPreview.textContent || ''
-    const paypalMemo = paypalMemoPreview.textContent || ''
+    const studentName = String(formData.get('studentName')).trim()
+    const memo = getPaymentMemo(activeClassData, studentName)
 
     paymentNoteInput.value =
       paymentMethod === 'Zelle'
-        ? `Student plans to pay with Zelle. Memo: ${zelleMemo}`
-        : `Student plans to pay with PayPal. Memo: ${paypalMemo}`
+        ? 'Student plans to pay with Zelle.'
+        : 'Student plans to pay with PayPal.'
 
     const data = new URLSearchParams()
     data.append('form-name', 'registration')
 
     for (const [key, value] of new FormData(form).entries()) {
+      if (key === 'registrationPaymentMethod') continue
       if (typeof value === 'string') {
         data.append(key, value)
       }
@@ -464,11 +512,13 @@
         successClass.textContent = activeClassData!.title
         successSession.textContent = session.sessionText
         successMeetupLink.href = activeClassData!.url
-        successEmail.textContent = studentEmail
         successPaymentInstructions.textContent =
           paymentMethod === 'Zelle'
-            ? `To confirm your spot, send payment by Zelle to sararogers147@gmail.com and include this memo: ${zelleMemo}`
-            : `To confirm your spot, open PayPal and include this memo: ${paypalMemo}`
+            ? 'To confirm your spot, send payment by Zelle to sararogers147@gmail.com.'
+            : 'To confirm your spot, open PayPal and complete payment.'
+        successPaymentMemo.textContent = `Memo: ${memo}`
+        successPaypalLink.href = paypalUrl
+        successPaypalLink.classList.toggle('hidden', paymentMethod === 'Zelle')
 
         if (paymentMethod === 'Zelle') {
           paypalOption.classList.add('hidden')
@@ -477,7 +527,7 @@
         }
 
         studentFields.classList.add('hidden')
-        paymentSection.classList.remove('hidden')
+        paymentSection.classList.add('hidden')
         paymentSectionHeading.classList.add('hidden')
         registrationNote.classList.add('hidden')
         modalFooter.classList.remove('hidden')
@@ -486,9 +536,12 @@
         submitRegistrationBtn.textContent = submitButtonDefaultText
         status.classList.add('hidden')
         successPanel.classList.remove('hidden')
+        hasSubmittedSuccessfully = true
 
         form
-          .querySelectorAll<HTMLInputElement>('input[name="paymentMethod"]')
+          .querySelectorAll<HTMLInputElement>(
+            'input[name="registrationPaymentMethod"]'
+          )
           .forEach((input) => {
             input.disabled = true
           })
