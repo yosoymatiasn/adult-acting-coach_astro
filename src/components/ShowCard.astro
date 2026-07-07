@@ -1,11 +1,12 @@
 ---
 import type { TShowcaseListing } from '../data/showcases'
 import Image from 'astro/components/Image.astro'
-import { formatDate } from '../helpers/listingHelpers'
+import { formatDate, formatTimeRange } from '../helpers/listingHelpers'
 
 const { showData } = Astro.props as { showData: TShowcaseListing }
 
-const { date, time } = formatDate(showData.date)
+const { date } = formatDate(showData.date)
+const timeRange = formatTimeRange(showData.date, showData.endDate)
 ---
 
 <div class="w-full border relative rounded-md overflow-hidden shadow-md">
@@ -39,7 +40,7 @@ const { date, time } = formatDate(showData.date)
       <p>
         <span class="font-semibold text-gray-800">{date}</span>
         <span class="mx-2 text-gray-400">•</span>
-        <span class="font-semibold text-gray-800">{time}</span>
+        <span class="font-semibold text-gray-800">{timeRange}</span>
       </p>
     </div>
 

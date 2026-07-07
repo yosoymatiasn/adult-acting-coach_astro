@@ -14,8 +14,6 @@ export type TClass = {
   dayOfWeek: 'Monday' | 'Wednesday' | 'Saturday'
 }
 
-export const classesWithShowcases = [8, 5]
-
 export const classes: TClass[] = [
   {
     slug: 'auditioning-for-camera',

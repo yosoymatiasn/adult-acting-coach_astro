@@ -1,7 +1,11 @@
 ---
 import type { TClassListing } from '../data/classes'
 import { sessions as classSessions } from '../data/classes/sessions'
-import { formatDate } from '../helpers/listingHelpers'
+import {
+  formatDate,
+  formatLongWeekday,
+  formatTimeRange,
+} from '../helpers/listingHelpers'
 
 const { classData } = Astro.props as { classData: TClassListing }
 
@@ -38,9 +42,8 @@ const getSessionBadge = (date: string) => {
           <div class="mt-4 space-y-3">
             {sessions.map((session) => {
               const formatted = formatDate(session.date)
-              const day = new Date(session.date).toLocaleDateString('en-US', {
-                weekday: 'long',
-              })
+              const day = formatLongWeekday(session.date)
+              const timeRange = formatTimeRange(session.date, session.endDate)
 
               return (
                 <div class="rounded-lg border border-gray-200 bg-white p-5 transition hover:border-purple hover:bg-purple/5 hover:shadow-sm">
@@ -53,9 +56,7 @@ const getSessionBadge = (date: string) => {
                       <p class="mt-2 text-sm font-medium text-gray-600">
                         {classData.type === 'class' ? classData.dayOfWeek : day}
                         <span class="mx-2 text-gray-400">•</span>
-                        {classData.type === 'class'
-                          ? '6:30–9:30 PM'
-                          : '12–3 PM'}
+                        {timeRange}
                       </p>
                     </div>
 
@@ -76,6 +77,7 @@ const getSessionBadge = (date: string) => {
                       data-class-type={classData.type}
                       data-class-day-of-week={classData.dayOfWeek}
                       data-session-date={session.date}
+                      data-session-end-date={session.endDate}
                       data-session-url={session.url}
                       data-class-price={classData.price}
                     >
@@ -134,6 +136,7 @@ const getSessionBadge = (date: string) => {
             type: button.dataset.classType,
             dayOfWeek: button.dataset.classDayOfWeek,
             date: button.dataset.sessionDate,
+            endDate: button.dataset.sessionEndDate,
             url: button.dataset.sessionUrl,
             price: Number(button.dataset.classPrice),
           },

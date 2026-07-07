@@ -1,14 +1,17 @@
 ---
 import type { TClassListing } from '../data/classes'
 import Image from 'astro/components/Image.astro'
-import { formatDate } from '../helpers/listingHelpers'
+import {
+  formatDate,
+  formatLongWeekday,
+  formatTimeRange,
+} from '../helpers/listingHelpers'
 
 const { classData } = Astro.props as { classData: TClassListing }
 
 const { date } = formatDate(classData.date)
-const weekday = new Date(classData.date).toLocaleDateString('en-US', {
-  weekday: 'long',
-})
+const weekday = formatLongWeekday(classData.date)
+const timeRange = formatTimeRange(classData.date, classData.endDate)
 ---
 
 <div
@@ -16,6 +19,7 @@ const weekday = new Date(classData.date).toLocaleDateString('en-US', {
   data-class-title={classData.title}
   data-class-slug={classData.slug}
   data-class-date={classData.date}
+  data-class-end-date={classData.endDate}
   data-class-url={classData.url}
   data-class-day-of-week={classData.dayOfWeek}
   data-class-type={classData.type}
@@ -59,14 +63,14 @@ const weekday = new Date(classData.date).toLocaleDateString('en-US', {
             <p>
               <span class="font-semibold text-gray-800">{weekday}s</span>
               <span class="mx-2 text-gray-400">•</span>
-              <span class="font-semibold text-gray-800">6:30–9:30 PM</span>
+              <span class="font-semibold text-gray-800">{timeRange}</span>
             </p>
           </>
         ) : (
           <p>
             <span class="font-semibold text-gray-800">{weekday}</span>
             <span class="mx-2 text-gray-400">•</span>
-            <span class="font-semibold text-gray-800">12–3 PM</span>
+            <span class="font-semibold text-gray-800">{timeRange}</span>
           </p>
         )
       }
@@ -136,6 +140,7 @@ const weekday = new Date(classData.date).toLocaleDateString('en-US', {
             type: card.getAttribute('data-class-type'),
             dayOfWeek: card.getAttribute('data-class-day-of-week'),
             date: card.getAttribute('data-class-date'),
+            endDate: card.getAttribute('data-class-end-date'),
             url: card.getAttribute('data-class-url'),
             price: Number(card.getAttribute('data-class-price')),
           },

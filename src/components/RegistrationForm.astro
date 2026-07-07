@@ -272,7 +272,11 @@
 
 <script>
   import { paypalUrl, type TClassListing } from '../data/classes'
-  import { formatDate } from '../helpers/listingHelpers'
+  import {
+    formatDate,
+    formatLongWeekday,
+    formatTimeRange,
+  } from '../helpers/listingHelpers'
 
   const modal = document.getElementById(
     'classRegistrationModal'
@@ -342,11 +346,9 @@
 
   const getSessionDisplay = (classData: TClassListing) => {
     const formatted = formatDate(classData.date)
-    const day = new Date(classData.date).toLocaleDateString('en-US', {
-      weekday: 'long',
-    })
+    const day = formatLongWeekday(classData.date)
 
-    const timeRange = classData.type === 'class' ? '6:30–9:30 PM' : '12–3 PM'
+    const timeRange = formatTimeRange(classData.date, classData.endDate)
     const displayDay = classData.type === 'class' ? classData.dayOfWeek : day
     const displayDate = formatted.date.replace(/^[A-Za-z]{3},\s/, '')
 
