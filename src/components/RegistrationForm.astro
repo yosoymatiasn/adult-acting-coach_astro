@@ -27,6 +27,11 @@
           </label>
         </p>
 
+        <input
+          type="hidden"
+          name="registrationSummary"
+          id="form-registration-summary"
+        />
         <input type="hidden" name="classTitle" id="form-class-title" />
         <input type="hidden" name="classSession" id="form-session-details" />
         <input type="hidden" name="paymentNote" id="form-payment-note" />
@@ -341,6 +346,9 @@
     'success-paypal-link'
   ) as HTMLAnchorElement
 
+  const registrationSummaryInput = document.getElementById(
+    'form-registration-summary'
+  ) as HTMLInputElement
   const classTitleInput = document.getElementById(
     'form-class-title'
   ) as HTMLInputElement
@@ -436,6 +444,7 @@
 
     classTitleInput.value = classData.title
     sessionDetailsInput.value = session.sessionText
+    registrationSummaryInput.value = ''
     paymentNoteInput.value = ''
 
     classSummary.classList.remove('hidden')
@@ -488,7 +497,9 @@
     const formData = new FormData(form)
     const studentName = String(formData.get('studentName')).trim()
     const memo = getPaymentMemo(activeClassData, studentName)
+    const session = getSessionDisplay(activeClassData)
 
+    registrationSummaryInput.value = `${studentName} registered for ${activeClassData.title}, ${session.displayDate}.`
     paymentNoteInput.value =
       paymentMethod === 'Zelle'
         ? 'Student plans to pay with Zelle.'
