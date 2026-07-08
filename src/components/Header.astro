@@ -5,17 +5,18 @@ import Image from 'astro/components/Image.astro'
 import logo from '../assets/images/logo.png'
 ---
 
-<header
-  class="fixed top-0 z-50 w-full bg-transparent py-4"
->
+<header class="fixed top-0 z-50 w-full bg-transparent py-4">
   <div class="container mx-auto flex items-center justify-between px-4">
-    <a href="/" class="flex items-center rounded-full md:hidden">
+    <a
+      href="/"
+      class="flex h-12 w-12 items-center justify-center rounded-full bg-white p-2 ring-1 ring-purple/15 md:hidden"
+    >
       <Image
         src={logo}
         alt="Logo"
         width="56"
         height="56"
-        class="h-12 w-12 rounded-full bg-white object-contain p-1 ring-1 ring-purple/15"
+        class="h-full w-full object-contain"
         loading="eager"
       />
     </a>
@@ -27,14 +28,14 @@ import logo from '../assets/images/logo.png'
       <!-- Logo -->
       <a
         href="/"
-        class="flex shrink-0 items-center gap-2 rounded-full transition-opacity hover:opacity-80"
+        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white p-2 ring-1 ring-purple/15 transition-opacity hover:opacity-80 lg:h-16 lg:w-16 lg:p-2.5"
       >
         <Image
           src={logo}
           alt="Logo"
           width="80"
           height="80"
-          class="h-14 w-14 rounded-full bg-white object-contain p-1 ring-1 ring-purple/15 lg:h-16 lg:w-16"
+          class="h-full w-full object-contain"
           loading="eager"
         />
       </a>
@@ -60,17 +61,11 @@ import logo from '../assets/images/logo.png'
       class="relative z-50 ml-auto flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-md border border-purple/20 bg-white text-purple shadow-sm md:hidden"
       aria-label="Toggle menu"
     >
-      <span
-        id="bar1"
-        class="h-0.5 w-6 rounded-sm bg-purple transition-all"
+      <span id="bar1" class="h-0.5 w-6 rounded-sm bg-purple transition-all"
       ></span>
-      <span
-        id="bar2"
-        class="h-0.5 w-6 rounded-sm bg-purple transition-all"
+      <span id="bar2" class="h-0.5 w-6 rounded-sm bg-purple transition-all"
       ></span>
-      <span
-        id="bar3"
-        class="h-0.5 w-6 rounded-sm bg-purple transition-all"
+      <span id="bar3" class="h-0.5 w-6 rounded-sm bg-purple transition-all"
       ></span>
     </button>
   </div>

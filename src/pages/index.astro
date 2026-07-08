@@ -2,9 +2,11 @@
 import HomeLayout from '../layouts/HomeLayout.astro'
 import ContactForm from '../components/ContactForm.astro'
 import YoutubeEmbed from '../components/YoutubeEmbed.astro'
-import Section from '../components/Home/Section.astro'
 import Image from 'astro/components/Image.astro'
 import logo from '../assets/images/logo.png'
+import classImage from '../assets/images/class.jpeg'
+import brandingImage from '../assets/images/branding.jpeg'
+import saraImage from '../assets/images/sara.png'
 import type { Metadata } from '../utils/seo'
 
 const meta: Metadata = {
@@ -16,193 +18,249 @@ const meta: Metadata = {
 ---
 
 <HomeLayout meta={meta}>
-  <div class="flex flex-col gap-2 items-center">
+  <section class="bg-white">
     <div
-      class="relative h-64 md:h-[500px] w-full border bg-purple bg-[url('../assets/images/group.jpeg')] bg-blend-screen bg-no-repeat min-[114rem]:h-[600px] min-[114rem]:bg-position-[center_top_-10rem] bg-cover flex"
+      class="h-72 w-full bg-purple bg-[linear-gradient(to_bottom,rgba(127,26,127,0.45),rgba(127,26,127,0.18)),url('../assets/images/group.jpeg')] bg-cover bg-top bg-no-repeat md:h-[500px] min-[114rem]:h-[600px] min-[114rem]:bg-position-[center_top_-10rem]"
     >
+    </div>
+
+    <div class="relative flex justify-center bg-white px-4">
       <div
-        class="absolute bg-white/100 shadow-lg max-w-48 md:max-w-none rounded-3xl border-purple border-8 p-10 bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
+        class="-mt-9 inline-flex items-center gap-4 rounded-full border border-purple/15 bg-white py-3 pl-4 pr-8 text-purple shadow-xl shadow-purple/10 md:-mt-10"
       >
-        <Image loading="eager" src={logo} alt="logo" width={180} height={180} />
+        <span
+          class="flex h-14 w-14 items-center justify-center rounded-full bg-white md:h-16 md:w-16"
+        >
+          <Image
+            loading="eager"
+            src={logo}
+            alt="Sara Rogers logo"
+            width={80}
+            height={80}
+            class="h-full w-full object-contain"
+          />
+        </span>
+        <span class="h-10 w-px bg-purple/20 md:h-12"></span>
+        <span class="text-lg font-semibold uppercase tracking-wide md:text-xl">
+          Sara Rogers
+        </span>
       </div>
     </div>
-  </div>
 
-  <!-- Hero text -->
-  <Section>
-    <div class="flex gap-4 mt-16 md:mt-24 px-4 md:px-0">
+    <div
+      class="mx-auto flex max-w-5xl flex-col items-center px-4 pb-12 pt-10 text-center md:pb-16 md:pt-12"
+    >
+      <h1 class="max-w-4xl text-4xl font-bold text-gray-950 md:text-6xl">
+        Adult acting classes, coaching, and self-tape support.
+      </h1>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-gray-700 md:text-2xl">
+        Sara Rogers shares many years of personal experience in the business
+        with students who want to study, take risks, and grow in a safe and
+        judgment-free environment.
+      </p>
       <div
-        class="mt-8 w-full max-w-4xl [&>p]:text-2xl md:[&>p]:text-3xl text-center font-thin tracking-wide flex flex-col gap-4"
+        class="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row"
       >
-        <p>
-          With many years of personal experience in the business and after
-          studying Stanislavsky, Uta Hagen, Stella Adler, Sanford Meisner and
-          Viola Spolins acting and improvisation methods it is my honor to share
-          my expertise and experience including all these many methods with my
-          students.
-        </p>
-        <p>
-          Using my vast experience and studies I find what works for each
-          individual student, getting the actor that is lurking within, out into
-          the open.
-        </p>
-      </div>
-    </div>
-  </Section>
-
-  <!-- Recognition -->
-  <Section>
-    <div
-      class="w-full max-w-4xl rounded-lg border border-purple/20 bg-white px-6 py-8 text-center shadow-lg shadow-purple/10"
-    >
-      <p class="text-sm font-semibold uppercase tracking-wide text-purple">
-        Award-winning coach
-      </p>
-      <h1 class="mt-2 text-purple">Recognized by ArtServe</h1>
-      <p class="mx-auto max-w-3xl text-gray-700">
-        Sara has been honored with a Lifetime Achievement Award, along with
-        other acknowledgements celebrating her work and contributions in South
-        Florida&apos;s arts community.
-      </p>
-      <a href="/about" class="sr-link inline-block w-auto"> About Sara </a>
-    </div>
-  </Section>
-
-  <!-- Intro video -->
-  <Section>
-    <h1>Meet Sara Rogers</h1>
-    <div class="w-full md:mx-0 md:w-[700px] border-8 border-purple">
-      <YoutubeEmbed id={'5vBuGrKUNmM'} />
-    </div>
-    <a href={'/about'} class="sr-link"> Learn more </a>
-  </Section>
-
-  <!-- About classes -->
-  <Section>
-    <h1>About the classes</h1>
-    <div class="max-w-4xl flex flex-col gap-4 text-center">
-      <p>
-        The method in which you learn is the method that is taught in class.
-        Each individual learns at a different pace and is taught in a way that
-        makes the technique clear for them,all in a safe and judgement free
-        environment. You get to risk and create your work as you grow.
-      </p>
-      <p>
-        Once you step into class you will quickly realize we are collaborators
-        working together for the common good of the group and sometimes for the
-        performance. Whether it is in scenes, camera work, improvisation or
-        learning monologues, we as artists learn to support each other, because
-        a team effort is always stronger than an individuals&apos;.
-      </p>
-      <p class="font-bold">You are not alone in your quest.</p>
-      <a href="/classes" class="sr-link"> View class schedule </a>
-    </div>
-  </Section>
-
-  <!-- Branding -->
-  <Section>
-    <div
-      class="bg-purple text-white border-double border-8 border-white text-center rounded-lg p-8"
-    >
-      <h1 class="text-white">Building Your Brand</h1>
-      <div class="max-w-4xl flex flex-col gap-4 text-center">
-        <p>
-          Sara&apos;s <span class="font-bold">one-on-one</span> course, Building
-          Your Brand, is a private, personalized, intense course that will help you
-          to set goals and design an action plan tailored specifically to you. It
-          is designed for both the beginner and seasoned performer.
-        </p>
-        <p>This is a wonderful investment for you on your journey.</p>
-
-        <a href="/building-your-brand" class="sr-link"> Learn more </a>
-      </div>
-    </div>
-  </Section>
-
-  <!-- Public speaking -->
-  <Section>
-    <div
-      class="bg-gray-100 p-8 rounded-lg shadow-lg shadow-purple/10 border-purple/10 border text-center"
-    >
-      <h1 class="text-purple text-3xl font-bold mb-4">Public Speaking</h1>
-      <div class="max-w-4xl flex flex-col gap-4 text-center">
-        <p class="text-gray-700">
-          Enhance your communication skills with our{' '}
-          <span class="font-bold">
-            4-week corporate public speaking program.
-          </span>{' '}
-          Gain confidence, improve presentation skills, and speak with impact in
-          any professional setting.
-        </p>
-        <p class="mt-2 text-gray-600">
-          Perfect for professionals, executives, and customer-facing employees
-          who want to master public speaking.
-        </p>
-        <a href="/public-speaking" class="sr-link"> Learn more </a>
-      </div>
-    </div>
-  </Section>
-
-  <!-- Privates and more -->
-  <Section>
-    <div
-      class="max-w-4xl flex flex-col gap-4 text-center [&>p]:text-2xl md:[&>p]:text-3xl"
-    >
-      <p>
-        In addition to classes, Sara provides private coaching and offers{' '}
-        <a href={'/self-tapes'} class="underline text-purple">
-          professional self-taping services.
+        <a href="/classes" class="sr-link mt-0 w-full max-w-none sm:w-auto">
+          View Classes
         </a>
-      </p>
-      <p>
-        Feel free to reach out for more information on rates and to schedule
-        your sessions.
-      </p>
-    </div>
-  </Section>
-
-  <!-- Testimonial carousel -->
-  <!-- <Section className="mt-20 py-10 bg-purple/10 border-y border-purple/20">
-    <div className="max-w-3xl w-full">
-      <Carousel />{" "}
-    </div>
-  </Section> -->
-
-  <!-- Meetup -->
-  <Section>
-    <h1>Join the community</h1>
-    <div class="max-w-4xl flex flex-col gap-4 text-center">
-      <p>
-        If you would like to be reminded of upcoming classes and events, join
-        Sara&apos;s community on Meetup.com. She also sends out occasional
-        audition opportunities when they come her way.
-      </p>
-      <p>
-        This is a great way to stay connected. Keep an eye out for{' '}
-        <a href={'/showcases'} class="text-purple underline">
-          student showcases
+        <a
+          href="/contact"
+          class="mt-0 w-full max-w-none rounded-md border-4 border-purple px-4 py-4 text-center text-xl font-semibold text-purple transition-colors hover:bg-purple/10 md:px-8 md:text-3xl sm:w-auto"
+        >
+          Contact Sara
         </a>
-        , guest classes, and more!
-      </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-50 px-4 py-14 md:py-20">
+    <div class="mx-auto grid max-w-6xl gap-5 md:grid-cols-3">
+      <a
+        href="/classes"
+        class="group overflow-hidden rounded-lg border border-purple/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+      >
+        <Image
+          src={classImage}
+          alt="Students working in acting class"
+          class="h-48 w-full object-cover object-center"
+          width={640}
+          height={420}
+        />
+        <div class="p-6">
+          <h2 class="mb-2 text-2xl text-purple">Classes</h2>
+          <p class="text-base leading-7 text-gray-700 md:text-lg">
+            Year-round adult classes and workshops in monologues, scenes, cold
+            reading, camera work, improvisation, and more.
+          </p>
+          <p class="mt-4 text-lg font-semibold text-purple">See schedule</p>
+        </div>
+      </a>
 
       <a
-        href="https://www.meetup.com/South-Florida-Actors/"
-        target="_blank"
-        class="sr-link"
+        href="/building-your-brand"
+        class="group overflow-hidden rounded-lg border border-purple/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
       >
-        South Florida Actors
+        <Image
+          src={brandingImage}
+          alt="Private coaching and personal brand work"
+          class="h-48 w-full object-cover object-center"
+          width={640}
+          height={420}
+        />
+        <div class="p-6">
+          <h2 class="mb-2 text-2xl text-purple">Private Coaching</h2>
+          <p class="text-base leading-7 text-gray-700 md:text-lg">
+            One-on-one coaching for actors, performers, and models who want to
+            set goals, build confidence, and create a plan for their work.
+          </p>
+          <p class="mt-4 text-lg font-semibold text-purple">Explore coaching</p>
+        </div>
+      </a>
+
+      <a
+        href="/public-speaking"
+        class="group overflow-hidden rounded-lg border border-purple/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+      >
+        <Image
+          src={saraImage}
+          alt="Sara Rogers coaching performers"
+          class="h-48 w-full object-cover object-top"
+          width={640}
+          height={420}
+        />
+        <div class="p-6">
+          <h2 class="mb-2 text-2xl text-purple">Public Speaking</h2>
+          <p class="text-base leading-7 text-gray-700 md:text-lg">
+            Coaching for individuals and teams who want to speak clearly, feel
+            more confident, and bring presence into professional settings.
+          </p>
+          <p class="mt-4 text-lg font-semibold text-purple">Learn more</p>
+        </div>
       </a>
     </div>
-  </Section>
+  </section>
 
-  <!-- Contact -->
-  <Section>
-    <!-- <div class="max-w-2xl"> -->
-    <ContactForm />
-    <!-- </div> -->
-  </Section>
+  <section class="bg-white px-4 py-14 md:py-20">
+    <div
+      class="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1fr_1.1fr]"
+    >
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+          About Sara
+        </p>
+        <h2 class="mt-2 text-3xl font-bold text-gray-950 md:text-5xl">
+          Sara meets each student where they are.
+        </h2>
+        <div
+          class="mt-5 flex flex-col gap-4 text-lg leading-8 text-gray-700 md:text-xl"
+        >
+          <p>
+            After studying Stanislavsky, Uta Hagen, Stella Adler, Sanford
+            Meisner, and Viola Spolin, Sara brings many methods into the room
+            and finds what works for each individual student.
+          </p>
+          <p>
+            Once you step into class, you will quickly realize you are not alone
+            in your quest. Students work together, support each other, and
+            create in a safe place.
+          </p>
+        </div>
+        <a href="/about" class="sr-link inline-block w-auto">About Sara</a>
+      </div>
+
+      <div class="rounded-lg border border-purple/20 bg-purple/5 p-6 md:p-8">
+        <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+          Recognition
+        </p>
+        <h3 class="mt-2 text-3xl text-gray-950">Recognized by ArtServe</h3>
+        <p class="text-lg leading-8 text-gray-700 md:text-xl">
+          Sara has been honored with a Lifetime Achievement Award, along with
+          other awards celebrating her work and contributions in South
+          Florida&apos;s arts community.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-50 px-4 py-14 md:py-20">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+          Meet Sara Rogers
+        </p>
+        <h2 class="mt-2 text-3xl font-bold text-gray-950 md:text-5xl">
+          Meet Sara Rogers.
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-gray-700 md:text-xl">
+          Hear from Sara and get a feel for the care, experience, and humor she
+          brings to her students and her work.
+        </p>
+        <a href="/testimonials" class="sr-link inline-block w-auto">
+          Read testimonials
+        </a>
+      </div>
+
+      <div class="overflow-hidden rounded-lg border-8 border-purple bg-purple">
+        <YoutubeEmbed id={'5vBuGrKUNmM'} />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white px-4 py-14 md:py-20">
+    <div class="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
+      <div class="rounded-lg border border-purple/10 bg-gray-50 p-6 md:p-8">
+        <h2 class="text-3xl text-gray-950">Self-Tapes</h2>
+        <p class="text-lg leading-8 text-gray-700 md:text-xl">
+          Sara offers professional self-taping services for actors who need help
+          preparing and recording auditions and submissions.
+        </p>
+        <a
+          href="/self-tapes"
+          class="mt-5 inline-block text-xl font-semibold text-purple"
+        >
+          Self-tape services
+        </a>
+      </div>
+
+      <div class="rounded-lg border border-purple/10 bg-gray-50 p-6 md:p-8">
+        <h2 class="text-3xl text-gray-950">Showcases and Community</h2>
+        <p class="text-lg leading-8 text-gray-700 md:text-xl">
+          Stay connected through Meetup, student showcases, guest classes, and
+          occasional audition opportunities when they come Sara&apos;s way.
+        </p>
+        <div class="mt-5 flex flex-col gap-2 text-xl font-semibold text-purple">
+          <a href="/showcases">Student showcases</a>
+          <a
+            href="https://www.meetup.com/South-Florida-Actors/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            South Florida Actors on Meetup
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-purple px-4 py-14 text-white md:py-20">
+    <div
+      class="mx-auto grid max-w-6xl items-start gap-10 md:grid-cols-[0.9fr_1.1fr]"
+    >
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-white/80">
+          Get started
+        </p>
+        <h2 class="mt-2 text-3xl font-bold text-white md:text-5xl">
+          Have a question for Sara?
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-white/90 md:text-xl">
+          Reach out for more information on classes, private coaching,
+          self-tapes, rates, or scheduling.
+        </p>
+      </div>
+
+      <ContactForm />
+    </div>
+  </section>
 </HomeLayout>
-
-<!-- <div class="max-w-6xl w-full mx-auto">
-    <YoutubeEmbed url="https://www.youtube.com/watch?v=5vBuGrKUNmM" />
-  </div> -->
