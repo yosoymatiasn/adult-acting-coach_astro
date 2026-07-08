@@ -8,6 +8,7 @@
   id="contact-form"
 >
   <input type="hidden" name="form-name" value="contact" />
+  <input type="hidden" name="summary" id="contact-summary" />
 
   <p class="hidden">
     <label>
@@ -20,13 +21,14 @@
     Send a message
   </h1>
 
-  <label for="fullname" class="text-gray-500 font-light mt-8">
+  <label for="fullName" class="text-gray-500 font-light mt-8">
     Full name <span class="text-red-500">*</span>
   </label>
   <input
     required
+    id="fullName"
     type="text"
-    name="fullname"
+    name="fullName"
     class="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-purple font-light text-gray-500"
   />
 
@@ -84,9 +86,15 @@
 
     const formData = new FormData(form)
     const data = new URLSearchParams()
+    const summaryInput = document.getElementById(
+      'contact-summary'
+    ) as HTMLInputElement
+    const fullName = String(formData.get('fullName')).trim()
+
+    summaryInput.value = `New message from ${fullName}.`
 
     data.append('form-name', 'contact')
-    for (const [key, value] of formData.entries()) {
+    for (const [key, value] of new FormData(form).entries()) {
       if (typeof value === 'string') {
         data.append(key, value)
       }

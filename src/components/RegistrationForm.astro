@@ -27,11 +27,7 @@
           </label>
         </p>
 
-        <input
-          type="hidden"
-          name="registrationSummary"
-          id="form-registration-summary"
-        />
+        <input type="hidden" name="summary" id="form-registration-summary" />
         <input type="hidden" name="classTitle" id="form-class-title" />
         <input type="hidden" name="classSession" id="form-session-details" />
         <input type="hidden" name="paymentNote" id="form-payment-note" />
@@ -413,8 +409,8 @@
   }
 
   const getSelectedPaymentMethod = () =>
-    paymentMethodInputs.find((input) => input.checked)?.dataset
-      .paymentMethod || 'Zelle'
+    paymentMethodInputs.find((input) => input.checked)?.dataset.paymentMethod ||
+    'Zelle'
 
   paymentMethodInputs.forEach((input) => {
     input.addEventListener('change', () => {
