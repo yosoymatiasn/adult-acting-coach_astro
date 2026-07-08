@@ -28,7 +28,7 @@
         </p>
 
         <input type="hidden" name="classTitle" id="form-class-title" />
-        <input type="hidden" name="sessionDetails" id="form-session-details" />
+        <input type="hidden" name="classSession" id="form-session-details" />
         <input type="hidden" name="paymentNote" id="form-payment-note" />
 
         <div class="px-6 py-6 sm:p-8">
@@ -125,7 +125,7 @@
               >
                 <input
                   type="radio"
-                  name="registrationPaymentMethod"
+                  data-payment-method="Zelle"
                   value="Zelle"
                   checked
                   class="mt-1"
@@ -151,7 +151,7 @@
               >
                 <input
                   type="radio"
-                  name="registrationPaymentMethod"
+                  data-payment-method="PayPal / Card"
                   value="PayPal / Card"
                   class="mt-1"
                 />
@@ -361,6 +361,9 @@
     'paypal-memo-preview'
   ) as HTMLElement
   const paypalLink = document.getElementById('paypal-link') as HTMLAnchorElement
+  const paymentMethodInputs = Array.from(
+    form.querySelectorAll<HTMLInputElement>('input[data-payment-method]')
+  )
 
   let activeClassData: TClassListing | null = null
   let hasSubmittedSuccessfully = false
@@ -395,6 +398,24 @@
     document.body.classList.remove('overflow-hidden')
   }
 
+  const setPaymentMethod = (method: string) => {
+    paymentMethodInputs.forEach((input) => {
+      input.checked = input.dataset.paymentMethod === method
+    })
+  }
+
+  const getSelectedPaymentMethod = () =>
+    paymentMethodInputs.find((input) => input.checked)?.dataset
+      .paymentMethod || 'Zelle'
+
+  paymentMethodInputs.forEach((input) => {
+    input.addEventListener('change', () => {
+      if (input.checked) {
+        setPaymentMethod(input.dataset.paymentMethod || 'Zelle')
+      }
+    })
+  })
+
   window.addEventListener('open-class-modal', (e: Event) => {
     const customEvent = e as CustomEvent<TClassListing>
     const classData = customEvent.detail
@@ -411,6 +432,7 @@
     paypalLink.href = paypalUrl
 
     form.reset()
+    setPaymentMethod('Zelle')
 
     classTitleInput.value = classData.title
     sessionDetailsInput.value = session.sessionText
@@ -430,13 +452,9 @@
     submitRegistrationBtn.disabled = false
     submitRegistrationBtn.textContent = submitButtonDefaultText
 
-    form
-      .querySelectorAll<HTMLInputElement>(
-        'input[name="registrationPaymentMethod"]'
-      )
-      .forEach((input) => {
-        input.disabled = false
-      })
+    paymentMethodInputs.forEach((input) => {
+      input.disabled = false
+    })
 
     zelleOption.classList.remove('hidden')
     paypalOption.classList.remove('hidden')
@@ -466,11 +484,7 @@
     e.preventDefault()
     if (!activeClassData) return
 
-    const paymentMethod = String(
-      form.querySelector<HTMLInputElement>(
-        'input[name="registrationPaymentMethod"]:checked'
-      )?.value || 'Zelle'
-    )
+    const paymentMethod = getSelectedPaymentMethod()
     const formData = new FormData(form)
     const studentName = String(formData.get('studentName')).trim()
     const memo = getPaymentMemo(activeClassData, studentName)
@@ -484,7 +498,6 @@
     data.append('form-name', 'registration')
 
     for (const [key, value] of new FormData(form).entries()) {
-      if (key === 'registrationPaymentMethod') continue
       if (typeof value === 'string') {
         data.append(key, value)
       }
@@ -538,13 +551,9 @@
         successPanel.classList.remove('hidden')
         hasSubmittedSuccessfully = true
 
-        form
-          .querySelectorAll<HTMLInputElement>(
-            'input[name="registrationPaymentMethod"]'
-          )
-          .forEach((input) => {
-            input.disabled = true
-          })
+        paymentMethodInputs.forEach((input) => {
+          input.disabled = true
+        })
       })
       .catch((error) => {
         status.textContent = 'Something went wrong. Please try again.'
