@@ -1,7 +1,7 @@
 ---
 export const prerender = false
 
-import BaseLayout from '../layouts/BaseLayout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
 import ShowList from '../components/ShowList.astro'
 import type { Metadata } from '../utils/seo'
 import PageIntro from '../components/PageIntro.astro'
@@ -14,15 +14,34 @@ const meta: Metadata = {
 }
 ---
 
-<BaseLayout meta={meta} title="Showcases">
+<PageLayout meta={meta}>
   <PageIntro
     eyebrow="Student performances"
     title="Showcases"
-    description="Support Sara's students as they bring their work to the stage."
+    description="Support Sara's students as they bring monologues, scenes, improv, and class work to an audience."
   />
+
   <div
     class="mt-12 grid md:grid-cols-2 items-start gap-y-2 md:gap-x-4 lg:gap-x-6 md:gap-y-3 lg:gap-y-6 md:auto-rows-fr"
   >
     <ShowList />
   </div>
-</BaseLayout>
+
+  <section
+    class="mx-auto mt-12 max-w-4xl rounded-lg bg-purple px-6 py-8 text-center text-white"
+  >
+    <h2 class="text-3xl text-white">Want event reminders?</h2>
+    <p class="mx-auto max-w-2xl text-lg leading-8 text-white/90 md:text-xl">
+      Join the South Florida Actors Meetup group for showcase announcements,
+      guest classes, and community updates.
+    </p>
+    <a
+      href="https://www.meetup.com/South-Florida-Actors/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-5 inline-block rounded-md border-4 border-white bg-white px-6 py-3 text-xl font-semibold text-purple transition-colors hover:bg-purple hover:text-white"
+    >
+      View Meetup
+    </a>
+  </section>
+</PageLayout>

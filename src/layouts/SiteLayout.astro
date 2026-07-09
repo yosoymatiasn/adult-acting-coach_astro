@@ -4,12 +4,24 @@ import Header from '../components/Header.astro'
 import '../styles/global.css'
 import { type Metadata, defaultMeta } from '../utils/seo'
 
-const meta: Metadata = {
-  ...defaultMeta,
-  ...Astro.props.meta,
+interface Props {
+  meta?: Partial<Metadata>
+  footerSpacious?: boolean
+  footerBordered?: boolean
 }
 
-const { title, description, url } = meta
+const {
+  meta: pageMeta = {},
+  footerSpacious = true,
+  footerBordered = true,
+}: Props = Astro.props
+
+const meta: Metadata = {
+  ...defaultMeta,
+  ...pageMeta,
+}
+
+const { title, description, url, image, imageAlt } = meta
 ---
 
 <!doctype html>
@@ -31,7 +43,13 @@ const { title, description, url } = meta
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={url} />
-    <meta property="og:image" content={meta.image} />
+    <meta property="og:image" content={image} />
+    {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RT57N46M2P"
@@ -48,13 +66,12 @@ const { title, description, url } = meta
   </head>
 
   <body class="bg-gray-50 text-gray-900">
-    <!-- <Header /> -->
     <Header />
 
     <main class="min-h-screen">
       <slot />
     </main>
 
-    <Footer />
+    <Footer spacious={footerSpacious} bordered={footerBordered} />
   </body>
 </html>

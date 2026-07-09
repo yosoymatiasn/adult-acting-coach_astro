@@ -1,18 +1,18 @@
 ---
 import ContactForm from '../components/ContactForm.astro'
-import BaseLayout from '../layouts/BaseLayout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
 import type { Metadata } from '../utils/seo'
 import PageIntro from '../components/PageIntro.astro'
 
 const meta: Metadata = {
-  title: 'Contact | Sara Rogers',
+  title: 'Contact | Sara Rogers Acting',
   description:
     'Ready to embark on a transformative journey? Reach out to Sara Rogers and take the first step toward unlocking your potential in acting and public speaking.',
   url: 'https://adultactingcoach.com/contact',
 }
 ---
 
-<BaseLayout meta={meta} title="Contact">
+<PageLayout meta={meta}>
   <div class="flex flex-col">
     <PageIntro
       title="Contact Sara"
@@ -22,4 +22,4 @@ const meta: Metadata = {
       <ContactForm />
     </div>
   </div>
-</BaseLayout>
+</PageLayout>

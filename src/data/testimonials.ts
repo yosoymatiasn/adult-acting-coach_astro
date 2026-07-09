@@ -1,11 +1,27 @@
+export type TestimonialImageKey =
+  | 'ashley'
+  | 'beth'
+  | 'betty'
+  | 'carlos'
+  | 'chappell'
+  | 'diane'
+  | 'jo'
+  | 'jonathan'
+  | 'matias'
+  | 'michael'
+  | 'wendy'
+
 export interface Testimonial {
-  text?: string
-  name?: string
-  imgSrc?: string
-  youtubeId?: string
+  text: string
+  name: string
+  imgSrc: TestimonialImageKey
 }
 
-export const brandingTestimonials: Pick<Testimonial, 'youtubeId'>[] = [
+export interface VideoTestimonial {
+  youtubeId: string
+}
+
+export const brandingTestimonials: VideoTestimonial[] = [
   {
     youtubeId: '0twAS2yVIOY',
   },
@@ -78,7 +94,7 @@ export const testimonials: Testimonial[] = [
   },
 ]
 
-export const quickTestimonials = [
+export const quickTestimonials: Testimonial[] = [
   {
     text: 'I have taken other acting classes, but Sara really cares about your success. She wants to see you succeed and will provide guidance. Sara Rogers is one of the best coaches you will ever meet.',
     name: 'Ashley H.',

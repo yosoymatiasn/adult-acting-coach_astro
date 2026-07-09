@@ -1,10 +1,10 @@
 ---
 import YoutubeEmbed from '../components/YoutubeEmbed.astro'
-import BaseLayout from '../layouts/BaseLayout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
 import type { Metadata } from '../utils/seo'
 
 const meta: Metadata = {
-  title: 'Public Speaking | Sara Rogers',
+  title: 'Public Speaking | Sara Rogers Acting',
   description:
     'Empower yourself or your team with professional public speaking training. Overcome anxiety, engage audiences, and improve communication skills in 4 weeks.',
   url: 'https://adultactingcoach.com/public-speaking',
@@ -35,7 +35,7 @@ const audiences = [
 ]
 ---
 
-<BaseLayout meta={meta} title="Public Speaking">
+<PageLayout meta={meta}>
   <div class="mx-auto flex max-w-5xl flex-col gap-14">
     <section class="mx-auto max-w-4xl pt-28 text-center md:pt-36">
       <h1>Public Speaking Training for Teams</h1>
@@ -152,4 +152,4 @@ const audiences = [
       </a>
     </section>
   </div>
-</BaseLayout>
+</PageLayout>

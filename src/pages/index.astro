@@ -1,5 +1,5 @@
 ---
-import HomeLayout from '../layouts/HomeLayout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
 import ContactForm from '../components/ContactForm.astro'
 import YoutubeEmbed from '../components/YoutubeEmbed.astro'
 import Image from 'astro/components/Image.astro'
@@ -17,15 +17,16 @@ const meta: Metadata = {
 }
 ---
 
-<HomeLayout meta={meta}>
+<PageLayout meta={meta} contained={false} footerSpacious={false} footerBordered={false}>
   <section class="bg-white">
     <div
-      class="h-72 w-full bg-purple bg-[linear-gradient(to_bottom,rgba(127,26,127,0.45),rgba(127,26,127,0.18)),url('../assets/images/group.jpeg')] bg-cover bg-top bg-no-repeat md:h-[500px] min-[114rem]:h-[600px] min-[114rem]:bg-position-[center_top_-10rem]"
+      class="h-72 w-full bg-purple bg-[linear-gradient(to_bottom,rgba(127,26,127,0.45),rgba(127,26,127,0.18)),url('../assets/images/group.jpeg')] bg-cover bg-top bg-no-repeat md:h-[500px] md:bg-fixed min-[114rem]:h-[600px] min-[114rem]:bg-position-[center_top_-10rem]"
     >
     </div>
 
     <div class="relative flex justify-center bg-white px-4">
       <div
+        data-home-nameplate
         class="-mt-9 inline-flex items-center gap-4 rounded-full border border-purple/15 bg-white py-3 pl-4 pr-8 text-purple shadow-xl shadow-purple/10 md:-mt-10"
       >
         <span
@@ -50,8 +51,10 @@ const meta: Metadata = {
     <div
       class="mx-auto flex max-w-5xl flex-col items-center px-4 pb-12 pt-10 text-center md:pb-16 md:pt-12"
     >
-      <h1 class="max-w-4xl text-4xl font-bold text-gray-950 md:text-6xl">
-        Adult acting classes, coaching, and self-tape support.
+      <h1
+        class="max-w-3xl text-4xl font-bold leading-tight text-gray-950 md:text-5xl"
+      >
+        Adult acting, improv, and public speaking coaching.
       </h1>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-gray-700 md:text-2xl">
         Sara Rogers shares many years of personal experience in the business
@@ -109,12 +112,14 @@ const meta: Metadata = {
           height={420}
         />
         <div class="p-6">
-          <h2 class="mb-2 text-2xl text-purple">Private Coaching</h2>
+          <h2 class="mb-2 text-2xl text-purple">Building Your Brand</h2>
           <p class="text-base leading-7 text-gray-700 md:text-lg">
-            One-on-one coaching for actors, performers, and models who want to
-            set goals, build confidence, and create a plan for their work.
+            Sara&apos;s 8-week private coaching package for actors, performers,
+            and models who want to set goals and create a plan for their work.
           </p>
-          <p class="mt-4 text-lg font-semibold text-purple">Explore coaching</p>
+          <p class="mt-4 text-lg font-semibold text-purple">
+            Explore the package
+          </p>
         </div>
       </a>
 
@@ -142,12 +147,10 @@ const meta: Metadata = {
   </section>
 
   <section class="bg-white px-4 py-14 md:py-20">
-    <div
-      class="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1fr_1.1fr]"
-    >
+    <div class="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
       <div>
         <p class="text-sm font-semibold uppercase tracking-wide text-purple">
-          About Sara
+          Meet Sara Rogers
         </p>
         <h2 class="mt-2 text-3xl font-bold text-gray-950 md:text-5xl">
           Sara meets each student where they are.
@@ -166,39 +169,31 @@ const meta: Metadata = {
             create in a safe place.
           </p>
         </div>
-        <a href="/about" class="sr-link inline-block w-auto">About Sara</a>
-      </div>
 
-      <div class="rounded-lg border border-purple/20 bg-purple/5 p-6 md:p-8">
-        <p class="text-sm font-semibold uppercase tracking-wide text-purple">
-          Recognition
-        </p>
-        <h3 class="mt-2 text-3xl text-gray-950">Recognized by ArtServe</h3>
-        <p class="text-lg leading-8 text-gray-700 md:text-xl">
-          Sara has been honored with a Lifetime Achievement Award, along with
-          other awards celebrating her work and contributions in South
-          Florida&apos;s arts community.
-        </p>
-      </div>
-    </div>
-  </section>
+        <div
+          class="mt-6 rounded-lg border border-purple/20 bg-purple/5 p-5 text-left"
+        >
+          <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+            Recognition
+          </p>
+          <p class="mt-2 text-lg leading-7 text-gray-700">
+            Sara has been honored with a Lifetime Achievement Award by
+            ArtServe, along with other awards celebrating her work in South
+            Florida&apos;s arts community.
+          </p>
+        </div>
 
-  <section class="bg-gray-50 px-4 py-14 md:py-20">
-    <div class="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
-      <div>
-        <p class="text-sm font-semibold uppercase tracking-wide text-purple">
-          Meet Sara Rogers
-        </p>
-        <h2 class="mt-2 text-3xl font-bold text-gray-950 md:text-5xl">
-          Meet Sara Rogers.
-        </h2>
-        <p class="mt-5 text-lg leading-8 text-gray-700 md:text-xl">
-          Hear from Sara and get a feel for the care, experience, and humor she
-          brings to her students and her work.
-        </p>
-        <a href="/testimonials" class="sr-link inline-block w-auto">
-          Read testimonials
-        </a>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <a href="/about" class="sr-link mt-0 inline-block w-auto">
+            About Sara
+          </a>
+          <a
+            href="/testimonials"
+            class="mt-0 inline-block w-auto rounded-md border-4 border-purple px-4 py-4 text-center text-xl font-semibold text-purple transition-colors hover:bg-purple/10 md:px-8 md:text-3xl"
+          >
+            Read testimonials
+          </a>
+        </div>
       </div>
 
       <div class="overflow-hidden rounded-lg border-8 border-purple bg-purple">
@@ -207,9 +202,19 @@ const meta: Metadata = {
     </div>
   </section>
 
-  <section class="bg-white px-4 py-14 md:py-20">
-    <div class="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
-      <div class="rounded-lg border border-purple/10 bg-gray-50 p-6 md:p-8">
+  <section class="border-t border-gray-200 bg-gray-50 px-4 py-14 md:py-20">
+    <div class="mx-auto max-w-6xl">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+          More ways to work with Sara
+        </p>
+        <h2 class="mt-2 text-3xl font-bold text-gray-950 md:text-5xl">
+          Support beyond weekly class.
+        </h2>
+      </div>
+
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <div class="rounded-lg border border-purple/10 bg-white p-6 shadow-sm md:p-8">
         <h2 class="text-3xl text-gray-950">Self-Tapes</h2>
         <p class="text-lg leading-8 text-gray-700 md:text-xl">
           Sara offers professional self-taping services for actors who need help
@@ -221,9 +226,9 @@ const meta: Metadata = {
         >
           Self-tape services
         </a>
-      </div>
+        </div>
 
-      <div class="rounded-lg border border-purple/10 bg-gray-50 p-6 md:p-8">
+        <div class="rounded-lg border border-purple/10 bg-white p-6 shadow-sm md:p-8">
         <h2 class="text-3xl text-gray-950">Showcases and Community</h2>
         <p class="text-lg leading-8 text-gray-700 md:text-xl">
           Stay connected through Meetup, student showcases, guest classes, and
@@ -239,6 +244,7 @@ const meta: Metadata = {
             South Florida Actors on Meetup
           </a>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -263,4 +269,4 @@ const meta: Metadata = {
       <ContactForm />
     </div>
   </section>
-</HomeLayout>
+</PageLayout>

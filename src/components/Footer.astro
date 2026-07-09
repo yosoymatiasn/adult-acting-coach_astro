@@ -1,28 +1,110 @@
 ---
 import Image from 'astro/components/Image.astro'
-import instagramIcon from '../assets/icons/instagram.png'
-import facebookIcon from '../assets/icons/facebook.png'
-import meetupIcon from '../assets/icons/meetup.png'
+import logo from '../assets/images/logo.png'
+import { navLinks } from '../data/nav'
+
+const footerNav = navLinks.filter(({ href }) =>
+  ['/about', '/classes', '/building-your-brand', '/self-tapes'].includes(href)
+)
+
+const socialLinks = [
+  {
+    href: 'https://www.instagram.com/sararogersacting/?hl=en',
+    label: 'Instagram',
+    shortLabel: 'IG',
+  },
+  {
+    href: 'https://www.facebook.com/sara.rogers.568',
+    label: 'Facebook',
+    shortLabel: 'f',
+  },
+  {
+    href: 'https://www.meetup.com/South-Florida-Actors/',
+    label: 'Meetup',
+    shortLabel: 'Meetup',
+  },
+]
+
+interface Props {
+  spacious?: boolean
+  bordered?: boolean
+}
+
+const { spacious = true, bordered = true } = Astro.props
+
+const footerClasses = [
+  spacious ? 'mt-14 md:mt-20' : '',
+  bordered ? 'border-t border-purple/20' : '',
+  'bg-gray-50 px-4 py-12',
+]
 ---
 
-<footer class="mt-20 py-14 border-t border-purple/40">
-  <div class="container flex justify-center items-center py-10">
-    <div class="flex gap-2">
-      <a
-        href="https://www.instagram.com/sararogersacting/?hl=en"
-        target="_blank"
-      >
-        <Image src={instagramIcon} alt="" width={50} height={50} />
-      </a>
-      <a href="https://www.facebook.com/sara.rogers.568" target="_blank">
-        <Image src={facebookIcon} alt="" width={50} height={50} />
-      </a>
-      <a href="https://www.meetup.com/South-Florida-Actors/" target="_blank">
-        <Image src={meetupIcon} alt="" width={50} height={50} />
-      </a>
+<footer class:list={footerClasses}>
+  <div
+    class="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]"
+  >
+    <div>
+      <div class="flex items-center gap-4">
+        <span
+          class="flex h-16 w-16 items-center justify-center rounded-full border border-purple/15 bg-white"
+        >
+          <Image
+            src={logo}
+            alt=""
+            width={76}
+            height={76}
+            class="h-14 w-14 object-contain"
+          />
+        </span>
+        <p class="text-3xl font-bold text-purple">Sara Rogers</p>
+      </div>
+      <p class="mt-3 max-w-md text-lg leading-8 text-gray-700">
+        Adult acting, improv, and public speaking coaching in South Florida.
+      </p>
+    </div>
+
+    <nav aria-label="Footer navigation">
+      <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+        Explore
+      </p>
+      <div class="mt-4 flex flex-col gap-3 text-lg font-semibold text-gray-800">
+        {
+          footerNav.map((link) => (
+            <a href={link.href} class="transition hover:text-purple">
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </nav>
+
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+        Connect
+      </p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        {
+          socialLinks.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.label}
+              class="flex h-12 min-w-12 items-center justify-center rounded-full border border-purple/20 bg-white px-4 text-base font-bold text-purple transition hover:-translate-y-0.5 hover:border-purple hover:bg-purple hover:text-white hover:shadow-md"
+            >
+              {link.shortLabel}
+            </a>
+          ))
+        }
+      </div>
     </div>
   </div>
-  <p class="text-base text-center">
-    &copy; {new Date().getFullYear()} Sara Rogers. All rights reserved.
-  </p>
+
+  <div
+    class="mx-auto mt-10 max-w-6xl border-t border-gray-200 pt-6 text-sm text-gray-600"
+  >
+    <p>
+      &copy; {new Date().getFullYear()} Sara Rogers. All rights reserved.
+    </p>
+  </div>
 </footer>

@@ -169,16 +169,6 @@
                       id="paypal-memo-preview"
                       class="font-semibold"></span>
                   </span>
-
-                  <a
-                    id="paypal-link"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="mt-3 inline-flex items-center text-sm font-semibold text-purple hover:underline"
-                  >
-                    Open Paypal payment →
-                  </a>
                 </span>
               </label>
             </div>
@@ -433,7 +423,7 @@
     summaryPrice.textContent = `$${classData.price}`
     zelleMemoPreview.textContent = `${classData.title} - ${session.displayDate} - Your Name`
     paypalMemoPreview.textContent = `${classData.title} - ${session.displayDate} - Your Name`
-    paypalLink.href = paypalUrl
+    // paypalLink.href = paypalUrl
 
     form.reset()
     setPaymentMethod('Zelle')

@@ -1,7 +1,7 @@
 ---
 import Image from 'astro/components/Image.astro'
 import YoutubeEmbed from '../components/YoutubeEmbed.astro'
-import BaseLayout from '../layouts/BaseLayout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
 import Sara from '../assets/images/sara.png'
 import type { Metadata } from '../utils/seo'
 
@@ -21,7 +21,7 @@ const meta: Metadata = {
 }
 ---
 
-<BaseLayout meta={meta} title="About">
+<PageLayout meta={meta}>
   <section class="max-w-4xl mx-auto flex flex-col">
     <section
       class="grid gap-8 pt-28 md:grid-cols-[0.8fr_1.2fr] md:items-center md:pt-36"
@@ -42,68 +42,108 @@ const meta: Metadata = {
       </div>
     </section>
 
-    <article class="mt-12 font-light [&>p]:my-8">
-      <p>
-        Ms. Rogers is a beacon of creativity and experience in the South Florida
-        film and stage industry, boasting over 40 years of versatile
-        involvement. Her journey spans teaching, coaching, casting, writing, and
-        talent coordination, making her a treasure trove of knowledge for
-        aspiring and seasoned actors alike.
-      </p>
-      <p>
-        With a deep commitment to nurturing talent, Ms. Rogers has expanded her
-        teaching repertoire to include prestigious roles as a guest teacher at
-        the ACT Symposium and for The Lesbian Thesbian, highlighting her
-        dedication to diverse and inclusive learning environments. Her expertise
-        as a Public Speaking Coach for the Make A Wish Foundation and as a Guest
-        Coach for Women in Distress underscores her passion for empowering
-        voices in all walks of life.
-      </p>
-      <p>
-        Ms. Rogers has crafted unique educational programs that bridge the gap
-        between aspiring actors and the industry. "Step One-The Business End of
-        the Acting Modeling Business" offers newcomers invaluable insights into
-        navigating the industry with a business mindset. Meanwhile, "How To
-        Audition For Camera" delves into advanced camera techniques, enriching
-        actors' on-screen presence and skills.
-      </p>
-      <p>
-        Her tenure as an instructor at Hollywood Playhouse is notable for her
-        creation and instruction of monologue, scene study, and improvisation
-        classes, catering to a wide range of students from beginners to advanced
-        learners. Similarly, her 6 ½ years at The Acting School of South Florida
-        and guest lectures on improvisation and acting in the corporate sector
-        have left a lasting impact on many.
-      </p>
-      <p>
-        Ms. Rogers' contributions to casting are equally impressive, having
-        worked alongside NY casting director Louis DiGiamo, and locally with
-        industry stalwarts like Dee Miller, Kim Houston, Ellen Jacoby, Lori
-        Wyman, and Unique Casting. Her portfolio includes involvement in
-        commercials for renowned brands such as Bacardi Rum, Crest, Publix,
-        Nextel, and Hertz.
-      </p>
-      <p>
-        As a voice-over artist, Ms. Rogers has lent her talents to productions
-        with Broadcast Video, The Miami Herald, NBC local channel 4, The Puppet
-        Theatre, and the NY production of “Leaf Meafs,” among others. Her
-        television appearances include roles in Extra Large, 21 Jump Street, and
-        Miami Vice, with writing contributions to Don Beret- Broadcast Video,
-        Stage and Screen Newspaper, and Marquee Magazine.
-      </p>
-      <p>
-        For the past seven years, she has consistently brought her signature
-        teaching style to ArtServe, offering weekly classes that challenge and
-        inspire actors. Ms. Rogers now brings her open heart and boundless
-        enthusiasm to all Events, ready to elevate all who cross her path with
-        her unique blend of expertise and passion for the arts.
-      </p>
-      <p>
-        Always in pursuit of new challenges and opportunities to enrich the
-        acting community, Ms. Rogers remains a cherished mentor and visionary in
-        the South Florida region and beyond, fostering safe, secure, and dynamic
-        learning environments for all her students.
-      </p>
+    <section class="mt-12 grid gap-4 md:grid-cols-3">
+      <div class="rounded-lg border border-purple/15 bg-purple/5 p-5">
+        <p class="text-3xl font-semibold text-purple">40+</p>
+        <p
+          class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-600"
+        >
+          Years of experience
+        </p>
+      </div>
+      <div class="rounded-lg border border-purple/15 bg-purple/5 p-5">
+        <p class="text-3xl font-semibold text-purple">Acting</p>
+        <p
+          class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-600"
+        >
+          Scene study, monologues, on-camera work, improv
+        </p>
+      </div>
+      <div class="rounded-lg border border-purple/15 bg-purple/5 p-5">
+        <p class="text-3xl font-semibold text-purple">ArtServe</p>
+        <p
+          class="mt-2 text-sm font-semibold uppercase tracking-wide text-gray-600"
+        >
+          Lifetime Achievement Honoree
+        </p>
+      </div>
+    </section>
+
+    <article class="mt-12 space-y-10 font-light">
+      <section>
+        <h2>Teaching & coaching</h2>
+        <div class="mt-4 space-y-5">
+          <p>
+            Sara Rogers has worked in the South Florida film and stage industry
+            for over 40 years as a teacher, coach, casting assistant, writer,
+            talent coordinator, performer, and voice-over artist.
+          </p>
+          <p>
+            She has taught monologue, scene study, improvisation, camera
+            technique, public speaking, and the business side of acting and
+            modeling. Her classes are designed to help students build skill,
+            confidence, and a clear understanding of how the industry works.
+          </p>
+          <p>
+            Sara has served as a guest teacher at the ACT Symposium and for The
+            Lesbian Thesbian. She has also worked as a Public Speaking Coach for
+            the Make A Wish Foundation and as a Guest Coach for Women in
+            Distress.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Classes & programs</h2>
+        <div class="mt-4 space-y-5">
+          <p>
+            Sara has crafted unique educational programs that bridge the gap
+            between aspiring actors and the industry. "Step One-The Business End
+            of the Acting Modeling Business" offers newcomers invaluable
+            insights into navigating the industry with a business mindset.
+            Meanwhile, "How To Audition For Camera" delves into advanced camera
+            techniques, enriching actors' on-screen presence and skills.
+          </p>
+          <p>
+            She taught at Hollywood Playhouse, where she created monologue,
+            scene study, and improvisation classes for beginning through
+            advanced students. She also taught for 6 ½ years at The Acting
+            School of South Florida and has led guest workshops on improvisation
+            and acting in corporate settings.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Casting, performance & voice work</h2>
+        <div class="mt-4 space-y-5">
+          <p>
+            Sara has worked alongside New York casting director Louis DiGiamo
+            and local casting professionals including Dee Miller, Kim Houston,
+            Ellen Jacoby, Lori Wyman, and Unique Casting. Her casting experience
+            includes commercial work for Bacardi Rum, Crest, Publix, Nextel, and
+            Hertz.
+          </p>
+          <p>
+            As a voice-over artist, she has worked with Broadcast Video, The
+            Miami Herald, NBC local channel 4, The Puppet Theatre, and the New
+            York production of “Leaf Meafs.” Her television appearances include
+            Extra Large, 21 Jump Street, and Miami Vice, with writing
+            contributions to Don Beret-Broadcast Video, Stage and Screen
+            Newspaper, and Marquee Magazine.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>At ArtServe</h2>
+        <p class="mt-4">
+          Sara has brought her teaching style to ArtServe through weekly classes
+          that challenge and encourage actors. Her work continues to support a
+          safe, secure, and dynamic learning environment for students in South
+          Florida.
+        </p>
+      </section>
     </article>
 
     <section
@@ -135,12 +175,9 @@ const meta: Metadata = {
             Sara Rogers was honored as a <strong
               >Lifetime Achievement Honoree</strong
             >
-
-            at the 2026 ArtServe Impact Awards Gala in recognition of more than
-            four decades of dedication to South Florida's performing arts
-            community. Her career as an acting coach, performer, mentor, and
-            educator has helped generations of actors develop confidence,
-            technique, and lasting careers both on and off the stage.
+            at the 2026 ArtServe Impact Awards Gala for her decades of work in South
+            Florida's performing arts community as an acting coach, performer, mentor,
+            and educator.
           </p>
         </div>
       </div>
@@ -155,8 +192,8 @@ const meta: Metadata = {
         </p>
         <h2 class="mt-2">Interviews & features</h2>
         <p class="mx-auto mt-3 max-w-2xl text-sm text-gray-600">
-          Hear Sara discuss her coaching journey, artistic philosophy, and work
-          with actors in South Florida
+          Hear Sara discuss her coaching journey and work with actors in South
+          Florida.
         </p>
       </div>
 
@@ -208,4 +245,4 @@ const meta: Metadata = {
       </div>
     </section>
   </section>
-</BaseLayout>
+</PageLayout>

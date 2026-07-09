@@ -16,11 +16,10 @@ if (!videoId && url) {
 }
 ---
 
-<div class="aspect-video min-w-full">
+<div class="relative aspect-video w-full shrink-0 overflow-hidden">
   <iframe
     loading={lazy ? 'lazy' : undefined}
-    width="100%"
-    height="100%"
+    class="absolute left-1/2 top-0 block h-full w-[calc(100%+12px)] -translate-x-1/2 border-0"
     src={`https://www.youtube-nocookie.com/embed/${videoId}?controls=0&rel=0&modestbranding=1&showinfo=0
 `}
     title={title}

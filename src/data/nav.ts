@@ -11,7 +11,7 @@ export const navLinks: NavLink[] = [
   { href: '/public-speaking', label: 'Public Speaking' },
   { href: '/showcases', label: 'Showcases' },
   { href: '/self-tapes', label: 'Self-Tapes' },
-  { href: '/building-your-brand', label: 'Private Coaching' },
+  { href: '/building-your-brand', label: 'Building Your Brand' },
   { href: '/testimonials', label: 'Testimonials' },
   { href: '/contact', label: 'Contact' },
 ]

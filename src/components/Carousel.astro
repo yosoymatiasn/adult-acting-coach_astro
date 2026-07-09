@@ -2,74 +2,169 @@
 interface Props {
   /** Optional custom CSS classes for the wrapper */
   class?: string
+  label?: string
 }
 
-const { class: className } = Astro.props
+const { class: className, label = 'Carousel' } = Astro.props
 ---
 
 <div
-  class={`border-4 border-purple relative w-2xl overflow-hidden ${className ?? ''}`}
+  data-carousel
+  class={`relative ${className ?? ''}`}
+  role="region"
+  aria-label={label}
 >
   <div
-    id="carousel-track"
-    class="flex transition-transform duration-500 ease-in-out"
+    class="overflow-hidden rounded-lg border border-purple/20 bg-black shadow-lg shadow-purple/10"
   >
-    <slot />
+    <div
+      data-carousel-track
+      class="flex transition-transform duration-500 ease-out"
+    >
+      <slot />
+    </div>
   </div>
 
-  <!-- Controls -->
+  <div
+    data-carousel-dots
+    class="mt-4 flex justify-center gap-2"
+    aria-label="Choose video"
+  >
+  </div>
+
   <button
-    id="prevBtn"
-    class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
-    aria-label="Previous slide"
+    data-carousel-prev
+    type="button"
+    class="absolute left-2 top-[calc(50%-1rem)] flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl leading-none text-purple shadow-md transition-colors hover:bg-purple hover:text-white focus:outline-none focus:ring-2 focus:ring-purple md:-left-5 md:h-10 md:w-10"
+    aria-label="Previous video"
   >
     ‹
   </button>
+
   <button
-    id="nextBtn"
-    class="absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full"
-    aria-label="Next slide"
+    data-carousel-next
+    type="button"
+    class="absolute right-2 top-[calc(50%-1rem)] flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-2xl leading-none text-purple shadow-md transition-colors hover:bg-purple hover:text-white focus:outline-none focus:ring-2 focus:ring-purple md:-right-5 md:h-10 md:w-10"
+    aria-label="Next video"
   >
     ›
   </button>
 </div>
 
 <script>
-  let currentIndex = 1
-  const track = document.getElementById('carousel-track')
-  const slides = track?.children ?? []
-  const totalSlides = slides.length
+  document
+    .querySelectorAll<HTMLElement>('[data-carousel]')
+    .forEach((carousel) => {
+      const track = carousel.querySelector<HTMLElement>('[data-carousel-track]')
+      const prevButton = carousel.querySelector<HTMLButtonElement>(
+        '[data-carousel-prev]'
+      )
+      const nextButton = carousel.querySelector<HTMLButtonElement>(
+        '[data-carousel-next]'
+      )
+      const dotsContainer = carousel.querySelector<HTMLElement>(
+        '[data-carousel-dots]'
+      )
+      const originalSlides = Array.from(track?.children ?? []) as HTMLElement[]
 
-  updateSlide(false)
+      if (!track || originalSlides.length === 0) return
 
-  function updateSlide(animated = true) {
-    if (track) {
-      track.style.transition = animated ? 'transform 0.5s ease-in-out' : 'none'
-      track.style.transform = `translateX(-${currentIndex * 100}%)`
-    }
-  }
+      const firstClone = originalSlides[0].cloneNode(true) as HTMLElement
+      const lastClone = originalSlides[originalSlides.length - 1].cloneNode(
+        true
+      ) as HTMLElement
 
-  document.getElementById('nextBtn')?.addEventListener('click', () => {
-    currentIndex++
-    updateSlide()
+      firstClone.setAttribute('data-carousel-clone', 'true')
+      lastClone.setAttribute('data-carousel-clone', 'true')
+      firstClone.setAttribute('aria-hidden', 'true')
+      lastClone.setAttribute('aria-hidden', 'true')
 
-    if (currentIndex === totalSlides - 1) {
-      setTimeout(() => {
-        currentIndex = 1
-        updateSlide(false)
-      }, 500) // match transition duration
-    }
-  })
+      track.prepend(lastClone)
+      track.append(firstClone)
 
-  document.getElementById('prevBtn')?.addEventListener('click', () => {
-    currentIndex--
-    updateSlide()
+      const slides = Array.from(track.children) as HTMLElement[]
+      let currentIndex = originalSlides.length > 1 ? 1 : 0
 
-    if (currentIndex === 0) {
-      setTimeout(() => {
-        currentIndex = totalSlides - 2
-        updateSlide(false)
-      }, 500)
-    }
-  })
+      slides.forEach((slide) => {
+        slide.classList.add('w-full', 'shrink-0')
+      })
+
+      const dots = originalSlides.map((_, index) => {
+        const dot = document.createElement('button')
+        dot.type = 'button'
+        dot.className =
+          'h-2.5 w-2.5 rounded-full bg-purple/30 transition-colors hover:bg-purple'
+        dot.setAttribute('aria-label', `Show video ${index + 1}`)
+        dot.addEventListener('click', () => {
+          currentIndex = index + 1
+          updateSlide()
+        })
+        dotsContainer?.append(dot)
+        return dot
+      })
+
+      const getRealIndex = () => {
+        if (originalSlides.length <= 1) return 0
+        if (currentIndex === 0) return originalSlides.length - 1
+        if (currentIndex === slides.length - 1) return 0
+        return currentIndex - 1
+      }
+
+      const updateSlide = (animated = true) => {
+        track.style.transition = animated ? 'transform 0.5s ease-out' : 'none'
+        track.style.transform = `translateX(-${currentIndex * 100}%)`
+
+        slides.forEach((slide, index) => {
+          slide.setAttribute('aria-hidden', String(index !== currentIndex))
+        })
+
+        const realIndex = getRealIndex()
+        dots.forEach((dot, index) => {
+          const isActive = index === realIndex
+          dot.classList.toggle('bg-purple', isActive)
+          dot.classList.toggle('bg-purple/30', !isActive)
+          dot.setAttribute('aria-current', isActive ? 'true' : 'false')
+        })
+      }
+
+      const showPrevious = () => {
+        if (originalSlides.length <= 1) return
+        currentIndex -= 1
+        updateSlide()
+      }
+
+      const showNext = () => {
+        if (originalSlides.length <= 1) return
+        currentIndex += 1
+        updateSlide()
+      }
+
+      track.addEventListener('transitionend', () => {
+        if (currentIndex === 0) {
+          currentIndex = originalSlides.length
+          updateSlide(false)
+        }
+
+        if (currentIndex === slides.length - 1) {
+          currentIndex = 1
+          updateSlide(false)
+        }
+      })
+
+      prevButton?.addEventListener('click', showPrevious)
+      nextButton?.addEventListener('click', showNext)
+
+      carousel.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') showPrevious()
+        if (event.key === 'ArrowRight') showNext()
+      })
+
+      if (originalSlides.length <= 1) {
+        prevButton?.classList.add('hidden')
+        nextButton?.classList.add('hidden')
+        dotsContainer?.classList.add('hidden')
+      }
+
+      updateSlide(false)
+    })
 </script>

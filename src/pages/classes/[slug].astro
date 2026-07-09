@@ -3,8 +3,9 @@ import RegistrationForm from '../../components/RegistrationForm.astro'
 import SessionsAside from '../../components/SessionsAside.astro'
 import { classes } from '../../data/classes/classes'
 import { sessions as classSessions } from '../../data/classes/sessions'
-import BaseLayout from '../../layouts/BaseLayout.astro'
+import PageLayout from '../../layouts/PageLayout.astro'
 import Image from 'astro/components/Image.astro'
+import { createMetaDescription, type Metadata } from '../../utils/seo'
 
 export async function getStaticPaths() {
   return classes.map((classData) => ({
@@ -22,9 +23,17 @@ export async function getStaticPaths() {
 }
 
 const { classData } = Astro.props
+
+const meta: Metadata = {
+  title: `${classData.title} | Sara Rogers Acting`,
+  description: createMetaDescription(classData.description),
+  url: `https://adultactingcoach.com/classes/${classData.slug}`,
+  image: classData.imageUrl,
+  imageAlt: classData.title,
+}
 ---
 
-<BaseLayout title={classData.title}>
+<PageLayout meta={meta}>
   <RegistrationForm />
   <div class="max-w-6xl mx-auto px-6 pb-12 pt-28 md:pt-36">
     <div class="grid lg:grid-cols-[1.2fr_1fr] gap-12 items-start">
@@ -62,4 +71,4 @@ const { classData } = Astro.props
       </aside>
     </div>
   </div>
-</BaseLayout>
+</PageLayout>

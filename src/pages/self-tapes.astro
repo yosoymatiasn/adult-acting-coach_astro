@@ -1,43 +1,32 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
 import type { Metadata } from '../utils/seo'
 import PageIntro from '../components/PageIntro.astro'
 
 const meta: Metadata = {
-  title: 'Self-taping | Sara Rogers',
+  title: 'Self-Tapes | Sara Rogers Acting',
   description:
-    'Polish your self-taping skills with guidance from Sara Rogers. Elevate your auditions with expert coaching, ensuring you present your best self on screen.',
+    'Book a self-tape session with Sara Rogers for audition support, a reader, coaching, playback review, and file submission help.',
   url: 'https://adultactingcoach.com/self-tapes',
 }
 ---
 
-<BaseLayout meta={meta} title="Self taping and submissions">
+<PageLayout meta={meta}>
   <div class="flex flex-col">
     <PageIntro
       eyebrow="Audition support"
       title="Self-Taping and Submissions"
       description="Book a stress-free self-tape session with Sara as your reader and coach, so you can send in a confident, polished audition."
     />
-    <div class="max-w-4xl mx-auto">
-      <div class="mt-12 flex flex-col gap-4 font-light [&>p]:text-center">
-        <p>
-          Self-Taping and Submissions have become the norm not the exception in
-          today’s world. Film and TV casting are turning to self-taping more and
-          more often, leading actors away from the in-person experience.
-        </p>
-        <p>
-          However, it expands the opportunities world-wide. Actors are now
-          tasked with being both actor AND director, having a studio setup, and
-          making bold (yet grounded) choices that will lead to more and more
-          requests and hopefully to more bookings.
-        </p>
 
+    <div class="mx-auto mt-12 max-w-6xl">
+      <section class="grid items-center gap-8 md:grid-cols-[1fr_1.1fr]">
         <div
-          class="flex my-10 h-34 sm:h-52 border-purple border-2 w-full mx-auto overflow-hidden"
+          class="flex h-56 overflow-hidden rounded-lg border-2 border-purple"
         >
           <img
             src="https://secure.meetupstatic.com/photos/event/d/d/7/3/event_480416691.webp?w=2048"
-            alt="Self-taping example 1"
+            alt="Self-taping setup"
             class="w-1/2 object-cover object-top"
             width="300"
             height="300"
@@ -45,7 +34,7 @@ const meta: Metadata = {
           />
           <img
             src="https://secure.meetupstatic.com/photos/event/4/7/a/9/event_474678345.webp?w=2048"
-            alt="Self-taping example 2"
+            alt="Actor preparing a self-tape"
             class="w-1/2 object-cover object-left-top"
             width="300"
             height="300"
@@ -53,66 +42,107 @@ const meta: Metadata = {
           />
         </div>
 
-        <p>
-          Book your time and self-tape with Sara Rogers, a two-time award
-          winning acting coach. With Sara you get a built-in reader AND coach.
-          We tape you – watch playbacks and choose the right audition take to
-          send. We’ll label the files and send them electronically. This is all
-          done in a Stress-Free Environment and can typically be accomplished
-          within an hour.
-        </p>
-        <p>
-          The time all depends on the actor and where they are in the
-          memorization and technique and how many pages they have to submit.
-          Your time begins at the time that was reserved so please allow enough
-          time for traffic, rehearsal, makeup and any wardrobe change. If you
-          reserved an 11 am slot and arrive at 11:15, you have 45 minutes left
-          to your hour.
-        </p>
-        <p>
-          Sara’s experience has shown that if you are memorized and ready to
-          tape this should go very smoothly within the hour, and if you finish
-          early, you can use the time to pick her brains! She has tons of
-          experience to share with you.
-        </p>
-
-        <div
-          class="p-8 my-12 rounded-md border text-white flex flex-col gap-4 bg-purple/80 [&>p]:text-center"
-        >
-          <h2 class="text-center m-0 text-3xl font-semibold text-white">
-            Fees and scheduling
+        <div>
+          <h2 class="text-3xl text-gray-950">
+            A reader, coach, and playback partner in one session.
           </h2>
-          <p>
-            The rate is a flat $75.00 for the hour. If you have several pages or
-            more than one scene to self-tape, it may take a bit longer, and it
-            will be $37.50 for every additional 30 minutes. 1.5 hours will be
-            $112.50, and 2 hours will be $150. We take Cash (preferred – you get
-            a receipt), PayPal, Credit Cards or Checks. ​Due to the nature of an
-            actor's work, our cancellation policy is flexible. You are welcome
-            to cancel or reschedule at anytime up to 3 hours from your
-            appointment time with no rescheduling charge. Less than 3 hours,
-            there is a $25.00 rescheduling charge.
+          <p class="mt-4 text-lg leading-8 text-gray-700 md:text-xl">
+            Self-taping and submissions have become the norm, not the exception.
+            Actors are now asked to act, direct themselves, make strong choices,
+            and submit clean files quickly.
+          </p>
+          <p class="mt-4 text-lg leading-8 text-gray-700 md:text-xl">
+            With Sara, you get a built-in reader and coach. You tape, watch
+            playbacks, choose the right take, label the files, and send them
+            electronically.
           </p>
         </div>
+      </section>
 
-        <h3 class="text-center text-2xl font-semibold mb-0">Notes</h3>
-        <p>
-          The background we tape against is grey. Please do not wear logos or
-          anything that draws the eye away from your audition; solid colors are
-          best (No BLACK, WHITE or RED). Wear jackets, sweaters or dress like
-          the character as much as you are able and if it's a white doctor
-          jacket, wear it. Please bring options and the camera may have to
-          decide.
-        </p>
-        <p>
-          Sara is a seasoned professional in the auditioning and acting worlds
-          and wants you to BOOK the Job. Her reputation working for and with
-          actors is legendary. Please take a moment to review her
-          <a href="/testimonials" class="text-purple underline">testimonials</a>
-          from past and present students to get a better understanding of her and
-          her teaching methods.
-        </p>
-      </div>
+      <section class="mt-12 grid gap-5 md:grid-cols-3">
+        <div class="rounded-lg border border-purple/10 bg-white p-6 shadow-sm">
+          <h3 class="text-2xl text-purple">Stress-free setup</h3>
+          <p class="text-base leading-7 text-gray-700 md:text-lg">
+            A calm session so you can focus on the audition instead of the
+            technology.
+          </p>
+        </div>
+        <div class="rounded-lg border border-purple/10 bg-white p-6 shadow-sm">
+          <h3 class="text-2xl text-purple">Playback review</h3>
+          <p class="text-base leading-7 text-gray-700 md:text-lg">
+            Watch your takes with Sara and choose the audition that best serves
+            the work.
+          </p>
+        </div>
+        <div class="rounded-lg border border-purple/10 bg-white p-6 shadow-sm">
+          <h3 class="text-2xl text-purple">File help</h3>
+          <p class="text-base leading-7 text-gray-700 md:text-lg">
+            Files are labeled and sent electronically so your submission is
+            ready to go.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-12 grid gap-6 md:grid-cols-[1fr_1fr]">
+        <div class="rounded-lg bg-purple p-6 text-white md:p-8">
+          <h2 class="text-3xl text-white">Fees and scheduling</h2>
+          <div class="mt-4 space-y-4 text-lg leading-8 text-white/90">
+            <p>
+              The rate is a flat $75 for the hour. If you have several pages or
+              more than one scene, additional time is $37.50 for every 30
+              minutes.
+            </p>
+            <p>1.5 hours is $112.50, and 2 hours is $150.</p>
+            <p>
+              Payment options include cash, PayPal, credit cards, or checks.
+              Cash is preferred and you will receive a receipt.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-lg border border-purple/15 bg-white p-6 md:p-8">
+          <h2 class="text-3xl text-gray-950">Before you arrive</h2>
+          <div class="mt-4 space-y-4 text-lg leading-8 text-gray-700">
+            <p>
+              Your time begins at the time reserved, so please allow enough time
+              for traffic, rehearsal, makeup, and wardrobe changes.
+            </p>
+            <p>
+              If you are memorized and ready to tape, the session usually goes
+              smoothly within the hour. If you finish early, you can use the
+              time to pick Sara&apos;s brain.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="mt-12 rounded-lg border border-purple/10 bg-white p-6 text-center shadow-sm md:p-8"
+      >
+        <h2 class="text-3xl text-gray-950">Notes</h2>
+        <div
+          class="mx-auto mt-4 max-w-4xl space-y-4 text-lg leading-8 text-gray-700"
+        >
+          <p>
+            The background is grey. Please avoid logos or anything that draws
+            the eye away from your audition. Solid colors are best. No black,
+            white, or red.
+          </p>
+          <p>
+            Wear jackets, sweaters, or clothing that supports the character when
+            possible. Bring options and let the camera decide.
+          </p>
+          <p>
+            Sara is seasoned and wants you to book the job. Read more from her <a
+              href="/testimonials"
+              class="text-purple underline">testimonials</a
+            > to get a sense of her coaching style and how she works with actors.
+          </p>
+        </div>
+        <a href="/contact" class="sr-link inline-block w-auto">
+          Schedule a Self-Tape
+        </a>
+      </section>
     </div>
   </div>
-</BaseLayout>
+</PageLayout>
