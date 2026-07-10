@@ -5,6 +5,7 @@ import {
   formatDate,
   formatLongWeekday,
   formatTimeRange,
+  parseSessionDate,
 } from '../helpers/listingHelpers'
 
 const { classData } = Astro.props as { classData: TClassListing }
@@ -15,7 +16,7 @@ const sessions = classSessions.filter(
 
 const getSessionBadge = (date: string) => {
   const daysUntil = Math.ceil(
-    (new Date(date).getTime() - Date.now()) / (1000 * 60 * 60 * 24)
+    (parseSessionDate(date).getTime() - Date.now()) / (1000 * 60 * 60 * 24)
   )
 
   if (daysUntil <= 0) return 'Past'

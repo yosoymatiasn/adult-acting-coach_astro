@@ -1,9 +1,71 @@
+const eventTimeZone = 'America/New_York'
+
 const dateTimeFormatterOptions = {
-  timeZone: 'America/New_York',
+  timeZone: eventTimeZone,
 } as const
 
+const dateTimeWithZonePattern =
+  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?(?:\.\d{3})?(?:Z|[+-]\d{2}:\d{2})$/
+
+const plainDateTimePattern =
+  /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?$/
+
+const zonedDateTimeFormatter = new Intl.DateTimeFormat('en-US', {
+  timeZone: eventTimeZone,
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hourCycle: 'h23',
+})
+
+const getDatePartsInEventTimeZone = (date: Date) => {
+  const parts = zonedDateTimeFormatter.formatToParts(date)
+
+  return Object.fromEntries(
+    parts
+      .filter((part) => part.type !== 'literal')
+      .map((part) => [part.type, Number(part.value)])
+  ) as Record<'year' | 'month' | 'day' | 'hour' | 'minute' | 'second', number>
+}
+
+export const parseSessionDate = (dateString: string) => {
+  if (dateTimeWithZonePattern.test(dateString)) {
+    return new Date(dateString)
+  }
+
+  const match = dateString.match(plainDateTimePattern)
+  if (!match) {
+    return new Date(dateString)
+  }
+
+  const [, year, month, day, hour, minute, second = '0'] = match
+  const utcGuess = Date.UTC(
+    Number(year),
+    Number(month) - 1,
+    Number(day),
+    Number(hour),
+    Number(minute),
+    Number(second)
+  )
+  const eventParts = getDatePartsInEventTimeZone(new Date(utcGuess))
+  const eventWallTimeAsUtc = Date.UTC(
+    eventParts.year,
+    eventParts.month - 1,
+    eventParts.day,
+    eventParts.hour,
+    eventParts.minute,
+    eventParts.second
+  )
+  const eventOffset = eventWallTimeAsUtc - utcGuess
+
+  return new Date(utcGuess - eventOffset)
+}
+
 export const formatDate = (dateString: string) => {
-  const date = new Date(dateString)
+  const date = parseSessionDate(dateString)
   return {
     date: date.toLocaleDateString('en-US', {
       ...dateTimeFormatterOptions,
@@ -20,7 +82,7 @@ export const formatDate = (dateString: string) => {
 }
 
 export const formatLongWeekday = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString('en-US', {
+  return parseSessionDate(dateString).toLocaleDateString('en-US', {
     ...dateTimeFormatterOptions,
     weekday: 'long',
   })
@@ -35,7 +97,7 @@ export const formatTimeRange = (startDate: string, endDate?: string) => {
 }
 
 export const isUpcomingSession = (dateString: string, graceDays = 1) => {
-  const sessionDate = new Date(dateString)
+  const sessionDate = parseSessionDate(dateString)
   if (Number.isNaN(sessionDate.getTime())) {
     throw new Error(`Invalid session date: ${dateString}`)
   }
