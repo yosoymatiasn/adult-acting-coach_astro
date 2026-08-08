@@ -96,16 +96,13 @@ export const formatTimeRange = (startDate: string, endDate?: string) => {
   return `${startTime.replace(':00', '')}–${endTime.replace(':00', '')}`
 }
 
-export const isUpcomingSession = (dateString: string, graceDays = 1) => {
+export const isUpcomingSession = (dateString: string) => {
   const sessionDate = parseSessionDate(dateString)
   if (Number.isNaN(sessionDate.getTime())) {
     throw new Error(`Invalid session date: ${dateString}`)
   }
 
-  const cutoff = new Date(sessionDate)
-  cutoff.setDate(cutoff.getDate() + graceDays)
-  cutoff.setHours(6, 0, 0, 0)
-  return cutoff >= new Date()
+  return sessionDate >= new Date()
 }
 
 export const assertUniqueSlugs = <T extends { slug: string }>(

@@ -1,46 +1,58 @@
-# Astro Starter Kit: Basics
+# Sara Rogers Acting
+
+The public website for Sara Rogers Acting: adult acting classes, workshops,
+showcases, private coaching, and public speaking support in South Florida.
+
+Built with Astro, Tailwind CSS, and the Netlify adapter.
+
+## Local development
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Use `npm run preview` to inspect the most recently built site locally.
 
-## 🚀 Project Structure
+## Before deployment
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run build
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+`npm run build` is the project health gate. It runs formatting, content
+validation, Astro type checks, and then creates the production build. The same
+steps are available individually:
 
-## 🧞 Commands
+```sh
+npm run format:check
+npm run validate:content
+npm run check
+```
 
-All commands are run from the root of the project, from a terminal:
+## Updating classes and showcases
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+The schedule is intentionally maintained in local, editable data files:
 
-## 👀 Want to learn more?
+- Class definitions: `src/data/classes/classes.ts`
+- Class sessions, Meetup URLs, and price tiers: `src/data/classes/sessions.ts`
+- Showcase definitions: `src/data/showcases/showcases.ts`
+- Showcase dates and RSVP URLs: `src/data/showcases/sessions.ts`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Each scheduled class session can include standard, early-reservation, and
+at-door pricing. `npm run validate:content` catches unknown slugs, duplicate
+event URLs, invalid dates, and inconsistent pricing before publishing.
+
+Past sessions automatically drop from public listings when their start time has
+passed. Keep the next dates, URLs, and prices accurate as events are scheduled
+or changed.
+
+## Forms and deployment
+
+Netlify handles deployment and forms. The contact and registration forms are
+defined in `src/components/ContactForm.astro` and
+`src/components/RegistrationForm.astro`.
+
+Submitting a registration sends the student’s details to Netlify Forms and then
+gives payment instructions. A registration is not a confirmed spot until Sara
+has received payment.

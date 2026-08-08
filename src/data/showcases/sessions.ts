@@ -11,7 +11,7 @@ export const showcaseSessions: TShowcaseSession[] = [
     showcaseSlug: 'bare-bones-performance',
     date: '2026-10-05T19:00:00',
     endDate: '2026-10-05T21:00:00',
-    url: 'https://www.meetup.com/south-florida-actors/events/314041009/?eventOrigin=group_events_list',
+    url: 'https://www.meetup.com/south-florida-actors/events/314041480/?eventOrigin=group_events_list',
     price: 0,
   },
   {

@@ -11,10 +11,9 @@ const upcomingShowcaseSessions = showcaseSessions.filter((session) =>
   isUpcomingSession(session.date)
 )
 
-export const showcaseListings: TShowcaseListing[] =
-  joinSessionsWithItems(
-    showcases,
-    upcomingShowcaseSessions,
-    'showcaseSlug',
-    'showcase'
-  )
+export const showcaseListings: TShowcaseListing[] = joinSessionsWithItems(
+  showcases,
+  upcomingShowcaseSessions,
+  'showcaseSlug',
+  'showcase'
+)

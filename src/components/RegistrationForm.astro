@@ -5,7 +5,6 @@
 >
   <div
     data-modal-backdrop
-    tabindex="0"
     class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-0"
   >
     <div
@@ -54,10 +53,11 @@
               <p id="summary-date" class="font-medium"></p>
 
               <p>
-                Price: <span
+                Standard price: <span
                   id="summary-price"
                   class="font-semibold text-gray-900"></span>
               </p>
+              <p id="summary-price-note" class="text-xs text-gray-600"></p>
             </div>
           </div>
 
@@ -111,13 +111,13 @@
             </div>
           </div>
 
-          <div id="payment-section" class="mt-6">
-            <p
+          <fieldset id="payment-section" class="mt-6">
+            <legend
               id="payment-section-heading"
               class="text-sm font-semibold text-gray-900"
             >
               Payment method
-            </p>
+            </legend>
 
             <div class="mt-3 space-y-3">
               <label
@@ -126,6 +126,8 @@
               >
                 <input
                   type="radio"
+                  id="payment-zelle"
+                  name="paymentMethod"
                   data-payment-method="Zelle"
                   value="Zelle"
                   checked
@@ -152,6 +154,8 @@
               >
                 <input
                   type="radio"
+                  id="payment-paypal"
+                  name="paymentMethod"
                   data-payment-method="PayPal / Card"
                   value="PayPal / Card"
                   class="mt-1"
@@ -172,7 +176,7 @@
                 </span>
               </label>
             </div>
-          </div>
+          </fieldset>
 
           <p
             id="registration-note"
@@ -182,11 +186,18 @@
             only confirmed once payment has been received.
           </p>
 
-          <p id="registration-status" class="mt-4 hidden text-sm text-center">
+          <p
+            id="registration-status"
+            role="status"
+            aria-live="polite"
+            class="mt-4 hidden text-sm text-center"
+          >
           </p>
 
           <div
             id="success-panel"
+            role="status"
+            aria-live="polite"
             class="mt-6 hidden rounded-lg border border-purple/20 bg-purple/5 p-4 text-sm text-gray-700"
           >
             <h3 class="text-lg font-semibold text-gray-900">
@@ -348,13 +359,15 @@
   const summaryTitle = document.getElementById('summary-title') as HTMLElement
   const summaryDate = document.getElementById('summary-date') as HTMLElement
   const summaryPrice = document.getElementById('summary-price') as HTMLElement
+  const summaryPriceNote = document.getElementById(
+    'summary-price-note'
+  ) as HTMLElement
   const zelleMemoPreview = document.getElementById(
     'zelle-memo-preview'
   ) as HTMLElement
   const paypalMemoPreview = document.getElementById(
     'paypal-memo-preview'
   ) as HTMLElement
-  const paypalLink = document.getElementById('paypal-link') as HTMLAnchorElement
   const paymentMethodInputs = Array.from(
     form.querySelectorAll<HTMLInputElement>('input[data-payment-method]')
   )
@@ -362,6 +375,12 @@
   let activeClassData: TClassListing | null = null
   let hasSubmittedSuccessfully = false
   const submitButtonDefaultText = submitRegistrationBtn.textContent || ''
+
+  const getPriceNote = (classData: TClassListing) => {
+    if (!classData.earlyPrice || !classData.doorPrice) return ''
+
+    return `Early reservation: $${classData.earlyPrice} when paid ${classData.earlyBirdDays ?? 14}+ days ahead. $${classData.doorPrice} at the door.`
+  }
 
   const getSessionDisplay = (classData: TClassListing) => {
     const formatted = formatDate(classData.date)
@@ -421,6 +440,7 @@
     summaryTitle.textContent = classData.title
     summaryDate.textContent = session.sessionText
     summaryPrice.textContent = `$${classData.price}`
+    summaryPriceNote.textContent = getPriceNote(classData)
     zelleMemoPreview.textContent = `${classData.title} - ${session.displayDate} - Your Name`
     paypalMemoPreview.textContent = `${classData.title} - ${session.displayDate} - Your Name`
     // paypalLink.href = paypalUrl
@@ -455,6 +475,7 @@
     paypalOption.classList.remove('hidden')
     modal.showModal()
     lockBodyScroll()
+    document.getElementById('student-name')?.focus()
   })
 
   closeBtn.addEventListener('click', () => {
@@ -524,8 +545,8 @@
         successMeetupLink.href = activeClassData!.url
         successPaymentInstructions.textContent =
           paymentMethod === 'Zelle'
-            ? 'To confirm your spot, send payment by Zelle to sararogers147@gmail.com.'
-            : 'To confirm your spot, open PayPal and complete payment.'
+            ? `To confirm your spot, send the applicable amount by Zelle to sararogers147@gmail.com. ${getPriceNote(activeClassData!)}`
+            : `To confirm your spot, open PayPal and complete payment. ${getPriceNote(activeClassData!)}`
         successPaymentMemo.textContent = `Memo: ${memo}`
         successPaypalLink.href = paypalUrl
         successPaypalLink.classList.toggle('hidden', paymentMethod === 'Zelle')

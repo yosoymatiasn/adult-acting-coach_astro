@@ -13,6 +13,7 @@ const { class: className, label = 'Carousel' } = Astro.props
   class={`relative ${className ?? ''}`}
   role="region"
   aria-label={label}
+  tabindex="0"
 >
   <div
     class="overflow-hidden rounded-lg border border-purple/20 bg-black shadow-lg shadow-purple/10"
@@ -69,21 +70,8 @@ const { class: className, label = 'Carousel' } = Astro.props
 
       if (!track || originalSlides.length === 0) return
 
-      const firstClone = originalSlides[0].cloneNode(true) as HTMLElement
-      const lastClone = originalSlides[originalSlides.length - 1].cloneNode(
-        true
-      ) as HTMLElement
-
-      firstClone.setAttribute('data-carousel-clone', 'true')
-      lastClone.setAttribute('data-carousel-clone', 'true')
-      firstClone.setAttribute('aria-hidden', 'true')
-      lastClone.setAttribute('aria-hidden', 'true')
-
-      track.prepend(lastClone)
-      track.append(firstClone)
-
-      const slides = Array.from(track.children) as HTMLElement[]
-      let currentIndex = originalSlides.length > 1 ? 1 : 0
+      const slides = originalSlides
+      let currentIndex = 0
 
       slides.forEach((slide) => {
         slide.classList.add('w-full', 'shrink-0')
@@ -103,24 +91,18 @@ const { class: className, label = 'Carousel' } = Astro.props
         return dot
       })
 
-      const getRealIndex = () => {
-        if (originalSlides.length <= 1) return 0
-        if (currentIndex === 0) return originalSlides.length - 1
-        if (currentIndex === slides.length - 1) return 0
-        return currentIndex - 1
-      }
-
       const updateSlide = (animated = true) => {
         track.style.transition = animated ? 'transform 0.5s ease-out' : 'none'
         track.style.transform = `translateX(-${currentIndex * 100}%)`
 
         slides.forEach((slide, index) => {
-          slide.setAttribute('aria-hidden', String(index !== currentIndex))
+          const isActive = index === currentIndex
+          slide.setAttribute('aria-hidden', String(!isActive))
+          slide.toggleAttribute('inert', !isActive)
         })
 
-        const realIndex = getRealIndex()
         dots.forEach((dot, index) => {
-          const isActive = index === realIndex
+          const isActive = index === currentIndex
           dot.classList.toggle('bg-purple', isActive)
           dot.classList.toggle('bg-purple/30', !isActive)
           dot.setAttribute('aria-current', isActive ? 'true' : 'false')
@@ -129,27 +111,16 @@ const { class: className, label = 'Carousel' } = Astro.props
 
       const showPrevious = () => {
         if (originalSlides.length <= 1) return
-        currentIndex -= 1
+        currentIndex =
+          (currentIndex - 1 + originalSlides.length) % originalSlides.length
         updateSlide()
       }
 
       const showNext = () => {
         if (originalSlides.length <= 1) return
-        currentIndex += 1
+        currentIndex = (currentIndex + 1) % originalSlides.length
         updateSlide()
       }
-
-      track.addEventListener('transitionend', () => {
-        if (currentIndex === 0) {
-          currentIndex = originalSlides.length
-          updateSlide(false)
-        }
-
-        if (currentIndex === slides.length - 1) {
-          currentIndex = 1
-          updateSlide(false)
-        }
-      })
 
       prevButton?.addEventListener('click', showPrevious)
       nextButton?.addEventListener('click', showNext)

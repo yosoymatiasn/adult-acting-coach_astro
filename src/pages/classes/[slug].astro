@@ -47,15 +47,62 @@ const meta: Metadata = {
           {classData.description}
         </p>
 
-        <!-- <section class="mt-12">
-          <h2>What you'll learn</h2>
-          <ul class="mt-4 list-disc space-y-2 pl-6">
-            <li>Personalized coaching</li>
-            <li>Hands-on exercises</li>
-            <li>Professional feedback</li>
-            <li>Practical techniques you can immediately apply.</li>
+        <dl class="mt-10 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
+            <dt
+              class="text-xs font-semibold uppercase tracking-wide text-purple"
+            >
+              Best for
+            </dt>
+            <dd class="mt-2 text-sm leading-6 text-gray-700">
+              {classData.details.bestFor}
+            </dd>
+          </div>
+
+          <div class="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
+            <dt
+              class="text-xs font-semibold uppercase tracking-wide text-purple"
+            >
+              Format
+            </dt>
+            <dd class="mt-2 text-sm leading-6 text-gray-700">
+              {classData.details.format}
+            </dd>
+          </div>
+        </dl>
+
+        <section class="mt-12 border-t border-gray-200 pt-10">
+          <p
+            class="text-sm font-semibold uppercase tracking-widest text-purple"
+          >
+            Class focus
+          </p>
+          <h2 class="mt-2">What you’ll work on</h2>
+          <ul class="mt-6 grid gap-3 sm:grid-cols-2" role="list">
+            {
+              classData.details.focus.map((item) => (
+                <li class="flex gap-3 rounded-lg bg-purple/5 px-4 py-3 text-gray-800">
+                  <span
+                    class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-purple"
+                    aria-hidden="true"
+                  />
+                  <span class="leading-6">{item}</span>
+                </li>
+              ))
+            }
           </ul>
-        </section> -->
+        </section>
+
+        {
+          classData.details.bring && (
+            <section class="mt-8 rounded-lg border border-purple/20 bg-purple/5 p-6">
+              <h2 class="text-xl">What to bring</h2>
+              <p class="mt-2 leading-7 text-gray-700">
+                {classData.details.bring}
+              </p>
+            </section>
+          )
+        }
       </section>
 
       <aside class="lg:sticky lg:top-24">

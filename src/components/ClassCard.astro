@@ -24,6 +24,9 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
   data-class-day-of-week={classData.dayOfWeek}
   data-class-type={classData.type}
   data-class-price={classData.price}
+  data-class-early-price={classData.earlyPrice}
+  data-class-door-price={classData.doorPrice}
+  data-class-early-bird-days={classData.earlyBirdDays}
   class="w-full border relative rounded-md overflow-hidden shadow-md"
 >
   <a
@@ -48,12 +51,7 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
   </a>
 
   <div class="p-2 md:px-6 md:py-4">
-    <a
-      href={classData.imageUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="class-link"
-    >
+    <a href={`/classes/${classData.slug}`} class="class-link">
       <h2 class="text-3xl inline-block mb-1">{classData.title}</h2>
     </a>
     <div class="mt-2 text-sm font-medium text-gray-600 space-y-1">
@@ -87,16 +85,18 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
     </p>
 
     <div
-      class="mt-5 flex gap-2 items-center justify-center border-t border-gray-200 pt-4"
+      class="mt-5 flex flex-wrap items-center gap-2 border-t border-gray-200 pt-4"
     >
-      <div class="mr-auto">
-        <p class="text-xs uppercase tracking-wide text-gray-500">Price</p>
+      <div class="w-full md:mr-auto md:w-auto">
         <p class="text-2xl font-semibold text-gray-900">${classData.price}</p>
       </div>
       <button
         type="button"
         data-register-button
-        class="inline-block bg-red-400 hover:bg-purple text-white font-semibold rounded-md py-3 px-12 text-center shadow-md transition-colors duration-200 cursor-pointer"
+        data-class-early-price={classData.earlyPrice}
+        data-class-door-price={classData.doorPrice}
+        data-class-early-bird-days={classData.earlyBirdDays}
+        class="inline-block cursor-pointer rounded-md bg-purple px-12 py-3 text-center font-semibold text-white shadow-md transition-colors duration-200 hover:bg-purple-light"
       >
         Register
       </button>
@@ -143,6 +143,13 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
             endDate: card.getAttribute('data-class-end-date'),
             url: card.getAttribute('data-class-url'),
             price: Number(card.getAttribute('data-class-price')),
+            earlyPrice:
+              Number(card.getAttribute('data-class-early-price')) || undefined,
+            doorPrice:
+              Number(card.getAttribute('data-class-door-price')) || undefined,
+            earlyBirdDays:
+              Number(card.getAttribute('data-class-early-bird-days')) ||
+              undefined,
           },
         })
       )
