@@ -4,7 +4,7 @@
   name="contact"
   method="POST"
   netlify-honeypot="bot-field"
-  class="rounded-lg max-w-2xl w-full shadow-xl flex flex-col px-8 py-8 bg-white"
+  class="flex w-full max-w-2xl flex-col rounded-lg bg-white px-5 py-6 shadow-xl sm:px-8 sm:py-8"
   id="contact-form"
 >
   <input type="hidden" name="form-name" value="contact" />
@@ -59,11 +59,15 @@
     required
     id="message"
     name="message"
+    rows="5"
     class="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-purple font-light text-gray-500"
   ></textarea>
 
-  <div class="flex flex-row items-center justify-start mt-4">
-    <button type="submit" class="sr-link max-w-none w-auto py-2 text-2xl">
+  <div class="mt-5 flex flex-row items-center justify-start">
+    <button
+      type="submit"
+      class="sr-link w-full max-w-none py-3 text-xl sm:w-auto sm:text-2xl"
+    >
       Send
     </button>
   </div>
