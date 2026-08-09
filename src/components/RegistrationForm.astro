@@ -5,10 +5,10 @@
 >
   <div
     data-modal-backdrop
-    class="flex size-full items-end justify-center text-center focus:outline-none sm:items-center sm:p-4"
+    class="flex size-full items-end justify-center p-3 text-center focus:outline-none sm:items-center sm:p-4"
   >
     <div
-      class="relative flex max-h-[calc(100dvh-1rem)] w-full transform flex-col overflow-hidden rounded-t-2xl bg-white text-left shadow-xl transition-all sm:my-0 sm:max-h-[calc(100dvh-2rem)] sm:max-w-lg sm:rounded-xl"
+      class="relative flex max-h-[calc(100dvh-1.5rem)] w-full transform flex-col overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-0 sm:max-h-[calc(100dvh-2rem)] sm:max-w-lg sm:rounded-xl"
     >
       <form
         data-netlify="true"
@@ -36,17 +36,52 @@
           id="modal-content"
           class="min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:p-8"
         >
-          <button
-            type="button"
-            data-modal-close
-            aria-label="Close registration"
-            class="absolute right-4 top-4 grid size-10 place-items-center rounded-full text-2xl leading-none text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple"
-          >
-            <span aria-hidden="true">×</span>
-          </button>
+          <div class="mb-5 flex items-center gap-3">
+            <div
+              id="registration-progress"
+              data-step="details"
+              aria-label="Registration progress: step 1 of 2, your information"
+              class="flex min-w-0 flex-1 items-center gap-2 text-sm"
+            >
+              <div
+                data-step-item="details"
+                class="flex items-center gap-2 font-semibold text-purple"
+              >
+                <span
+                  data-step-number="details"
+                  class="grid size-6 place-items-center rounded-full bg-purple text-xs text-white"
+                >
+                  1
+                </span>
+                <span>Your info</span>
+              </div>
+              <span class="h-px flex-1 bg-gray-200" aria-hidden="true"></span>
+              <div
+                data-step-item="payment"
+                class="flex items-center gap-2 font-medium text-gray-400"
+              >
+                <span
+                  data-step-number="payment"
+                  class="grid size-6 place-items-center rounded-full border border-gray-300 text-xs"
+                >
+                  2
+                </span>
+                <span>Payment</span>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              data-modal-close
+              aria-label="Close registration"
+              class="grid size-9 shrink-0 cursor-pointer place-items-center rounded-md text-2xl leading-none text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
           <div
             id="class-summary"
-            class="rounded-lg border border-gray-200 bg-gray-50 p-4 pr-12"
+            class="rounded-lg border border-gray-200 bg-gray-50 p-4"
           >
             <p
               class="text-xs font-semibold uppercase tracking-wide text-gray-500"
@@ -128,7 +163,7 @@
               id="payment-section-heading"
               class="text-sm font-semibold text-gray-900"
             >
-              Payment method
+              Choose a payment method
             </legend>
 
             <div class="mt-3 space-y-3">
@@ -149,14 +184,6 @@
                   <span class="block text-sm font-semibold text-gray-900">
                     Zelle (preferred)
                   </span>
-                  <span class="mt-1 block text-sm text-gray-700">
-                    Send payment to <strong>sararogers147@gmail.com</strong>.
-                  </span>
-                  <span class="mt-2 block text-xs text-gray-600">
-                    Include memo: <span
-                      id="zelle-memo-preview"
-                      class="font-semibold"></span>
-                  </span>
                 </span>
               </label>
 
@@ -174,16 +201,7 @@
                 />
                 <span>
                   <span class="block text-sm font-semibold text-gray-900">
-                    PayPal (account needed)
-                  </span>
-                  <span class="mt-1 block text-sm text-gray-700">
-                    Pay with your PayPal account using your PayPal balance,
-                    linked bank account, or credit/debit card.
-                  </span>
-                  <span class="mt-2 block text-xs text-gray-600">
-                    Include memo: <span
-                      id="paypal-memo-preview"
-                      class="font-semibold"></span>
+                    PayPal or card
                   </span>
                 </span>
               </label>
@@ -194,8 +212,8 @@
             id="registration-note"
             class="mt-6 text-xs text-gray-600 text-center"
           >
-            Your registration is submitted when you send this form. Your spot is
-            only confirmed once payment has been received.
+            Payment instructions will appear after you submit your registration.
+            Your spot is confirmed once payment has been received.
           </p>
 
           <p
@@ -282,14 +300,6 @@
           class="shrink-0 flex flex-col-reverse gap-3 border-t border-gray-200 bg-gray-50 px-5 py-4 sm:flex-row sm:justify-end sm:px-6"
         >
           <button
-            data-modal-close
-            type="button"
-            class="hidden cursor-pointer rounded-md bg-gray-800 px-4 py-2 text-white transition-colors duration-200 hover:bg-gray-700 sm:inline-block"
-          >
-            Close
-          </button>
-
-          <button
             id="back-to-student-fields-btn"
             type="button"
             class="hidden cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2 font-semibold text-gray-800 transition-colors duration-200 hover:bg-gray-100"
@@ -361,6 +371,21 @@
   ) as HTMLElement
   const modalFooter = document.getElementById('modal-footer') as HTMLElement
   const modalContent = document.getElementById('modal-content') as HTMLElement
+  const registrationProgress = document.getElementById(
+    'registration-progress'
+  ) as HTMLElement
+  const detailsStepItem = registrationProgress.querySelector(
+    '[data-step-item="details"]'
+  ) as HTMLElement
+  const paymentStepItem = registrationProgress.querySelector(
+    '[data-step-item="payment"]'
+  ) as HTMLElement
+  const detailsStepNumber = registrationProgress.querySelector(
+    '[data-step-number="details"]'
+  ) as HTMLElement
+  const paymentStepNumber = registrationProgress.querySelector(
+    '[data-step-number="payment"]'
+  ) as HTMLElement
   const successPanel = document.getElementById('success-panel') as HTMLElement
   const successClass = document.getElementById('success-class') as HTMLElement
   const successSession = document.getElementById(
@@ -391,18 +416,11 @@
   const paymentNoteInput = document.getElementById(
     'form-payment-note'
   ) as HTMLInputElement
-
   const summaryTitle = document.getElementById('summary-title') as HTMLElement
   const summaryDate = document.getElementById('summary-date') as HTMLElement
   const summaryPrice = document.getElementById('summary-price') as HTMLElement
   const summaryPriceNote = document.getElementById(
     'summary-price-note'
-  ) as HTMLElement
-  const zelleMemoPreview = document.getElementById(
-    'zelle-memo-preview'
-  ) as HTMLElement
-  const paypalMemoPreview = document.getElementById(
-    'paypal-memo-preview'
   ) as HTMLElement
   const paymentMethodInputs = Array.from(
     form.querySelectorAll<HTMLInputElement>('input[data-payment-method]')
@@ -462,6 +480,19 @@
     continueRegistrationBtn.classList.remove('hidden')
     backToStudentFieldsBtn.classList.add('hidden')
     submitRegistrationBtn.classList.add('hidden')
+    registrationProgress.dataset.step = 'details'
+    registrationProgress.setAttribute(
+      'aria-label',
+      'Registration progress: step 1 of 2, your information'
+    )
+    detailsStepItem.className =
+      'flex items-center gap-2 font-semibold text-purple'
+    paymentStepItem.className =
+      'flex items-center gap-2 font-medium text-gray-400'
+    detailsStepNumber.className =
+      'grid size-6 place-items-center rounded-full bg-purple text-xs text-white'
+    paymentStepNumber.className =
+      'grid size-6 place-items-center rounded-full border border-gray-300 text-xs'
     modalContent.scrollTo({ top: 0 })
     document.getElementById('student-name')?.focus()
   }
@@ -474,6 +505,19 @@
     continueRegistrationBtn.classList.add('hidden')
     backToStudentFieldsBtn.classList.remove('hidden')
     submitRegistrationBtn.classList.remove('hidden')
+    registrationProgress.dataset.step = 'payment'
+    registrationProgress.setAttribute(
+      'aria-label',
+      'Registration progress: step 2 of 2, payment'
+    )
+    detailsStepItem.className =
+      'flex items-center gap-2 font-medium text-gray-400'
+    paymentStepItem.className =
+      'flex items-center gap-2 font-semibold text-purple'
+    detailsStepNumber.className =
+      'grid size-6 place-items-center rounded-full border border-gray-300 text-xs'
+    paymentStepNumber.className =
+      'grid size-6 place-items-center rounded-full bg-purple text-xs text-white'
     modalContent.scrollTo({ top: 0 })
     document.getElementById('payment-zelle')?.focus()
   }
@@ -508,8 +552,6 @@
     summaryDate.textContent = session.sessionText
     summaryPrice.textContent = `$${classData.price}`
     summaryPriceNote.textContent = getPriceNote(classData)
-    zelleMemoPreview.textContent = `${classData.title} - ${session.displayDate} - Your Name`
-    paypalMemoPreview.textContent = `${classData.title} - ${session.displayDate} - Your Name`
     // paypalLink.href = paypalUrl
 
     form.reset()

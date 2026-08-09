@@ -4,7 +4,7 @@
   name="contact"
   method="POST"
   netlify-honeypot="bot-field"
-  class="flex w-full max-w-2xl flex-col rounded-lg bg-white px-5 py-6 shadow-xl sm:px-8 sm:py-8"
+  class="w-full max-w-2xl rounded-xl bg-white p-6 shadow-xl sm:p-7"
   id="contact-form"
 >
   <input type="hidden" name="form-name" value="contact" />
@@ -17,58 +17,85 @@
     </label>
   </p>
 
-  <h2 class="text-center text-2xl font-semibold text-gray-700">
-    Send a message
-  </h2>
+  <div class="flex items-start justify-between gap-4">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+        Contact Sara
+      </p>
+      <h2 class="mt-1 text-2xl font-semibold text-gray-900">
+        Start a conversation
+      </h2>
+    </div>
+    <span class="mt-1 hidden h-2.5 w-2.5 rounded-full bg-purple sm:block"
+    ></span>
+  </div>
 
-  <label for="fullName" class="text-gray-500 font-light mt-8">
-    Full name
-  </label>
-  <input
-    required
-    id="fullName"
-    type="text"
-    name="fullName"
-    autocomplete="name"
-    class="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-purple font-light text-gray-500"
-  />
+  <p class="mt-3 text-sm leading-6 text-gray-600">
+    Tell Sara a little about what you&apos;d like to work on.
+  </p>
 
-  <label for="email" class="text-gray-500 font-light mt-4"> E-mail </label>
-  <input
-    required
-    id="email"
-    type="email"
-    name="email"
-    autocomplete="email"
-    class="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-purple font-light text-gray-500"
-  />
+  <div class="mt-6 grid gap-4 sm:grid-cols-3">
+    <div>
+      <label for="fullName" class="text-sm font-semibold text-gray-800">
+        Full name
+      </label>
+      <input
+        required
+        id="fullName"
+        type="text"
+        name="fullName"
+        autocomplete="name"
+        class="mt-2 w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-2.5 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-purple focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple/20"
+      />
+    </div>
 
-  <label for="phone" class="text-gray-500 font-light mt-4">
-    Phone (Optional)
-  </label>
-  <input
-    id="phone"
-    type="tel"
-    name="phone"
-    autocomplete="tel"
-    class="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-purple font-light text-gray-500"
-  />
+    <div>
+      <label for="email" class="text-sm font-semibold text-gray-800">
+        Email
+      </label>
+      <input
+        required
+        id="email"
+        type="email"
+        name="email"
+        autocomplete="email"
+        class="mt-2 w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-2.5 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-purple focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple/20"
+      />
+    </div>
 
-  <label for="message" class="text-gray-500 font-light mt-4"> Message </label>
-  <textarea
-    required
-    id="message"
-    name="message"
-    rows="5"
-    class="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-purple font-light text-gray-500"
-  ></textarea>
+    <div>
+      <label for="phone" class="text-sm font-semibold text-gray-800">
+        Phone <span class="font-normal text-gray-500">(optional)</span>
+      </label>
+      <input
+        id="phone"
+        type="tel"
+        name="phone"
+        autocomplete="tel"
+        class="mt-2 w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-2.5 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-purple focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple/20"
+      />
+    </div>
 
-  <div class="mt-5 flex flex-row items-center justify-start">
+    <div class="sm:col-span-3">
+      <label for="message" class="text-sm font-semibold text-gray-800">
+        Message
+      </label>
+      <textarea
+        required
+        id="message"
+        name="message"
+        rows="4"
+        class="mt-2 w-full resize-y rounded-md border border-gray-300 bg-gray-50 px-3 py-2.5 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-purple focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple/20"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
     <button
       type="submit"
-      class="sr-link w-full max-w-none py-3 text-xl sm:w-auto sm:text-2xl"
+      class="inline-flex cursor-pointer items-center justify-center rounded-md bg-purple px-5 py-3 font-semibold text-white transition-colors duration-200 hover:bg-purple-light focus:outline-none focus:ring-2 focus:ring-purple focus:ring-offset-2"
     >
-      Send
+      Send message
     </button>
   </div>
 </form>
