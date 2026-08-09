@@ -30,7 +30,7 @@ export const classes: TClass[] = [
     imageUrl:
       'https://secure.meetupstatic.com/photos/event/9/a/f/0/highres_523899664.webp?w=384',
     description:
-      'Master the art of auditioning for all media - TV, film, commercials, episodic, and streaming - with a specialized course that focuses on camera techniques. Learn how to navigate the evolving landscape of digital and traditional media with confidence and skill.',
+      'A six-week on-camera class for TV, film, commercials, episodic work, streaming, and self-tapes. Practice the material, watch playback, and learn what reads on camera.',
     details: {
       bestFor:
         'Actors at any experience level who want a more confident, camera-ready audition process.',
@@ -52,7 +52,7 @@ export const classes: TClass[] = [
     imageUrl:
       'https://secure.meetupstatic.com/photos/event/d/f/8/6/highres_527937222.webp?w=384',
     description:
-      'Master the essentials in our 3-hour "Basic Camera Techniques" workshop, tailored for actors looking to enhance their on-screen presence and adapt their performances for the camera. Gain practical skills in framing, eye lines, and working with the camera to deliver more impactful and visually engaging performances in film and television.',
+      'A practical three-hour introduction to working on camera. Learn framing, eyelines, and how to adjust a performance for film and television.',
     details: {
       bestFor:
         'Actors who want a practical first foundation in working for the camera.',
@@ -96,7 +96,7 @@ export const classes: TClass[] = [
     imageUrl:
       'https://secure.meetupstatic.com/photos/event/b/0/c/6/highres_494625254.webp?w=384',
     description:
-      'Sharpen your audition skills with our 3-hour "Cold Reading Workshop," where you\'ll learn to quickly analyze and perform scripts. This dynamic and practical session focuses on improving your ability to make strong, immediate choices under pressure.',
+      'A three-hour workshop for getting comfortable with unfamiliar material. Learn to read a script quickly, make choices, and stay present in the room.',
     details: {
       bestFor: 'Actors looking for a concentrated cold-reading tune-up.',
       format: 'One practical, three-hour workshop.',
@@ -117,7 +117,7 @@ export const classes: TClass[] = [
     duration: '6 weeks',
     dayOfWeek: 'Monday',
     description:
-      'Join our 6-week "Improvisation Class with Performance," designed to unlock your creative potential and sharpen your spontaneous reaction skills in a supportive, dynamic environment. Culminating in a live performance, this course offers a unique opportunity to showcase your improvisational talents, building confidence and collaborative skills.',
+      "A six-week improv class that ends with a live performance. You'll work on spontaneity, listening, characters, and scenes with other people in the room.",
     details: {
       bestFor:
         'New and returning actors, communicators, and anyone ready to be more playful and present.',
@@ -161,7 +161,7 @@ export const classes: TClass[] = [
     imageUrl:
       'https://secure.meetupstatic.com/photos/event/1/9/3/1/highres_489666449.webp',
     description:
-      'Dive deep into the art of solo performance with our 4-week "Strictly Monologues" class, focusing exclusively on memorized monologue, interpretation, and delivery. Enhance your ability to captivate an audience with powerful, nuanced performances that showcase your individual talent and storytelling prowess.',
+      'A four-week class for actors working on memorized monologues. Focus on interpretation, choices, and delivery in front of an audience.',
     details: {
       bestFor:
         'Actors preparing a solo piece or looking to strengthen their individual storytelling.',
@@ -183,7 +183,7 @@ export const classes: TClass[] = [
     imageUrl:
       'https://secure.meetupstatic.com/photos/event/8/a/a/9/highres_515555497.webp?w=384',
     description:
-      'Embark on an 8-week journey of intensive "Monologue & Scene Study with Performance," where you\'ll delve deep into character exploration and scene dynamics to refine your acting skills. This comprehensive course culminates in a performance showcase, offering you the opportunity to present your polished monologues and scenes, honed through expert guidance and collaborative learning.',
+      'An eight-week acting class built around one monologue and one scene per student. The work leads to a Bare Bones performance for invited family and friends.',
     details: {
       bestFor:
         'Actors who want sustained practice with both solo work and scene partners.',
@@ -206,7 +206,7 @@ export const classes: TClass[] = [
     imageUrl:
       'https://secure.meetupstatic.com/photos/event/d/a/5/b/highres_494575899.webp?w=384',
     description:
-      'Choosing the Perfect Monologue - a 3-hour workshop focused on selecting monologues that resonate with your unique strengths and style. Learn how to pick compelling pieces that showcase your talents, suit your character type, and make a lasting impression in auditions and performances.',
+      'A three-hour workshop for choosing a monologue that suits you. Compare material, talk through type and character, and leave with better options for auditions or performance.',
     details: {
       bestFor:
         'Actors who need help choosing a monologue that fits their strengths and type.',
@@ -230,7 +230,7 @@ export const classes: TClass[] = [
     imageUrl:
       'https://secure.meetupstatic.com/photos/event/d/d/6/f/highres_480416687.webp',
     description:
-      'This course transforms your public speaking abilities, using methods honed from years of award-winning acting coaching.',
+      'A four-week class that applies acting tools to public speaking: nerves, structure, voice, body language, and questions from the room.',
     details: {
       bestFor:
         'Professionals and communicators who want a supportive, practical way to speak more clearly and confidently.',
@@ -253,7 +253,7 @@ export const classes: TClass[] = [
     imageUrl:
       'https://secure.meetupstatic.com/photos/event/d/d/6/e/highres_480416686.webp',
     description:
-      'Learn the art of self-taping & submissions: Explore equipment choices, framing techniques, performance nuances, and strategic submissions to excel in the modern acting-auditioning world.',
+      'A four-week class on the practical side of self-tapes and submissions: equipment, framing, performance choices, and sending work professionally.',
     details: {
       bestFor:
         'Actors who want a stronger, repeatable process for self-tapes and submissions.',
@@ -275,7 +275,7 @@ export const classes: TClass[] = [
     duration: '3 hours',
     dayOfWeek: 'Saturday',
     description:
-      'Dive into the depths of script interpretation with our 3-hour "Script Breakdown and Analysis" workshop, designed to enhance your understanding of narrative structure, character development, and thematic elements. Gain valuable skills in dissecting scripts, uncovering subtext, and bringing nuanced performances to life through detailed analysis and practical exercises.',
+      'A three-hour workshop on preparing a script before rehearsal or an audition. Work through structure, character, subtext, and playable choices.',
     details: {
       bestFor:
         'Actors who want a clearer method for preparing a script before rehearsal or audition.',
@@ -297,7 +297,7 @@ export const classes: TClass[] = [
     duration: '3 hours',
     dayOfWeek: 'Saturday',
     description:
-      'Dive into the "Business End of the Acting/Modeling Business" a comprehensive 3 hour session designed to unveil the intricacies of the industry, from knowing what to do to, where to go and who to see effectively.. Gain essential insights and tools to navigate the business side of acting/modeling, setting the stage for a successful and informed career.',
+      'A three-hour introduction to the business side of acting and modeling: resumes, photos, agents, casting calls, online presence, and how to avoid common scams.',
     details: {
       bestFor:
         'Aspiring actors and models who want a plain-language introduction to the business side of the work.',
@@ -320,7 +320,7 @@ export const classes: TClass[] = [
     duration: '3 hours',
     dayOfWeek: 'Saturday',
     description:
-      'In this 3-hour immersive workshop, we’ll focus on the craft of storytelling as a performance art. Learn to master the art of crafting and performing your unique story with impact and authenticity. Learn techniques to effectively narrate, engage audiences, and express your personal journey through powerful storytelling and performance skills.',
+      'A three-hour workshop on shaping and performing a personal story. Work on structure, audience connection, and a delivery that sounds like you.',
     details: {
       bestFor:
         'Anyone who wants to tell a personal story with greater clarity, presence, and impact.',
@@ -342,7 +342,7 @@ export const classes: TClass[] = [
     duration: '4 weeks',
     dayOfWeek: 'Wednesday',
     description:
-      'Join this four-week improvisation class for adults 55+ to unlock creative potential and sharpen spontaneous reactions in a supportive, dynamic environment. Build confidence, collaborative skills, and a playful performance practice.',
+      'A four-week improv class for adults 55+ who want to play, connect, and get quicker on their feet in a supportive group.',
     details: {
       bestFor:
         'Adults 55+ looking for a creative, social, and supportive way to explore improv.',
@@ -364,7 +364,7 @@ export const classes: TClass[] = [
     duration: '3 hours',
     dayOfWeek: 'Saturday',
     description:
-      'Are you ready to take your monologue to the next level? Whether you’re preparing for an audition, building a reel, or just looking to sharpen your skills, this 3-hour workshop is designed to help actors unlock the hidden depths of their monologue.',
+      'A three-hour working session for a monologue you already have. Bring it for focused feedback on subtext, objectives, and specific choices.',
     details: {
       bestFor:
         'Actors who have a monologue and want focused coaching before an audition, reel, or performance.',
@@ -389,7 +389,7 @@ export const classes: TClass[] = [
     duration: '4 weeks',
     dayOfWeek: 'Wednesday',
     description:
-      'This dynamic and interactive class is designed for actors looking to refine their on-camera performance skills while receiving detailed, personalized feedback through playback analysis.',
+      'A four-week on-camera class built around practice and playback. Work, watch, adjust, and repeat with direct feedback from Sara.',
     details: {
       bestFor:
         'Actors ready to develop their on-camera work through repeated practice and playback.',
@@ -411,7 +411,7 @@ export const classes: TClass[] = [
     duration: '3 hours',
     dayOfWeek: 'Saturday',
     description:
-      'This dynamic 3-hour workshop is designed to help actors, public speakers, and anyone who needs to memorize text efficiently and confidently. Whether it is a script, speech, or presentation, this session will equip you with powerful techniques to enhance your memory skills and bring your text to life.',
+      'A three-hour workshop for actors, speakers, and anyone who needs to retain text. Use practical methods to learn a script, speech, or presentation and make it your own.',
     details: {
       bestFor:
         'Actors, public speakers, and anyone who needs to retain text with more confidence.',
@@ -436,7 +436,7 @@ export const classes: TClass[] = [
     imageUrl:
       'https://secure.meetupstatic.com/photos/event/6/f/1/1/highres_529768433.webp?w=384',
     description:
-      'Speak with confidence—without the butterflies taking over. In this upbeat, supportive workshop, you’ll learn the essentials of public speaking and practice in a safe, secure environment where everyone roots for each other. You Perform on Camera with Playback. Perfect for beginners or anyone who wants a quick, practical refresher.',
+      'A three-hour public speaking workshop with on-camera practice and playback. Good for beginners or anyone who wants a direct refresher on nerves, structure, voice, and body language.',
     details: {
       bestFor:
         'Beginners, professionals, educators, leaders, and actors who want a practical speaking refresher.',
