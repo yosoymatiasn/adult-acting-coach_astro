@@ -3,7 +3,9 @@ import YoutubeEmbed from '../components/YoutubeEmbed.astro'
 import PageLayout from '../layouts/PageLayout.astro'
 import type { Metadata } from '../utils/seo'
 import Image from 'astro/components/Image.astro'
-import publicSpeakingImage from '../assets/images/submissions2.jpeg'
+
+const publicSpeakingImage =
+  'https://secure.meetupstatic.com/photos/event/d/d/7/3/event_480416691.webp?w=640'
 
 const meta: Metadata = {
   title: 'Public Speaking | Sara Rogers Acting',
@@ -68,15 +70,14 @@ const audiences = [
       >
         <Image
           src={publicSpeakingImage}
-          alt="Sara Rogers setting up a camera for hands-on coaching"
+          alt="Public speaking coaching session"
           width={600}
           height={400}
           class="aspect-[4/3] w-full object-cover object-center"
           loading="eager"
         />
         <figcaption class="bg-white px-5 py-4 text-sm leading-6 text-gray-600">
-          Hands-on coaching shaped by Sara&apos;s on-camera and performance
-          experience.
+          Practical coaching shaped by Sara&apos;s performance experience.
         </figcaption>
       </figure>
     </section>

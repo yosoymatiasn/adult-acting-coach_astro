@@ -1,7 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro'
 import type { Metadata } from '../utils/seo'
-import PageIntro from '../components/PageIntro.astro'
 import Image from 'astro/components/Image.astro'
 
 const meta: Metadata = {
@@ -10,146 +9,189 @@ const meta: Metadata = {
     'Book a self-tape session with Sara Rogers for audition support, a reader, coaching, playback review, and file submission help.',
   url: 'https://adultactingcoach.com/self-tapes',
 }
+
+const selfTapeImage =
+  'https://secure.meetupstatic.com/photos/event/4/7/a/9/event_474678345.webp?w=640'
+
+const sessionFacts = [
+  ['$75', 'For the first hour'],
+  ['Reader + coach', 'In the room with you'],
+  ['Playback + files', 'Review, select, and send'],
+]
+
+const sessionSteps = [
+  'Settle in with a reader and coach who understands the audition process.',
+  'Tape your scene, then watch playback together and choose the take that serves the work.',
+  'Label the files and send a clean, professional submission with confidence.',
+]
 ---
 
 <PageLayout meta={meta}>
-  <div class="flex flex-col">
-    <PageIntro
-      eyebrow="Audition support"
-      title="Self-Taping and Submissions"
-      description="Book a stress-free self-tape session with Sara as your reader and coach, so you can send in a confident, polished audition."
-    />
-
-    <div class="mx-auto mt-12 max-w-6xl">
-      <section class="grid items-center gap-8 md:grid-cols-[1fr_1.1fr]">
-        <div
-          class="flex h-56 overflow-hidden rounded-lg border-2 border-purple"
+  <div class="mx-auto max-w-6xl pb-4">
+    <section
+      class="grid items-center gap-10 pt-28 md:grid-cols-[1.05fr_0.95fr] md:gap-14 md:pt-36"
+    >
+      <div>
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.18em] text-purple"
         >
-          <Image
-            src="https://secure.meetupstatic.com/photos/event/d/d/7/3/event_480416691.webp?w=640"
-            alt="Self-taping setup"
-            class="w-1/2 object-cover object-top"
-            width={480}
-            height={480}
-            widths={[240, 360, 480]}
-            sizes="(max-width: 767px) 50vw, 300px"
-            loading="lazy"
-            decoding="async"
-          />
-          <Image
-            src="https://secure.meetupstatic.com/photos/event/4/7/a/9/event_474678345.webp?w=640"
-            alt="Actor preparing a self-tape"
-            class="w-1/2 object-cover object-left-top"
-            width={480}
-            height={480}
-            widths={[240, 360, 480]}
-            sizes="(max-width: 767px) 50vw, 300px"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-
-        <div>
-          <h2 class="text-3xl text-gray-950">
-            A reader, coach, and playback partner in one session.
-          </h2>
-          <p class="mt-4 text-lg leading-8 text-gray-700 md:text-xl">
-            Self-taping and submissions have become the norm, not the exception.
-            Actors are now asked to act, direct themselves, make strong choices,
-            and submit clean files quickly.
-          </p>
-          <p class="mt-4 text-lg leading-8 text-gray-700 md:text-xl">
-            With Sara, you get a built-in reader and coach. You tape, watch
-            playbacks, choose the right take, label the files, and send them
-            electronically.
-          </p>
-        </div>
-      </section>
-
-      <section class="mt-12 grid gap-5 md:grid-cols-3">
-        <div class="rounded-lg border border-purple/10 bg-white p-6 shadow-sm">
-          <h3 class="text-2xl text-purple">Stress-free setup</h3>
-          <p class="text-base leading-7 text-gray-700 md:text-lg">
-            A calm session so you can focus on the audition instead of the
-            technology.
-          </p>
-        </div>
-        <div class="rounded-lg border border-purple/10 bg-white p-6 shadow-sm">
-          <h3 class="text-2xl text-purple">Playback review</h3>
-          <p class="text-base leading-7 text-gray-700 md:text-lg">
-            Watch your takes with Sara and choose the audition that best serves
-            the work.
-          </p>
-        </div>
-        <div class="rounded-lg border border-purple/10 bg-white p-6 shadow-sm">
-          <h3 class="text-2xl text-purple">File help</h3>
-          <p class="text-base leading-7 text-gray-700 md:text-lg">
-            Files are labeled and sent electronically so your submission is
-            ready to go.
-          </p>
-        </div>
-      </section>
-
-      <section class="mt-12 grid gap-6 md:grid-cols-[1fr_1fr]">
-        <div class="rounded-lg bg-purple p-6 text-white md:p-8">
-          <h2 class="text-3xl text-white">Fees and scheduling</h2>
-          <div class="mt-4 space-y-4 text-lg leading-8 text-white/90">
-            <p>
-              The rate is a flat $75 for the hour. If you have several pages or
-              more than one scene, additional time is $37.50 for every 30
-              minutes.
-            </p>
-            <p>1.5 hours is $112.50, and 2 hours is $150.</p>
-            <p>
-              Payment options include cash, PayPal, credit cards, or checks.
-              Cash is preferred and you will receive a receipt.
-            </p>
-          </div>
-        </div>
-
-        <div class="rounded-lg border border-purple/15 bg-white p-6 md:p-8">
-          <h2 class="text-3xl text-gray-950">Before you arrive</h2>
-          <div class="mt-4 space-y-4 text-lg leading-8 text-gray-700">
-            <p>
-              Your time begins at the time reserved, so please allow enough time
-              for traffic, rehearsal, makeup, and wardrobe changes.
-            </p>
-            <p>
-              If you are memorized and ready to tape, the session usually goes
-              smoothly within the hour. If you finish early, you can use the
-              time to pick Sara&apos;s brain.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="mt-12 rounded-lg border border-purple/10 bg-white p-6 text-center shadow-sm md:p-8"
-      >
-        <h2 class="text-3xl text-gray-950">Notes</h2>
-        <div
-          class="mx-auto mt-4 max-w-4xl space-y-4 text-lg leading-8 text-gray-700"
+          Audition support
+        </p>
+        <h1 class="mt-3 max-w-3xl text-gray-950">Let the work come through.</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-gray-700 md:text-xl">
+          Book a calm, focused self-tape session with Sara as your reader and
+          coach—so you can make strong choices, review the work, and send in a
+          polished audition.
+        </p>
+        <a
+          href="/contact"
+          class="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-purple px-6 py-3 text-lg font-semibold text-white shadow-sm transition hover:bg-purple-light"
         >
-          <p>
-            The background is grey. Please avoid logos or anything that draws
-            the eye away from your audition. Solid colors are best. No black,
-            white, or red.
-          </p>
-          <p>
-            Wear jackets, sweaters, or clothing that supports the character when
-            possible. Bring options and let the camera decide.
-          </p>
-          <p>
-            Sara is seasoned and wants you to book the job. Read more from her <a
-              href="/testimonials"
-              class="text-purple underline">testimonials</a
-            > to get a sense of her coaching style and how she works with actors.
-          </p>
-        </div>
-        <a href="/contact" class="sr-link inline-block w-auto">
-          Schedule a Self-Tape
+          Schedule a self-tape
         </a>
-      </section>
-    </div>
+      </div>
+
+      <figure
+        class="overflow-hidden rounded-xl bg-gray-200 shadow-lg shadow-purple/10"
+      >
+        <Image
+          src={selfTapeImage}
+          alt="Actor preparing for a self-tape session"
+          width={640}
+          height={480}
+          widths={[320, 480, 640]}
+          sizes="(max-width: 767px) 100vw, 50vw"
+          class="aspect-[4/3] w-full object-cover object-left-top"
+          loading="eager"
+        />
+        <figcaption class="bg-white px-5 py-4 text-sm leading-6 text-gray-600">
+          A reader, coach, and playback partner in one session.
+        </figcaption>
+      </figure>
+    </section>
+
+    <dl class="mt-14 grid border-y border-purple/20 md:grid-cols-3">
+      {
+        sessionFacts.map(([value, label], index) => (
+          <div
+            class:list={[
+              'px-0 py-6 md:px-8',
+              index > 0 &&
+                'border-t border-purple/15 md:border-l md:border-t-0',
+            ]}
+          >
+            <dt class="text-sm font-semibold uppercase tracking-wide text-purple">
+              {label}
+            </dt>
+            <dd class="mt-2 text-3xl font-bold text-gray-950">{value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <section class="mt-16 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+      <div>
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.18em] text-purple"
+        >
+          One focused session
+        </p>
+        <h2 class="mt-3 text-gray-950">More than pressing record.</h2>
+        <p class="mt-5 text-lg leading-8 text-gray-700 md:text-xl">
+          Self-taping asks you to act, direct yourself, make choices, and move
+          quickly. Sara gives you a reliable partner for every part of that
+          process.
+        </p>
+      </div>
+
+      <ol class="border-t border-gray-300">
+        {
+          sessionSteps.map((step, index) => (
+            <li class="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-gray-300 py-5 md:grid-cols-[3.5rem_1fr]">
+              <span class="pt-0.5 text-sm font-semibold text-purple">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span class="text-lg leading-8 text-gray-700 md:text-xl">
+                {step}
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="mt-16 border-t border-gray-300 pt-10">
+      <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <div>
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-purple"
+          >
+            Rates and timing
+          </p>
+          <h2 class="mt-3 text-gray-950">Simple, flexible scheduling.</h2>
+        </div>
+        <div class="space-y-5 text-lg leading-8 text-gray-700 md:text-xl">
+          <p>
+            The rate is $75 for the first hour. If you have several pages or
+            more than one scene, additional time is $37.50 for every 30 minutes.
+            One and a half hours is $112.50; two hours is $150.
+          </p>
+          <p>
+            Payment options include cash, PayPal, credit cards, or checks. Cash
+            is preferred and you&apos;ll receive a receipt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="mt-16 border-y border-purple/20 bg-purple/5 px-0 py-10 md:px-8"
+    >
+      <div class="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-start">
+        <div>
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-purple"
+          >
+            Before you arrive
+          </p>
+          <h2 class="mt-3 text-gray-950">
+            Give yourself room to do good work.
+          </h2>
+        </div>
+        <div class="space-y-5 text-lg leading-8 text-gray-700 md:text-xl">
+          <p>
+            Your session begins at the time reserved, so allow time for traffic,
+            rehearsal, makeup, and wardrobe. If you arrive memorized and ready,
+            you can use more of the hour for choices and playback.
+          </p>
+          <p>
+            The background is grey. Avoid logos or anything distracting; solid
+            colors work best, but skip black, white, and red. Bring clothing
+            options that support the character, and let the camera decide.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="flex flex-col items-start border-b border-gray-300 py-16 md:items-center md:text-center"
+    >
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-purple">
+        Ready to tape
+      </p>
+      <h2 class="mt-3 max-w-3xl text-gray-950">
+        Bring in the material. Leave with a finished submission.
+      </h2>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-gray-700 md:text-xl">
+        Contact Sara to schedule a self-tape session or ask about the time your
+        material may need.
+      </p>
+      <a
+        href="/contact"
+        class="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-purple px-6 py-3 text-lg font-semibold text-white shadow-sm transition hover:bg-purple-light"
+      >
+        Schedule a self-tape
+      </a>
+    </section>
   </div>
 </PageLayout>
