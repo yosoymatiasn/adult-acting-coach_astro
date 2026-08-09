@@ -12,11 +12,10 @@ const meta: Metadata = {
   url: 'https://adultactingcoach.com/public-speaking',
 }
 
-const programDetails = [
-  'On-site training at your business location',
-  'Weekly 3-hour sessions for 4 weeks',
-  'Alternate training space available when needed',
-  'Private one-on-one coaching available upon request',
+const programFacts = [
+  ['4 weeks', 'Weekly coaching sessions'],
+  ['3 hours', 'Per session'],
+  ['On-site', 'At your business or an alternate space'],
 ]
 
 const practiceAreas = [
@@ -38,38 +37,34 @@ const audiences = [
 ---
 
 <PageLayout meta={meta}>
-  <div class="mx-auto flex max-w-6xl flex-col gap-14">
+  <div class="mx-auto max-w-6xl pb-4">
     <section
-      class="grid items-center gap-8 pt-28 md:grid-cols-[1.05fr_0.95fr] md:gap-12 md:pt-36"
+      class="grid items-center gap-10 pt-28 md:grid-cols-[1.05fr_0.95fr] md:gap-14 md:pt-36"
     >
       <div>
-        <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.18em] text-purple"
+        >
           For teams and professionals
         </p>
-        <h1 class="mt-2 text-gray-950">Public Speaking Training</h1>
-        <p class="mt-5 max-w-2xl text-lg leading-8 text-gray-700 md:text-xl">
-          A 4-week coaching program that helps professionals speak with
-          confidence, clarity, and presence in meetings, presentations, pitches,
-          and client conversations.
+        <h1 class="mt-3 max-w-3xl text-gray-950">
+          Speak with clarity.<br />Be remembered.
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-gray-700 md:text-xl">
+          Sara&apos;s public speaking training helps people turn nerves into
+          presence—whether they&apos;re leading a meeting, presenting an idea,
+          or speaking to a room for the first time.
         </p>
-        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-          <a
-            href="/contact"
-            class="inline-flex min-h-12 items-center justify-center rounded-md bg-purple px-6 py-3 text-lg font-semibold text-white shadow-sm transition hover:bg-purple-light sm:w-auto"
-          >
-            Discuss your team
-          </a>
-          <a
-            href="#how-it-works"
-            class="inline-flex min-h-12 items-center justify-center rounded-md border border-purple/30 px-6 py-3 text-lg font-semibold text-purple transition hover:bg-purple/5 sm:w-auto"
-          >
-            See how it works
-          </a>
-        </div>
+        <a
+          href="/contact"
+          class="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-purple px-6 py-3 text-lg font-semibold text-white shadow-sm transition hover:bg-purple-light"
+        >
+          Discuss training for your team
+        </a>
       </div>
 
       <figure
-        class="overflow-hidden rounded-xl border border-purple/15 bg-white shadow-lg shadow-purple/10"
+        class="overflow-hidden rounded-xl bg-gray-200 shadow-lg shadow-purple/10"
       >
         <Image
           src={publicSpeakingImage}
@@ -77,117 +72,132 @@ const audiences = [
           width={600}
           height={400}
           class="aspect-[4/3] w-full object-cover object-center"
+          loading="eager"
         />
-        <figcaption
-          class="border-t border-purple/10 px-5 py-4 text-sm leading-6 text-gray-600"
-        >
-          Practical coaching shaped by Sara&apos;s on-camera and performance
+        <figcaption class="bg-white px-5 py-4 text-sm leading-6 text-gray-600">
+          Hands-on coaching shaped by Sara&apos;s on-camera and performance
           experience.
         </figcaption>
       </figure>
     </section>
 
-    <section
-      id="how-it-works"
-      class="grid gap-8 scroll-mt-24 lg:grid-cols-[1fr_1.15fr] lg:items-start"
-    >
+    <dl class="mt-14 grid border-y border-purple/20 md:grid-cols-3">
+      {
+        programFacts.map(([value, label], index) => (
+          <div
+            class:list={[
+              'px-0 py-6 md:px-8',
+              index > 0 &&
+                'border-t border-purple/15 md:border-l md:border-t-0',
+            ]}
+          >
+            <dt class="text-sm font-semibold uppercase tracking-wide text-purple">
+              {label}
+            </dt>
+            <dd class="mt-2 text-3xl font-bold text-gray-950">{value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <section class="mt-16 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
       <div>
-        <h2>Training with an actor&apos;s eye</h2>
-        <p class="text-gray-700">
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.18em] text-purple"
+        >
+          An actor&apos;s eye
+        </p>
+        <h2 class="mt-3 text-gray-950">More than words on a page.</h2>
+        <p class="mt-5 text-lg leading-8 text-gray-700 md:text-xl">
           Sara brings decades of acting, coaching, and performance experience to
-          business communication. The program focuses on more than words on a
-          page: participants practice voice, presence, timing, body language,
-          confidence under pressure, and the ability to connect with a room.
+          business communication. The work is practical, supportive, and built
+          around how people actually show up in a room.
         </p>
       </div>
 
-      <div class="rounded-md border border-purple/20 bg-white p-6 shadow-sm">
-        <h2 class="text-xl">How It Works</h2>
-        <ul class="mt-4 grid gap-3 sm:grid-cols-2">
-          {
-            programDetails.map((detail) => (
-              <li class="rounded-md border border-gray-200 bg-gray-50 p-4 text-lg text-gray-700">
-                {detail}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </section>
-
-    <section>
-      <div class="text-center">
-        <h2>What Your Team Will Practice</h2>
-        <p class="mx-auto max-w-3xl text-gray-700">
-          Each session is hands-on, supportive, and built around practical
-          communication skills your team can use immediately.
-        </p>
-      </div>
-
-      <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <ol class="border-t border-gray-300">
         {
-          practiceAreas.map((area) => (
-            <div class="rounded-md border border-gray-200 bg-white p-5 shadow-sm">
-              <p class="text-lg font-semibold text-gray-800">{area}</p>
-            </div>
+          practiceAreas.map((area, index) => (
+            <li class="grid grid-cols-[2.5rem_1fr] gap-4 border-b border-gray-300 py-4 md:grid-cols-[3.5rem_1fr]">
+              <span class="pt-0.5 text-sm font-semibold text-purple">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span class="text-xl font-semibold leading-7 text-gray-900">
+                {area}
+              </span>
+            </li>
           ))
         }
+      </ol>
+    </section>
+
+    <section class="mt-16 border-t border-gray-300 pt-10">
+      <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <div>
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-purple"
+          >
+            Built around your room
+          </p>
+          <h2 class="mt-3 text-gray-950">For people who need to be heard.</h2>
+        </div>
+
+        <div>
+          <ul class="grid gap-x-8 gap-y-3 sm:grid-cols-2" role="list">
+            {
+              audiences.map((audience) => (
+                <li class="border-b border-gray-200 pb-3 text-lg leading-7 text-gray-700">
+                  {audience}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="mt-7 text-lg leading-8 text-gray-700">
+            Sara adapts the training to your industry, audience, and pressure
+            points. Organizations including Make-A-Wish Foundation have used
+            this approach to help people communicate with more confidence in
+            donor conversations, events, and internal meetings.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="grid gap-8 lg:grid-cols-2">
-      <div class="rounded-md border border-gray-200 bg-white p-6 shadow-sm">
-        <h2>Who It&apos;s For</h2>
-        <ul class="mt-4 space-y-2">
-          {
-            audiences.map((audience) => (
-              <li class="border-b border-gray-100 pb-2 text-lg text-gray-700 last:border-b-0">
-                {audience}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-
-      <div class="rounded-md border border-gray-200 bg-white p-6 shadow-sm">
-        <h2>Customized for Your Company</h2>
-        <p class="text-gray-700">
-          Every business has its own audience, goals, and pressure points. Sara
-          adapts the training to your industry so the work feels relevant,
-          specific, and immediately useful.
-        </p>
-        <p class="mt-4 text-gray-700">
-          Organizations such as Make-A-Wish Foundation have found the program
-          valuable across departments, helping professionals communicate with
-          confidence in donor conversations, events, and internal meetings.
-        </p>
-      </div>
-    </section>
-
-    <section class="mx-auto w-full max-w-3xl text-center">
-      <h2>Testimonials</h2>
-      <div class="mt-4 border-4 border-purple bg-white">
-        <YoutubeEmbed id="0fKFOy3rNnQ" />
+    <section class="mt-16 bg-purple px-6 py-10 text-white md:px-10 md:py-12">
+      <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <div>
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.18em] text-white/75"
+          >
+            Hear it from a student
+          </p>
+          <h2 class="mt-3 text-white">Confidence you can see.</h2>
+          <p class="mt-4 text-lg leading-8 text-white/85">
+            Watch a firsthand account of working with Sara.
+          </p>
+        </div>
+        <div class="overflow-hidden bg-black shadow-lg">
+          <YoutubeEmbed id="0fKFOy3rNnQ" />
+        </div>
       </div>
     </section>
 
     <section
-      class="rounded-md bg-purple/90 p-8 text-center text-white shadow-lg"
+      class="flex flex-col items-start border-b border-gray-300 py-16 md:items-center md:text-center"
     >
-      <h2 class="m-0 text-3xl font-semibold text-white">
-        Bring Public Speaking Training to Your Team
-      </h2>
-      <p class="mx-auto mt-4 max-w-3xl">
-        Contact Sara to discuss your team&apos;s goals, scheduling, location,
-        and pricing. Additional travel fees may apply beyond 10 miles.
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-purple">
+        Let&apos;s talk
       </p>
-      <p class="mt-3">
-        Private one-on-one public speaking coaching is also available upon
+      <h2 class="mt-3 max-w-3xl text-gray-950">
+        Bring public speaking training to your team.
+      </h2>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-gray-700 md:text-xl">
+        Contact Sara to discuss goals, scheduling, location, and pricing.
+        Private one-on-one public speaking coaching is also available on
         request.
       </p>
       <a
         href="/contact"
-        class="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-white px-6 py-3 text-lg font-semibold text-purple shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+        class="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-purple px-6 py-3 text-lg font-semibold text-white shadow-sm transition hover:bg-purple-light"
       >
         Contact Sara
       </a>
