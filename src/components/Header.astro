@@ -214,10 +214,6 @@ const currentPath = Astro.url.pathname
 
         header?.classList.toggle('py-2', isScrolled)
         header?.classList.toggle('py-4', !isScrolled)
-        header?.classList.toggle('bg-white/85', isScrolled)
-        header?.classList.toggle('backdrop-blur-md', isScrolled)
-        header?.classList.toggle('shadow-sm', isScrolled)
-        header?.classList.toggle('bg-transparent', !isScrolled)
 
         desktopNav?.classList.toggle('bg-white/90', isScrolled)
         desktopNav?.classList.toggle('bg-white/95', !isScrolled)
