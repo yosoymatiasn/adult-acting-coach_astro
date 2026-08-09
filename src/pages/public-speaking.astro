@@ -2,6 +2,8 @@
 import YoutubeEmbed from '../components/YoutubeEmbed.astro'
 import PageLayout from '../layouts/PageLayout.astro'
 import type { Metadata } from '../utils/seo'
+import Image from 'astro/components/Image.astro'
+import publicSpeakingImage from '../assets/images/submissions2.jpeg'
 
 const meta: Metadata = {
   title: 'Public Speaking | Sara Rogers Acting',
@@ -36,18 +38,59 @@ const audiences = [
 ---
 
 <PageLayout meta={meta}>
-  <div class="mx-auto flex max-w-5xl flex-col gap-14">
-    <section class="mx-auto max-w-4xl pt-28 text-center md:pt-36">
-      <h1>Public Speaking Training for Teams</h1>
-      <p class="mx-auto mt-5 max-w-3xl text-gray-700">
-        A 4-week on-site coaching program that helps professionals speak with
-        confidence, clarity, and presence in meetings, presentations, pitches,
-        and client conversations.
-      </p>
-      <a href="/contact" class="sr-link inline-block w-auto"> Contact Sara </a>
+  <div class="mx-auto flex max-w-6xl flex-col gap-14">
+    <section
+      class="grid items-center gap-8 pt-28 md:grid-cols-[1.05fr_0.95fr] md:gap-12 md:pt-36"
+    >
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-purple">
+          For teams and professionals
+        </p>
+        <h1 class="mt-2 text-gray-950">Public Speaking Training</h1>
+        <p class="mt-5 max-w-2xl text-lg leading-8 text-gray-700 md:text-xl">
+          A 4-week coaching program that helps professionals speak with
+          confidence, clarity, and presence in meetings, presentations, pitches,
+          and client conversations.
+        </p>
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="/contact"
+            class="inline-flex min-h-12 items-center justify-center rounded-md bg-purple px-6 py-3 text-lg font-semibold text-white shadow-sm transition hover:bg-purple-light sm:w-auto"
+          >
+            Discuss your team
+          </a>
+          <a
+            href="#how-it-works"
+            class="inline-flex min-h-12 items-center justify-center rounded-md border border-purple/30 px-6 py-3 text-lg font-semibold text-purple transition hover:bg-purple/5 sm:w-auto"
+          >
+            See how it works
+          </a>
+        </div>
+      </div>
+
+      <figure
+        class="overflow-hidden rounded-xl border border-purple/15 bg-white shadow-lg shadow-purple/10"
+      >
+        <Image
+          src={publicSpeakingImage}
+          alt="Sara Rogers setting up a camera for hands-on coaching"
+          width={600}
+          height={400}
+          class="aspect-[4/3] w-full object-cover object-center"
+        />
+        <figcaption
+          class="border-t border-purple/10 px-5 py-4 text-sm leading-6 text-gray-600"
+        >
+          Practical coaching shaped by Sara&apos;s on-camera and performance
+          experience.
+        </figcaption>
+      </figure>
     </section>
 
-    <section class="grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:items-start">
+    <section
+      id="how-it-works"
+      class="grid gap-8 scroll-mt-24 lg:grid-cols-[1fr_1.15fr] lg:items-start"
+    >
       <div>
         <h2>Training with an actor&apos;s eye</h2>
         <p class="text-gray-700">
@@ -144,7 +187,7 @@ const audiences = [
       </p>
       <a
         href="/contact"
-        class="mt-6 inline-block rounded-md border-2 border-white bg-white px-8 py-3 text-xl font-semibold text-purple transition hover:bg-purple hover:text-white"
+        class="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-white px-6 py-3 text-lg font-semibold text-purple shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
       >
         Contact Sara
       </a>
