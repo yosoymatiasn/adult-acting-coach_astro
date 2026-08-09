@@ -9,7 +9,9 @@ import logo from '../assets/images/logo.png'
   id="site-header"
   class="fixed top-0 z-50 w-full bg-transparent py-4 transition-[padding] duration-300"
 >
-  <div class="container mx-auto flex items-center justify-between px-4">
+  <div
+    class="container relative z-50 mx-auto flex items-center justify-between px-4"
+  >
     <a
       href="/"
       class="flex h-12 w-12 items-center justify-center rounded-full bg-white p-2 ring-1 ring-purple/15 md:hidden"
@@ -77,6 +79,13 @@ import logo from '../assets/images/logo.png'
     </button>
   </div>
 
+  <div
+    id="mobile-menu-backdrop"
+    class="pointer-events-none fixed inset-0 z-40 bg-gray-950/35 opacity-0 backdrop-blur-[1px] transition-opacity duration-200 ease-out motion-reduce:transition-none md:hidden"
+    aria-hidden="true"
+  >
+  </div>
+
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
@@ -84,7 +93,8 @@ import logo from '../assets/images/logo.png'
     aria-hidden="true"
   >
     <div
-      class="mx-auto max-w-md overflow-hidden rounded-b-2xl border border-purple/10 bg-white shadow-xl shadow-purple/10"
+      id="mobile-menu-panel"
+      class="pointer-events-none mx-auto max-w-md overflow-hidden rounded-b-2xl border border-purple/10 bg-white shadow-2xl shadow-purple/20"
     >
       <div class="flex items-center gap-3 border-b border-purple/10 px-5 py-4">
         <span
@@ -148,6 +158,8 @@ import logo from '../assets/images/logo.png'
     document.addEventListener('DOMContentLoaded', () => {
       const hamburger = document.getElementById('hamburger')
       const menu = document.getElementById('mobile-menu')
+      const menuPanel = document.getElementById('mobile-menu-panel')
+      const menuBackdrop = document.getElementById('mobile-menu-backdrop')
       const header = document.getElementById('site-header')
       const desktopNav = document.getElementById('desktop-nav')
       const desktopLogoLink = document.getElementById('desktop-logo-link')
@@ -161,8 +173,10 @@ import logo from '../assets/images/logo.png'
 
       const setMenuOpen = (nextOpen: boolean) => {
         isOpen = nextOpen
-        menu?.classList.toggle('pointer-events-none', !isOpen)
-        menu?.classList.toggle('pointer-events-auto', isOpen)
+        menu?.classList.add('pointer-events-none')
+        menu?.classList.remove('pointer-events-auto')
+        menuPanel?.classList.toggle('pointer-events-none', !isOpen)
+        menuPanel?.classList.toggle('pointer-events-auto', isOpen)
         menu?.classList.toggle('opacity-0', !isOpen)
         menu?.classList.toggle('opacity-100', isOpen)
         menu?.classList.toggle('-translate-y-4', !isOpen)
@@ -170,6 +184,11 @@ import logo from '../assets/images/logo.png'
         menu?.classList.toggle('scale-95', !isOpen)
         menu?.classList.toggle('scale-100', isOpen)
         menu?.setAttribute('aria-hidden', String(!isOpen))
+        menuBackdrop?.classList.toggle('pointer-events-none', !isOpen)
+        menuBackdrop?.classList.toggle('pointer-events-auto', isOpen)
+        menuBackdrop?.classList.toggle('opacity-0', !isOpen)
+        menuBackdrop?.classList.toggle('opacity-100', isOpen)
+        menuBackdrop?.setAttribute('aria-hidden', String(!isOpen))
         hamburger?.setAttribute('aria-expanded', String(isOpen))
 
         bar1?.classList.toggle('rotate-45', isOpen)
@@ -220,6 +239,29 @@ import logo from '../assets/images/logo.png'
       // Toggle menu and animate hamburger
       hamburger?.addEventListener('click', () => {
         setMenuOpen(!isOpen)
+      })
+
+      menuBackdrop?.addEventListener('click', () => {
+        setMenuOpen(false)
+      })
+
+      header?.addEventListener('click', (event) => {
+        const target = event.target as Node
+
+        if (
+          isOpen &&
+          !hamburger?.contains(target) &&
+          !menuPanel?.contains(target)
+        ) {
+          setMenuOpen(false)
+        }
+      })
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && isOpen) {
+          setMenuOpen(false)
+          hamburger?.focus()
+        }
       })
 
       menu?.querySelectorAll('a').forEach((link) => {

@@ -34,7 +34,9 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
     rel="noopener noreferrer"
     class="class-link relative"
   >
-    <div class="group overflow-hidden h-60 relative">
+    <div
+      class="group relative aspect-[2/1] overflow-hidden md:h-60 md:aspect-auto"
+    >
       <div
         class="transition-colors absolute inset-0 bg-black/50 group-hover:bg-black/0 pointer-events-none z-10"
       >
@@ -87,7 +89,7 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
     <div
       class="mt-5 flex flex-wrap items-center gap-2 border-t border-gray-200 pt-4"
     >
-      <div class="w-full md:mr-auto md:w-auto">
+      <div class="mr-auto">
         <p class="text-2xl font-semibold text-gray-900">${classData.price}</p>
       </div>
       <button
