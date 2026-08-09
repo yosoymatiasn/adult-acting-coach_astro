@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro'
 import type { Metadata } from '../utils/seo'
 import PageIntro from '../components/PageIntro.astro'
+import Image from 'astro/components/Image.astro'
 
 const meta: Metadata = {
   title: 'Self-Tapes | Sara Rogers Acting',
@@ -24,21 +25,27 @@ const meta: Metadata = {
         <div
           class="flex h-56 overflow-hidden rounded-lg border-2 border-purple"
         >
-          <img
-            src="https://secure.meetupstatic.com/photos/event/d/d/7/3/event_480416691.webp?w=2048"
+          <Image
+            src="https://secure.meetupstatic.com/photos/event/d/d/7/3/event_480416691.webp?w=640"
             alt="Self-taping setup"
             class="w-1/2 object-cover object-top"
-            width="300"
-            height="300"
+            width={480}
+            height={480}
+            widths={[240, 360, 480]}
+            sizes="(max-width: 767px) 50vw, 300px"
             loading="lazy"
+            decoding="async"
           />
-          <img
-            src="https://secure.meetupstatic.com/photos/event/4/7/a/9/event_474678345.webp?w=2048"
+          <Image
+            src="https://secure.meetupstatic.com/photos/event/4/7/a/9/event_474678345.webp?w=640"
             alt="Actor preparing a self-tape"
             class="w-1/2 object-cover object-left-top"
-            width="300"
-            height="300"
+            width={480}
+            height={480}
+            widths={[240, 360, 480]}
+            sizes="(max-width: 767px) 50vw, 300px"
             loading="lazy"
+            decoding="async"
           />
         </div>
 
