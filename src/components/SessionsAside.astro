@@ -21,6 +21,7 @@ const pricingSession = sessions.find(
 const priceNote = pricingSession
   ? `Early $${pricingSession.earlyPrice} when reserved ${pricingSession.earlyBirdDays ?? 14}+ days ahead · $${pricingSession.doorPrice} at the door`
   : null
+const venue = sessions.find((session) => session.venue)?.venue
 
 const getSessionBadge = (date: string) => {
   const daysUntil = Math.ceil(
@@ -46,6 +47,19 @@ const getSessionBadge = (date: string) => {
             )}
           </div>
         </div>
+
+        {venue && (
+          <div class="mt-6 rounded-lg border border-purple/15 bg-purple/5 p-4">
+            <p class="text-xs font-semibold uppercase tracking-wide text-purple">
+              Current location
+            </p>
+            <p class="mt-1 text-lg font-semibold text-gray-900">{venue.name}</p>
+            <p class="mt-1 text-sm leading-6 text-gray-700">
+              {venue.address}
+              {venue.parking && ` · ${venue.parking}`}
+            </p>
+          </div>
+        )}
 
         <div class="mt-8 border-t border-gray-200 pt-6">
           <h2 class="text-lg font-semibold text-purple">Upcoming sessions</h2>

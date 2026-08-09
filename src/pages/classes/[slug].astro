@@ -23,6 +23,10 @@ export async function getStaticPaths() {
 }
 
 const { classData } = Astro.props
+const attendance =
+  classData.slug === 'improv-for-the-55-crowd'
+    ? 'Adults 55+ at every experience level.'
+    : 'Adults 18+ — beginners through experienced performers.'
 
 const meta: Metadata = {
   title: `${classData.title} | Sara Rogers Acting`,
@@ -85,6 +89,17 @@ const meta: Metadata = {
             <dd class="mt-2 text-sm leading-6 text-gray-700">
               {classData.details.format}
             </dd>
+          </div>
+
+          <div
+            class="rounded-lg border border-gray-200 bg-white p-5 shadow-sm sm:col-span-2"
+          >
+            <dt
+              class="text-xs font-semibold uppercase tracking-wide text-purple"
+            >
+              Who can join
+            </dt>
+            <dd class="mt-2 text-sm leading-6 text-gray-700">{attendance}</dd>
           </div>
         </dl>
 

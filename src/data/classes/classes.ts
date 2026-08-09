@@ -125,7 +125,7 @@ export const classes: TClass[] = [
       focus: [
         'Quick thinking, spontaneity, characters, and scenes',
         'Listening and collaboration with scene partners',
-        'Confidence, connection, and stage presence',
+        'Confidence, connection, and stage presence — no scripts required',
       ],
     },
     price: 300,
@@ -139,7 +139,7 @@ export const classes: TClass[] = [
     duration: '3 hours',
     dayOfWeek: 'Saturday',
     description:
-      'Explore the exciting world of improvisation in this 3-hour workshop, designed to unleash creativity, enhance spontaneity, and develop quick thinking skills. Perfect for beginners and seasoned performers, as well as public speakers. ',
+      'Explore the exciting world of improvisation in this 3-hour workshop — not stand-up comedy, but a playful way to build creativity, spontaneity, and quick thinking. Perfect for beginners, seasoned performers, and public speakers.',
     details: {
       bestFor:
         'Curious beginners, performers, and public speakers who want to try improv without committing to a full course.',
