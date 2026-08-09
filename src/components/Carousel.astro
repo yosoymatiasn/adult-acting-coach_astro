@@ -84,7 +84,7 @@ const { class: className, label = 'Carousel' } = Astro.props
           'h-2.5 w-2.5 rounded-full bg-purple/30 transition-colors hover:bg-purple'
         dot.setAttribute('aria-label', `Show video ${index + 1}`)
         dot.addEventListener('click', () => {
-          currentIndex = index + 1
+          currentIndex = index
           updateSlide()
         })
         dotsContainer?.append(dot)

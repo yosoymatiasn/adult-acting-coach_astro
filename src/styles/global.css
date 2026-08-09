@@ -45,7 +45,7 @@
   }
 
   .sr-link {
-    @apply w-full max-w-96 px-4 md:px-8 py-4 mx-auto mt-4 text-white md:text-3xl text-center rounded-md border-double border-4 border-white transition-colors;
+    @apply mx-auto mt-4 inline-flex min-h-12 items-center justify-center rounded-md px-5 py-3 text-lg font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md;
     background-color: var(--color-purple);
   }
 
@@ -62,7 +62,7 @@
   }
 
   .btn-primary {
-    @apply px-4 py-2 text-white rounded shadow transition;
+    @apply rounded-md px-4 py-2 text-white shadow-sm transition-colors;
     background-color: var(--color-purple);
   }
 

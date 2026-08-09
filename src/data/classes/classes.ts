@@ -74,7 +74,7 @@ export const classes: TClass[] = [
     imageUrl:
       'https://secure.meetupstatic.com/photos/event/d/d/7/2/highres_480416690.webp',
     description:
-      'Sharpen your audition skills with our 3-hour "Cold Reading Workshop," where you\'ll learn to quickly analyze and perform scripts. This dynamic and practical session focuses on improving your ability to make strong, immediate choices under pressure.',
+      "Build confident cold-reading technique over four weekly sessions. You'll learn to quickly analyze unfamiliar scripts, make strong immediate choices, and stay present under audition pressure.",
     details: {
       bestFor:
         'Actors who want more ease and clarity when handed unfamiliar material.',
@@ -342,12 +342,11 @@ export const classes: TClass[] = [
     duration: '4 weeks',
     dayOfWeek: 'Wednesday',
     description:
-      'Join our 6-week "Silver stage improvisation for the 55+ crowd," designed to unlock your creative potential and sharpen your spontaneous reaction skills in a supportive, dynamic environment. Culminating in a live performance, this course offers a unique opportunity to showcase your improvisational talents, building confidence and collaborative skills.',
+      'Join this four-week improvisation class for adults 55+ to unlock creative potential and sharpen spontaneous reactions in a supportive, dynamic environment. Build confidence, collaborative skills, and a playful performance practice.',
     details: {
       bestFor:
         'Adults 55+ looking for a creative, social, and supportive way to explore improv.',
-      format:
-        'A weekly improvisation class; the next session dates confirm the exact course length.',
+      format: 'Four weekly improvisation sessions.',
       focus: [
         'Spontaneity and creative play',
         'Confidence and connection',

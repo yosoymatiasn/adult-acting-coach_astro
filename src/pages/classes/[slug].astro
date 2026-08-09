@@ -36,8 +36,8 @@ const meta: Metadata = {
 <PageLayout meta={meta}>
   <RegistrationForm />
   <div class="max-w-6xl mx-auto px-6 pb-12 pt-28 md:pt-36">
-    <div class="grid lg:grid-cols-[1.2fr_1fr] gap-12 items-start">
-      <section>
+    <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-12 lg:items-start">
+      <section class="lg:col-start-1">
         <p class="text-sm font-semibold uppercase tracking-widest text-purple">
           {classData.type}
         </p>
@@ -46,8 +46,25 @@ const meta: Metadata = {
         <p class="mt-8 text-xl leading-9 text-gray-700">
           {classData.description}
         </p>
+      </section>
 
-        <dl class="mt-10 grid gap-4 sm:grid-cols-2">
+      <aside
+        class="order-2 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:sticky lg:top-24"
+      >
+        <Image
+          src={classData.imageUrl}
+          alt={classData.title}
+          width={900}
+          height={600}
+          loading="eager"
+          class="w-full rounded-lg object-cover shadow-lg"
+        />
+
+        <SessionsAside classData={classData} />
+      </aside>
+
+      <section class="order-3 lg:col-start-1">
+        <dl class="grid gap-4 sm:grid-cols-2">
           <div class="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
             <dt
               class="text-xs font-semibold uppercase tracking-wide text-purple"
@@ -104,18 +121,6 @@ const meta: Metadata = {
           )
         }
       </section>
-
-      <aside class="lg:sticky lg:top-24">
-        <Image
-          src={classData.imageUrl}
-          alt={classData.title}
-          width={900}
-          height={600}
-          class="w-full rounded-lg object-cover shadow-lg"
-        />
-
-        <SessionsAside classData={classData} />
-      </aside>
     </div>
   </div>
 </PageLayout>

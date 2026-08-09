@@ -27,7 +27,7 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
   data-class-early-price={classData.earlyPrice}
   data-class-door-price={classData.doorPrice}
   data-class-early-bird-days={classData.earlyBirdDays}
-  class="w-full border relative rounded-md overflow-hidden shadow-md"
+  class="w-full overflow-hidden rounded-lg border border-purple/10 bg-white shadow-sm shadow-purple/10 transition-shadow md:h-full md:hover:shadow-md"
 >
   <a
     href={`/classes/${classData.slug}`}
@@ -38,7 +38,7 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
       class="group relative aspect-[2/1] overflow-hidden md:h-60 md:aspect-auto"
     >
       <div
-        class="transition-colors absolute inset-0 bg-black/50 group-hover:bg-black/0 pointer-events-none z-10"
+        class="pointer-events-none absolute inset-0 z-10 bg-black/10 transition-colors md:bg-black/30 md:group-hover:bg-black/0"
       >
       </div>
       <Image
@@ -47,12 +47,12 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
         alt={classData.title}
         width={800}
         height={400}
-        class="transition-transform w-full h-full object-cover object-top group-hover:scale-100 scale-110"
+        class="h-full w-full scale-100 object-cover object-top transition-transform md:scale-105 md:group-hover:scale-100"
       />
     </div>
   </a>
 
-  <div class="p-2 md:px-6 md:py-4">
+  <div class="flex h-full flex-col p-4 md:px-6 md:py-4">
     <a href={`/classes/${classData.slug}`} class="class-link">
       <h2 class="text-3xl inline-block mb-1">{classData.title}</h2>
     </a>

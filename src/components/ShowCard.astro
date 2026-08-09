@@ -10,7 +10,7 @@ const timeRange = formatTimeRange(showData.date, showData.endDate)
 ---
 
 <div
-  class="relative flex h-full w-full flex-col overflow-hidden rounded-md border shadow-md"
+  class="relative flex h-full w-full flex-col overflow-hidden rounded-lg border border-purple/10 bg-white shadow-sm shadow-purple/10 transition-shadow md:hover:shadow-md"
 >
   <a
     href={showData.url}
@@ -18,9 +18,11 @@ const timeRange = formatTimeRange(showData.date, showData.endDate)
     rel="noopener noreferrer"
     class="relative block"
   >
-    <div class="group overflow-hidden h-60 relative">
+    <div
+      class="group relative aspect-[2/1] overflow-hidden md:h-60 md:aspect-auto"
+    >
       <div
-        class="transition-colors absolute inset-0 bg-black/40 group-hover:bg-black/0 pointer-events-none z-10"
+        class="pointer-events-none absolute inset-0 z-10 bg-black/10 transition-colors md:bg-black/30 md:group-hover:bg-black/0"
       >
       </div>
       <Image
@@ -28,12 +30,12 @@ const timeRange = formatTimeRange(showData.date, showData.endDate)
         alt={showData.title}
         width={800}
         height={400}
-        class="transition-transform w-full h-full object-cover object-top scale-105 group-hover:scale-100"
+        class="h-full w-full scale-100 object-cover object-top transition-transform md:scale-105 md:group-hover:scale-100"
       />
     </div>
   </a>
 
-  <div class="flex flex-1 flex-col p-2 md:px-6 md:py-4">
+  <div class="flex flex-1 flex-col p-4 md:px-6 md:py-4">
     <a href={showData.url} target="_blank" rel="noopener noreferrer">
       <h2 class="mb-1 min-h-[4.5rem] text-3xl leading-tight">
         {showData.title}
