@@ -1,0 +1,25 @@
+---
+interface Props {
+  facts: string[][]
+}
+
+const { facts } = Astro.props
+---
+
+<dl class="mt-14 grid border-y border-purple/20 md:grid-cols-3">
+  {
+    facts.map(([value, label], index) => (
+      <div
+        class:list={[
+          'px-0 py-6 md:px-8',
+          index > 0 && 'border-t border-purple/15 md:border-l md:border-t-0',
+        ]}
+      >
+        <dt class="text-sm font-semibold uppercase tracking-wide text-purple">
+          {label}
+        </dt>
+        <dd class="mt-2 text-3xl font-bold text-gray-950">{value}</dd>
+      </div>
+    ))
+  }
+</dl>

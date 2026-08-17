@@ -3,6 +3,7 @@ import YoutubeEmbed from '../components/YoutubeEmbed.astro'
 import PageLayout from '../layouts/PageLayout.astro'
 import type { Metadata } from '../utils/seo'
 import Image from 'astro/components/Image.astro'
+import ServiceFacts from '../components/ServiceFacts.astro'
 
 const publicSpeakingImage =
   'https://secure.meetupstatic.com/photos/event/d/d/7/3/event_480416691.webp?w=640'
@@ -47,21 +48,21 @@ const audiences = [
         <p
           class="text-sm font-semibold uppercase tracking-[0.18em] text-purple"
         >
-          For teams and professionals
+          Training with an actor&apos;s eye
         </p>
         <h1 class="mt-3 max-w-3xl text-gray-950">
-          Speak clearly.<br />Hold the room.
+          Public Speaking Training for Teams
         </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-gray-700 md:text-xl">
-          Sara&apos;s public speaking training helps people turn nerves into
-          presence—whether they&apos;re leading a meeting, presenting an idea,
-          or speaking to a room for the first time.
+          A 4-week on-site coaching program that helps professionals speak with
+          confidence, clarity, and presence in meetings, presentations, pitches,
+          and client conversations.
         </p>
         <a
           href="/contact"
           class="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-purple px-6 py-3 text-lg font-semibold text-white shadow-sm transition hover:bg-purple-light"
         >
-          Discuss training for your team
+          Contact Sara
         </a>
       </div>
 
@@ -77,42 +78,27 @@ const audiences = [
           loading="eager"
         />
         <figcaption class="bg-white px-5 py-4 text-sm leading-6 text-gray-600">
-          Practical coaching shaped by Sara&apos;s performance experience.
+          A practical coaching program for the way people actually speak at
+          work.
         </figcaption>
       </figure>
     </section>
 
-    <dl class="mt-14 grid border-y border-purple/20 md:grid-cols-3">
-      {
-        programFacts.map(([value, label], index) => (
-          <div
-            class:list={[
-              'px-0 py-6 md:px-8',
-              index > 0 &&
-                'border-t border-purple/15 md:border-l md:border-t-0',
-            ]}
-          >
-            <dt class="text-sm font-semibold uppercase tracking-wide text-purple">
-              {label}
-            </dt>
-            <dd class="mt-2 text-3xl font-bold text-gray-950">{value}</dd>
-          </div>
-        ))
-      }
-    </dl>
+    <ServiceFacts facts={programFacts} />
 
     <section class="mt-16 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
       <div>
         <p
           class="text-sm font-semibold uppercase tracking-[0.18em] text-purple"
         >
-          An actor&apos;s eye
+          How It Works
         </p>
         <h2 class="mt-3 text-gray-950">More than words on a page.</h2>
         <p class="mt-5 text-lg leading-8 text-gray-700 md:text-xl">
           Sara brings decades of acting, coaching, and performance experience to
-          business communication. The work is practical, supportive, and built
-          around how people actually show up in a room.
+          business communication. The program focuses on more than words on a
+          page: participants practice voice, presence, timing, body language,
+          confidence under pressure, and the ability to connect with a room.
         </p>
       </div>
 
@@ -138,9 +124,9 @@ const audiences = [
           <p
             class="text-sm font-semibold uppercase tracking-[0.18em] text-purple"
           >
-            Built around your room
+            Who It&apos;s For
           </p>
-          <h2 class="mt-3 text-gray-950">For people who need to be heard.</h2>
+          <h2 class="mt-3 text-gray-950">Customized for Your Company</h2>
         </div>
 
         <div>
@@ -154,10 +140,14 @@ const audiences = [
             }
           </ul>
           <p class="mt-7 text-lg leading-8 text-gray-700">
-            Sara adapts the training to your industry, audience, and pressure
-            points. Organizations including Make-A-Wish Foundation have used
-            this approach to help people communicate with more confidence in
-            donor conversations, events, and internal meetings.
+            Every business has its own audience, goals, and pressure points.
+            Sara adapts the training to your industry so the work feels
+            relevant, specific, and immediately useful.
+          </p>
+          <p class="mt-5 text-lg leading-8 text-gray-700">
+            Organizations such as Make-A-Wish Foundation have found the program
+            valuable across departments, helping professionals communicate with
+            confidence in donor conversations, events, and internal meetings.
           </p>
         </div>
       </div>
@@ -185,15 +175,15 @@ const audiences = [
     <section
       class="flex flex-col items-start border-b border-gray-300 py-16 md:items-center md:text-center"
     >
-      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-purple">
-        Let&apos;s talk
-      </p>
-      <h2 class="mt-3 max-w-3xl text-gray-950">
-        Bring public speaking training to your team.
+      <h2 class="max-w-3xl text-gray-950">
+        Bring Public Speaking Training to Your Team
       </h2>
       <p class="mt-5 max-w-3xl text-lg leading-8 text-gray-700 md:text-xl">
-        Contact Sara to discuss goals, scheduling, location, and pricing.
-        Private one-on-one public speaking coaching is also available on
+        Contact Sara to discuss your team&apos;s goals, scheduling, location,
+        and pricing. Additional travel fees may apply beyond 10 miles.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-gray-700 md:text-xl">
+        Private one-on-one public speaking coaching is also available upon
         request.
       </p>
       <a

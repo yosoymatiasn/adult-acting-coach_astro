@@ -39,11 +39,6 @@
     @apply text-2xl md:text-4xl;
   }
 
-  .fade-out {
-    @apply z-50;
-    background-color: black;
-  }
-
   .sr-link {
     @apply mx-auto mt-4 inline-flex min-h-12 items-center justify-center rounded-md px-5 py-3 text-lg font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md;
     background-color: var(--color-purple);
@@ -56,28 +51,4 @@
 
 /* 4️⃣ Components */
 @layer components {
-  .fade-out {
-    @apply z-50;
-    background-color: black;
-  }
-
-  .btn-primary {
-    @apply rounded-md px-4 py-2 text-white shadow-sm transition-colors;
-    background-color: var(--color-purple);
-  }
-
-  .btn-primary:hover {
-    background-color: var(--color-purple-light);
-  }
-}
-
-/* 5️⃣ Utilities (optional) */
-@layer utilities {
-  .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-  }
-
-  .drop-shadow-main {
-    drop-shadow: var(--drop-shadow-main);
-  }
 }

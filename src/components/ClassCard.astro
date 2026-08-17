@@ -38,6 +38,7 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
       class="group relative aspect-[2/1] overflow-hidden md:h-60 md:aspect-auto"
     >
       <div
+        data-class-image-overlay
         class="pointer-events-none absolute inset-0 z-10 bg-black/10 transition-colors md:bg-black/30 md:group-hover:bg-black/0"
       >
       </div>
@@ -53,7 +54,11 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
   </a>
 
   <div class="flex h-full flex-col p-4 md:px-6 md:py-4">
-    <a href={`/classes/${classData.slug}`} class="class-link">
+    <a
+      href={`/classes/${classData.slug}`}
+      class="class-link"
+      data-class-title-link
+    >
       <h2 class="text-3xl inline-block mb-1">{classData.title}</h2>
     </a>
     <div class="mt-2 text-sm font-medium text-gray-600 space-y-1">
@@ -119,19 +124,20 @@ const timeRange = formatTimeRange(classData.date, classData.endDate)
 
   cards.forEach((card) => {
     const image = card.querySelector('[data-class-image]')
-    const links = card.querySelectorAll('.class-link')
+    const imageOverlay = card.querySelector('[data-class-image-overlay]')
+    const titleLink = card.querySelector('[data-class-title-link]')
     const registerButton = card.querySelector('[data-register-button]')
 
-    links.forEach((link) => {
-      link.addEventListener('mouseenter', () => {
-        image?.classList.add('scale-100')
-        image?.classList.remove('scale-110')
-      })
-      link.addEventListener('mouseleave', () => {
-        image?.classList.add('scale-110')
-        image?.classList.remove('scale-100')
-      })
-    })
+    const setTitleHover = (isActive: boolean) => {
+      image?.classList.toggle('md:scale-105', !isActive)
+      imageOverlay?.classList.toggle('md:bg-black/30', !isActive)
+      imageOverlay?.classList.toggle('md:bg-black/0', isActive)
+    }
+
+    titleLink?.addEventListener('mouseenter', () => setTitleHover(true))
+    titleLink?.addEventListener('mouseleave', () => setTitleHover(false))
+    titleLink?.addEventListener('focus', () => setTitleHover(true))
+    titleLink?.addEventListener('blur', () => setTitleHover(false))
 
     registerButton?.addEventListener('click', () => {
       window.dispatchEvent(

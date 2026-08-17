@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro'
 import type { Metadata } from '../utils/seo'
 import Image from 'astro/components/Image.astro'
+import ServiceFacts from '../components/ServiceFacts.astro'
 
 const meta: Metadata = {
   title: 'Self-Tapes | Sara Rogers Acting',
@@ -20,9 +21,21 @@ const sessionFacts = [
 ]
 
 const sessionSteps = [
-  'Settle in with a reader and coach who understands the audition process.',
-  'Tape your scene, then watch playback together and choose the take that serves the work.',
-  'Label the files and send a clean, professional submission with confidence.',
+  {
+    title: 'Stress-free setup',
+    description:
+      'A calm session so you can focus on the audition instead of the technology.',
+  },
+  {
+    title: 'Playback review',
+    description:
+      'Watch your takes with Sara and choose the audition that best serves the work.',
+  },
+  {
+    title: 'File help',
+    description:
+      'Files are labeled and sent electronically so your submission is ready to go.',
+  },
 ]
 ---
 
@@ -37,11 +50,12 @@ const sessionSteps = [
         >
           Audition support
         </p>
-        <h1 class="mt-3 max-w-3xl text-gray-950">A better way to self-tape.</h1>
+        <h1 class="mt-3 max-w-3xl text-gray-950">
+          Self-Taping and Submissions
+        </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-gray-700 md:text-xl">
-          Book a calm, focused self-tape session with Sara as your reader and
-          coach—so you can make strong choices, review the work, and send in a
-          polished audition.
+          Book a stress-free self-tape session with Sara as your reader and
+          coach, so you can send in a confident, polished audition.
         </p>
         <a
           href="/contact"
@@ -70,37 +84,24 @@ const sessionSteps = [
       </figure>
     </section>
 
-    <dl class="mt-14 grid border-y border-purple/20 md:grid-cols-3">
-      {
-        sessionFacts.map(([value, label], index) => (
-          <div
-            class:list={[
-              'px-0 py-6 md:px-8',
-              index > 0 &&
-                'border-t border-purple/15 md:border-l md:border-t-0',
-            ]}
-          >
-            <dt class="text-sm font-semibold uppercase tracking-wide text-purple">
-              {label}
-            </dt>
-            <dd class="mt-2 text-3xl font-bold text-gray-950">{value}</dd>
-          </div>
-        ))
-      }
-    </dl>
+    <ServiceFacts facts={sessionFacts} />
 
     <section class="mt-16 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
       <div>
         <p
           class="text-sm font-semibold uppercase tracking-[0.18em] text-purple"
         >
-          One focused session
+          Self-taping and submissions
         </p>
-        <h2 class="mt-3 text-gray-950">More than pressing record.</h2>
+        <h2 class="mt-3 text-gray-950">The norm, not the exception.</h2>
         <p class="mt-5 text-lg leading-8 text-gray-700 md:text-xl">
-          Self-taping asks you to act, direct yourself, make choices, and move
-          quickly. Sara gives you a reliable partner for every part of that
-          process.
+          Actors are now asked to act, direct themselves, make strong choices,
+          and submit clean files quickly.
+        </p>
+        <p class="mt-5 text-lg leading-8 text-gray-700 md:text-xl">
+          With Sara, you get a built-in reader and coach. You tape, watch
+          playbacks, choose the right take, label the files, and send them
+          electronically.
         </p>
       </div>
 
@@ -111,9 +112,12 @@ const sessionSteps = [
               <span class="pt-0.5 text-sm font-semibold text-purple">
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <span class="text-lg leading-8 text-gray-700 md:text-xl">
-                {step}
-              </span>
+              <div>
+                <h3 class="mb-1 text-xl text-gray-900">{step.title}</h3>
+                <p class="text-lg leading-8 text-gray-700 md:text-xl">
+                  {step.description}
+                </p>
+              </div>
             </li>
           ))
         }
@@ -132,9 +136,9 @@ const sessionSteps = [
         </div>
         <div class="space-y-5 text-lg leading-8 text-gray-700 md:text-xl">
           <p>
-            The rate is $75 for the first hour. If you have several pages or
+            The rate is a flat $75 for the hour. If you have several pages or
             more than one scene, additional time is $37.50 for every 30 minutes.
-            One and a half hours is $112.50; two hours is $150.
+            One and a half hours is $112.50, and two hours is $150.
           </p>
           <p>
             Payment options include cash, PayPal, credit cards, or checks. Cash
@@ -160,37 +164,33 @@ const sessionSteps = [
         </div>
         <div class="space-y-5 text-lg leading-8 text-gray-700 md:text-xl">
           <p>
-            Your session begins at the time reserved, so allow time for traffic,
-            rehearsal, makeup, and wardrobe. If you arrive memorized and ready,
-            you can use more of the hour for choices and playback.
+            Your time begins at the time reserved, so please allow enough time
+            for traffic, rehearsal, makeup, and wardrobe changes. If you are
+            memorized and ready to tape, the session usually goes smoothly
+            within the hour. If you finish early, you can use the time to pick
+            Sara&apos;s brain.
           </p>
           <p>
-            The background is grey. Avoid logos or anything distracting; solid
-            colors work best, but skip black, white, and red. Bring clothing
-            options that support the character, and let the camera decide.
+            The background is grey. Please avoid logos or anything that draws
+            the eye away from your audition. Solid colors are best. No black,
+            white, or red. Wear jackets, sweaters, or clothing that supports the
+            character when possible. Bring options and let the camera decide.
+          </p>
+          <p class="text-lg leading-8 text-gray-700 md:text-xl">
+            Sara is seasoned and wants you to book the job. Read more from her
+            testimonials to get a sense of her coaching style and how she works
+            with actors.
           </p>
         </div>
       </div>
     </section>
 
-    <section
-      class="flex flex-col items-start border-b border-gray-300 py-16 md:items-center md:text-center"
-    >
-      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-purple">
-        Ready to tape
-      </p>
-      <h2 class="mt-3 max-w-3xl text-gray-950">
-        Bring in the material. Leave with a finished submission.
-      </h2>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-gray-700 md:text-xl">
-        Contact Sara to schedule a self-tape session or ask about the time your
-        material may need.
-      </p>
+    <section class="border-b border-gray-300 py-16">
       <a
         href="/contact"
-        class="mt-8 inline-flex min-h-12 items-center justify-center rounded-md bg-purple px-6 py-3 text-lg font-semibold text-white shadow-sm transition hover:bg-purple-light"
+        class="inline-flex min-h-12 items-center justify-center rounded-md bg-purple px-6 py-3 text-lg font-semibold text-white shadow-sm transition hover:bg-purple-light"
       >
-        Schedule a self-tape
+        Schedule a Self-Tape
       </a>
     </section>
   </div>
